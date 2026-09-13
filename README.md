@@ -39,7 +39,7 @@ The brain decides. The lens only senses and executes. Where a body needs somethi
 
 | | |
 |---|---|
-| Mac | Apple Silicon. The Metal kernel needs **macOS 15+**. Older macOS or Intel can run the CPU kernel (`METAL=0`) |
+| Mac | Apple Silicon with **macOS 15+** for the Metal kernel. Older macOS or Intel: the [CPU version](#cpu-version) |
 | Tools | Xcode command line tools (`xcode-select --install`), `brew install uv`, git |
 | Disk | ~2 GB for the runtime folder (MaleCNS data + Python env) |
 | Lens Studio | **5.15.4**. Open and save the project only with this version |
@@ -47,31 +47,73 @@ The brain decides. The lens only senses and executes. Where a body needs somethi
 | Network | Spectacles and Mac on the same Wi-Fi without client isolation (a phone hotspot works) |
 | Gemini | A Remote Service Gateway token from your own Snap developer account (see below) |
 
-## Quick start
+## Quick start (from a clean Mac)
 
-1. **Set up the brain runtime** (idempotent, ~1.1 GB download, every file SHA-256 checked):
-   ```sh
-   scripts/setup_mac.sh
-   ```
-   It clones [fly-wirehead](https://github.com/mattyhempstead/fly-wirehead) at the tested commit into `$CYBERFLY_RUNTIME` (default `~/cyberfly_runtime`), runs `uv sync` and downloads the MaleCNS data. Keep the runtime out of Dropbox/iCloud.
+No Git LFS needed: every file in the repo is under 5 MB. The 1.1 GB of brain data is downloaded by the setup script, not stored in git.
 
-2. **Start the brains:**
-   ```sh
-   scripts/run_server.sh
-   ```
-   Two flies on the Metal kernel, WebSocket on port 8790, announced over mDNS as `flybrain.local`. Wait for `ready baseline` per fly (a few seconds; the first run also compiles the kernels). Allow incoming connections when macOS asks.
-   Options: `METAL=0` CPU kernel, `BG=1` background, `DRY_RUN=1` print the command, extra flags pass through (`--flies 1`). Stop: `pkill -f brain_server/server.py`.
+### 1. Install the tools
 
-   Check the server without the glasses:
-   ```sh
-   cd "$CYBERFLY_RUNTIME/fly-wirehead" && uv run --with websockets python <repo>/brain_server/fake_lens.py --fly 0 --secs 5
-   ```
+```sh
+xcode-select --install        # Apple command line tools (the brain kernels compile on first run)
+brew install uv git           # Homebrew: https://brew.sh
+```
 
-3. **Add your Gemini token.** Open `Spectacles/Spectacles.esproj` in Lens Studio 5.15.4, select the `RemoteServiceGatewayCredentials` object in the scene and paste your own RSG token (Lens Studio: *Window > Remote Service Gateway Token*). The repository ships with empty tokens.
+Install **Lens Studio 5.15.4** from https://ar.snap.com/download (open and save this project only with 5.15.4).
 
-4. **Run.** The editor preview connects to the server by itself. For the glasses: *Send to Spectacles*. Look around while the room scan builds, press **DONE SCANNING** on the board, and the flies appear.
+### 2. Clone and set up the brain runtime
 
-If `flybrain.local` does not resolve (`dscacheutil -q host -a name flybrain.local`), set `WS_URL` in `Spectacles/Assets/Scripts/Fly/FlyConfig.ts` to `ws://<mac-ip>:8790`. The server logs its IP at start. Run one server per network.
+```sh
+git clone https://github.com/PtPavloTkachenko/fly-brain-spectacles
+cd fly-brain-spectacles
+scripts/setup_mac.sh
+```
+
+The script is idempotent. It checks the prerequisites, clones [fly-wirehead](https://github.com/mattyhempstead/fly-wirehead) at the tested commit into `$CYBERFLY_RUNTIME` (default `~/cyberfly_runtime`), runs `uv sync` and downloads the MaleCNS data (~1.1 GB, every file SHA-256 checked). Keep the runtime folder out of Dropbox/iCloud. To put it elsewhere, `export CYBERFLY_RUNTIME=/path` in your shell profile before running the scripts.
+
+### 3. Start the brains
+
+**Apple Silicon + macOS 15 or newer (Metal GPU, recommended):**
+
+```sh
+scripts/run_server.sh
+```
+
+<a id="cpu-version"></a>**CPU version** (Intel Macs, macOS 14 or older, or if Metal fails):
+
+```sh
+METAL=0 scripts/run_server.sh --flies 1
+```
+
+The CPU kernel gives the same spikes, only slower (measured on a fresh clone: about 190 ms per 50 ms of brain time for one fly, against about 45 ms on Metal), so start with one fly. `run_server.sh` also switches to the CPU kernel by itself when Metal is not available.
+
+Both start a WebSocket on port 8790, announced over mDNS as `flybrain.local`. Wait for `ready baseline` for each fly (the first run also compiles the kernels) and allow incoming connections when macOS asks. Other options: `BG=1` runs in the background, `DRY_RUN=1` prints the command, extra flags pass through (`--flies 1`). Stop: `pkill -f brain_server/server.py`.
+
+Check the brains without glasses (in a second terminal):
+
+```sh
+cd "${CYBERFLY_RUNTIME:-$HOME/cyberfly_runtime}/fly-wirehead"
+uv run --with websockets python <path-to-repo>/brain_server/fake_lens.py --fly 0 --secs 5
+```
+
+You should see a table where `food_left` turns the fly left, `loom_left` fires `escape_L` and `bitter` raises `stop`.
+
+### 4. Add your own Remote Service Gateway token (Gemini)
+
+The room scan and the fly's inner voice call Gemini through Snap's Remote Service Gateway. The repo ships with **empty tokens**; the lens runs without one, but nothing gets labelled in the room.
+
+1. Open `Spectacles/Spectacles.esproj` in Lens Studio 5.15.4.
+2. Install the **Remote Service Gateway Token Generator** plugin: Asset Library, Spectacles section.
+3. Open it from the main menu: **Windows → Remote Service Gateway Token**, press **Generate Token**, and copy the **Google Token** (that is the one Gemini uses).
+4. In the Scene Hierarchy select the **RemoteServiceGatewayCredentials** object and paste it into its **Google Token** field. Save.
+
+Tokens are tied to your Snapchat account and do not expire. **Never commit them**: before a commit, clear the field or keep your change to `Scene.scene` out of git. Snap's guide: [Remote Service Gateway](https://developers.snap.com/spectacles/about-spectacles-features/apis/remoteservice-gateway).
+
+### 5. Run
+
+- **Editor preview:** it connects to the server by itself. Switch the preview to its 3D mode for a simulated room, press **DONE SCANNING** on the board, and the flies appear.
+- **Spectacles:** in Project Settings keep *Experimental APIs* on, enable **Extended Permissions** for the lens on the device (camera, depth and internet together), then **Send to Spectacles**. Look around while the room scan builds, press **DONE SCANNING**, and the flies appear.
+
+The glasses and the Mac must be on the same Wi-Fi without client isolation (a phone hotspot works). If `flybrain.local` does not resolve (`dscacheutil -q host -a name flybrain.local`), set `WS_URL` in `Spectacles/Assets/Scripts/Fly/FlyConfig.ts` to `ws://<mac-ip>:8790`; the server logs its IP at start. Run one server per network. More fixes: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md).
 
 ## Using the lens
 
