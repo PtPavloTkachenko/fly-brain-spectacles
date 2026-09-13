@@ -3,9 +3,11 @@
 Hologram fruit flies in your real room, on Snap Spectacles (2024), each one driven by its own simulated fly brain.
 
 <p>
-  <img src="docs/media/cyberfly-on-spectacles.jpg" alt="A hologram fly next to a coffee cup, seen through Spectacles" width="49%" />
+  <a href="docs/media/cyberfly-demo.mp4"><img src="docs/media/cyberfly-on-spectacles.jpg" alt="Watch the demo: a hologram fly next to a coffee cup, seen through Spectacles" width="49%" /></a>
   <img src="docs/media/cyberfly-board.jpg" alt="The board with the selected fly's live brain point cloud" width="49%" />
 </p>
+
+▶ **[Watch the 30 s demo, recorded on Spectacles](docs/media/cyberfly-demo.mp4)** · [Blog post](https://pavlo-stijn.dev/blog/posts/a-real-fly-brain-on-spectacles.html)
 
 Every fly runs a full copy of the **MaleCNS v1.0 connectome** (166,700 neurons, 25.6 M synapses, brain and nerve cord) as the leaky integrate-and-fire model of [Shiu et al., Nature 2024](https://www.nature.com/articles/s41586-024-07763-9). The brains run on a Mac, on a Metal GPU kernel we vibe coded with Claude Code. The glasses turn the room into fly senses (eyes, world mesh, a Gemini room inventory, your hands and head) and stream them to the brains. The brains' descending and motor neurons come back and move the wings, legs and head.
 
