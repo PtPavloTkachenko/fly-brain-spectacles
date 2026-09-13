@@ -1,5 +1,5 @@
 /**
- * FlyCommands — voice "find" (ADR 27, implements ADR 14): "Fly, find the apple", "Squanchfly, go to
+ * FlyCommands — voice "find" (ADR 27, implements ADR 14): "Fly, find the apple", "Nova, go to
  * my AirPods". The board's ASK button opens ONE on-device ASR phrase (AsrModule, device only; the
  * editor pretends it heard FIND_EDITOR_PHRASE). Gemini (RSG, same call as FlyNarrator/WorldScanner)
  * maps the phrase to one thing the room scan already knows + the fly the user named (default: the
@@ -335,7 +335,7 @@ export class FlyCommands {
     return this.flyInPhrase(String(v))
   }
 
-  /** A fly named in the words themselves: its name ("squanch fly") or "fly two". */
+  /** A fly named in the words themselves: its name ("nova") or "fly two". */
   private flyInPhrase(p: string): number {
     const s = " " + norm(p) + " "
     const flat = s.replace(/ /g, "")

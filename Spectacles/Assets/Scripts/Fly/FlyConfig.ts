@@ -12,8 +12,8 @@ export const FlyConfig = {
 
   // --- swarm ------------------------------------------------------------------------------
   FLY_COUNT: 2, // 12.09 the user: two for the POC (was 3 — every per-fly cost scales with this: a brain on the server, a body, senses, eye rays, a trail)
-  // 11.09 the user: "FLY + funny Rick and Morty names" — parody names (swap freely)
-  FLY_NAMES: ["PICKLE FLICK", "MR. BUZZSEEKS", "SQUANCHFLY", "BIRDFLY", "EVIL MORTFLY"],
+  // short, easy to say: voice find matches them in the spoken phrase (swap freely)
+  FLY_NAMES: ["NOVA", "PIP", "ZIGGY", "DOT", "BLITZ"],
   SPAWN_DIST_CM: 120, // in front of the user at start
   SPAWN_SPREAD_CM: 45,
 

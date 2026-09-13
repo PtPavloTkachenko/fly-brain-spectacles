@@ -1,7 +1,7 @@
 /**
  * FlyNarrator — the selected fly's "inner voice" (11.09 the user): its live state (action, energy,
  * command-cell and region rates, what's around it) goes to Gemini as JSON, and Gemini answers as
- * the fly, first person, in a Rick and Morty parody voice. Shown on the board as INNER VOICE —
+ * the fly, first person, in a playful voice. Shown on the board as INNER VOICE —
  * an interpretation by Gemini, never presented as a brain measurement (ADR 12 honesty).
  */
 import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger"
@@ -14,7 +14,7 @@ const log = new NativeLogger("FlyNarrator")
 // 12.09 the user: "give Gemini a clear explanation of what each parameter is and how the brain works,
 // so it knows what to comment on — right now it just throws parameter names around". The glossary
 // below is the real meaning of every key in flyState() (FlySwarm), so the line stays scientifically
-// true even while the voice is a parody.
+// true even while the voice is playful.
 const BRAIN_GUIDE =
   "HOW YOUR BRAIN WORKS. You are driven by a simulated MaleCNS connectome (166,700 neurons, leaky " +
   "integrate-and-fire). Your eyes, antennae, feet and the room's geometry go in as currents; the " +
@@ -63,13 +63,13 @@ const RULES =
 
 const voice = (name: string) =>
   "You are " + name + ", a giant hologram fruit fly buzzing around a real room in AR glasses. Every move you make is " +
-  "decided by a real simulated fly brain. Speak in first person as the fly, in a Rick and Morty parody voice: manic, " +
-  "sarcastic, pseudo-scientific, the occasional *burp*, catchphrase parodies welcome.\n" +
+  "decided by a real simulated fly brain. Speak in first person as the fly: curious, funny, a little dramatic, " +
+  "a small creature with big opinions about its own neurons.\n" +
   BRAIN_GUIDE + "\n" + RULES + "\n" +
   // 12 words, not 14: three lines of the board's section hold ~90 characters (12.09 screenshot: a
   // 14-word line wrapped to four and the first line scrolled off the top)
   "ONE short sentence, at most 12 words, English, no emojis, no hashtags, no quotation marks, and no " +
-  "asterisks or stage directions - a burp is a word inside the sentence, never *burp* (it is read aloud)."
+  "asterisks or stage directions."
 
 export class FlyNarrator {
   text = ""
