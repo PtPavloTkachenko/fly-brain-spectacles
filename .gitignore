@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets
+.env
+*.pem
+*.key
+
+# Lens Studio machine-local / regenerable
+Spectacles*/Cache/
+Spectacles*/Workspaces/
+Spectacles*/Support/
+Spectacles*/PluginsUserPreferences/
+Spectacles*/*.lock
+Spectacles*/BackUp/
+
+# Regenerable build previews (fly_model/build_glb.py writes them)
+fly_model/out/*_preview_*.png
+tools/treats/out/
+
+# Runtime never lives in the repo: $CYBERFLY_RUNTIME (default ~/cyberfly_runtime) holds
+# fly-wirehead + its 1.6 GB data, native kernel builds, logs and the tools' raw downloads
+fly-wirehead/
+engine_build/
+logs/
+*.dylib
+*.partial
+*.hdf5
+*.feather
+tools/anatomy/raw/
+tools/anim/flybody-data/
+tools/anim/flygym-data/
+
+# OS / logs
+.DS_Store
+*.log
+
+# Shader .mat.meta / .ss_graph.meta ARE tracked: Scene.scene and every .mat reference the asset
+# ids inside them, so a clone without them opens with unbound materials. a shader rebuild
+# writes fresh ids -> commit the new metas together with the scene/.mat that point at them.
+brain/results/*_prev.npz

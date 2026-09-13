@@ -1,0 +1,184 @@
+- !<AssetImportMetadata/d512bc6c-d734-46b6-b662-fd4c7d20fb6c>
+  ImportedAssetIds:
+    .hidden/Apple: !<reference> 8664891d-f80e-44c2-9d09-60efddaca862
+    17c7a813c1caec72: !<reference> f3257343-9d1b-4d6b-8eaa-e72dee8303e0
+    3e8cb2f8163dc676: !<reference> 021650cc-3e02-4f5d-b12f-99a271e9d5ca
+    3e8cb2f8163de654: !<reference> 10993dba-c970-464d-ba07-f1da70520864
+    3e8cb2f8163df6c7: !<reference> f682169d-7203-4195-8d72-9a620f42db80
+    4a3e924fad0e2f27: !<reference> 37e4ec68-1759-4a0a-b3fc-5a8809af95ab
+    66780cf3a4dcb2b8: !<reference> 9f7dc4c2-03de-4d26-919e-5ae22048cdb7
+    96f664b015fcd573: !<reference> 3e2129e7-b620-40b8-9fea-10b56f576852
+    Materials/Apple: !<reference> 75aa282b-2c4d-4d7b-8e29-2c8d7fa5af45
+    Materials/Apple|Apple|GraphPassInfo: !<reference> c75b883f-800f-45d7-950e-5db5522c857c
+    Materials/Leaf: !<reference> 1aa27078-1b82-4cad-935e-76de9499467c
+    Materials/Leaf|Leaf|GraphPassInfo: !<reference> e2df7429-0312-4088-972d-479bd6544a7a
+    Materials/Stem: !<reference> a942ce27-140e-4151-acb4-00127d563aa8
+    Materials/Stem|Stem|GraphPassInfo: !<reference> 47d25d1f-7f58-456b-a974-3c2eabe37f2b
+    Meshes/Sphere: !<reference> ec0dd9ff-01c6-4c7a-aaa3-ec4fdf7411b2
+    Meshes/Sphere1: !<reference> df6c4935-af82-4504-ae3d-79220d6b1ada
+    Meshes/Sphere2: !<reference> 2bd8cb61-0b8c-4271-a4db-bf55385aca00
+    Scene: !<reference> abe88aeb-e11b-46d6-a515-9e9d0efed88b
+  ImporterName: GltfImporter
+  PrimaryAsset: !<reference> abe88aeb-e11b-46d6-a515-9e9d0efed88b
+  PackageType: LegacyPackage
+  LegacyPackagePolicy: CanBeUnpackedTransparent
+  ExtraData:
+    {}
+  AssetDataMap:
+    Scene: !<own> f0bc254a-9537-4bbc-b121-329892ed0acc
+  DependentFiles:
+    []
+  ImporterSettings: !<GltfImporterSettings>
+    UseLegacyImporter: false
+    WithMaterials: true
+    NamingConvention: ByCategorySanitizeV2
+    PersistentIdGenerationAlgorithm: DescriptorBased
+    AnimationCurveOptimization: true
+    CustomAnimationSamplingRate: 30.000000
+    ImportVertexColor: true
+    ImportTangents: true
+    ImportMorphTargetAnimation: true
+    ConvertMetersToCentimeters: true
+    RegenerateTangents: false
+  CompressionSettings: !<ComplexCompressionSettings>
+    Presets:
+      None Compression: !<SingleCompressionSettings>
+        CompressorName: Draco
+        CompressionSettings: !<MeshCompressionSettings>
+          EnableDracoCompression: true
+          CompressionLevel: 7
+          PositionBits: 11
+          TexcoordBits: 10
+          NormalBits: 8
+          ColorBits: 8
+    ExtensionMappings:
+      mesh: None Compression
+    Overrides:
+      {}
+- !<RenderMeshVisual/021650cc-3e02-4f5d-4ed0-665d8e162a35>
+  PrefabRemaps:
+    []
+  Name: Sphere
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 75aa282b-2c4d-4d7b-8e29-2c8d7fa5af45
+  Mesh: !<reference> ec0dd9ff-01c6-4c7a-aaa3-ec4fdf7411b2
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<RenderMeshVisual/10993dba-c970-464d-45f8-0e258fadf79b>
+  PrefabRemaps:
+    []
+  Name: Sphere
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 1aa27078-1b82-4cad-935e-76de9499467c
+  Mesh: !<reference> 2bd8cb61-0b8c-4271-a4db-bf55385aca00
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/37e4ec68-1759-4a0a-4c03-a577f6506a54>
+  PrefabRemaps:
+    []
+  Name: Scenes
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 3e2129e7-b620-40b8-6015-ef4a90a897ad
+  Components:
+    []
+- !<SceneObject/3e2129e7-b620-40b8-6015-ef4a90a897ad>
+  PrefabRemaps:
+    []
+  Name: Scene
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> f3257343-9d1b-4d6b-7155-18d2117cfc1f
+  Components:
+    []
+- !<SceneObject/9f7dc4c2-03de-4d26-6e61-a51ddfb73248>
+  PrefabRemaps:
+    []
+  Name: apple
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 100.000000, y: 100.000000, z: 100.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 37e4ec68-1759-4a0a-4c03-a577f6506a54
+  Components:
+    []
+- !<ObjectPrefabAssetData/f0bc254a-9537-4bbc-b121-329892ed0acc>
+  Prototype: !<ObjectOwner/334cc5b3-e632-4d21-84fd-cf132d7024f4>
+    PackagePath: ""
+    objects:
+      - !<own> 9f7dc4c2-03de-4d26-6e61-a51ddfb73248
+- !<SceneObject/f3257343-9d1b-4d6b-7155-18d2117cfc1f>
+  PrefabRemaps:
+    []
+  Name: apple
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 021650cc-3e02-4f5d-4ed0-665d8e162a35
+    - !<own> f682169d-7203-4195-728d-659df0bd247f
+    - !<own> 10993dba-c970-464d-45f8-0e258fadf79b
+- !<RenderMeshVisual/f682169d-7203-4195-728d-659df0bd247f>
+  PrefabRemaps:
+    []
+  Name: Sphere
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> a942ce27-140e-4151-acb4-00127d563aa8
+  Mesh: !<reference> df6c4935-af82-4504-ae3d-79220d6b1ada
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}

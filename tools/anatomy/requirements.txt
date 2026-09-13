@@ -1,0 +1,11 @@
+# versions the committed out/ was generated with (2026-09-11)
+fast-simplification==0.2.0
+libigl==2.6.3
+networkx==3.6.1
+numpy==2.4.6
+pandas==3.0.5
+pyarrow==25.0.1
+requests==2.34.2
+rtree==1.4.1
+scipy==1.17.1
+trimesh==5.1.0

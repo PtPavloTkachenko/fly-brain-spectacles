@@ -1,0 +1,1666 @@
+{
+ "lod": "lod0",
+ "tris": 9753,
+ "length_m": 0.35,
+ "scale": 1.1619642484296466,
+ "forward": "+X (MJCF) -> glTF +X",
+ "up": "MJCF +Z -> glTF +Y",
+ "bones": [
+  {
+   "bone": "thorax",
+   "parent": null,
+   "joints": [],
+   "folded_bodies": []
+  },
+  {
+   "bone": "head",
+   "parent": "thorax",
+   "joints": [
+    {
+     "joint": "head_abduct",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.2,
+      0.2
+     ]
+    },
+    {
+     "joint": "head_twist",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -3.0,
+      3.0
+     ]
+    },
+    {
+     "joint": "head",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.5,
+      0.3
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "rostrum",
+   "parent": "head",
+   "joints": [
+    {
+     "joint": "rostrum",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -1.24,
+      0.183
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "haustellum",
+   "parent": "rostrum",
+   "joints": [
+    {
+     "joint": "haustellum_abduct",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.0873,
+      0.0873
+     ]
+    },
+    {
+     "joint": "haustellum",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -1.59,
+      0.7
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "labrum_left",
+   "parent": "haustellum",
+   "joints": [
+    {
+     "joint": "labrum_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.00524,
+      1.05
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "labrum_right",
+   "parent": "haustellum",
+   "joints": [
+    {
+     "joint": "labrum_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.00524,
+      1.05
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "antenna_left",
+   "parent": "head",
+   "joints": [
+    {
+     "joint": "antenna_abduct_left",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.4,
+      0.8
+     ]
+    },
+    {
+     "joint": "antenna_twist_left",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -0.1,
+      0.09
+     ]
+    },
+    {
+     "joint": "antenna_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.2,
+      0.5
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "antenna_right",
+   "parent": "head",
+   "joints": [
+    {
+     "joint": "antenna_abduct_right",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.4,
+      0.8
+     ]
+    },
+    {
+     "joint": "antenna_twist_right",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -0.1,
+      0.09
+     ]
+    },
+    {
+     "joint": "antenna_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.2,
+      0.5
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "wing_left",
+   "parent": "thorax",
+   "joints": [
+    {
+     "joint": "wing_yaw_left",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -1.5,
+      1.5
+     ]
+    },
+    {
+     "joint": "wing_roll_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -1.0,
+      1.5
+     ]
+    },
+    {
+     "joint": "wing_pitch_left",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -1.27,
+      2.92
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "wing_right",
+   "parent": "thorax",
+   "joints": [
+    {
+     "joint": "wing_yaw_right",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -1.5,
+      1.5
+     ]
+    },
+    {
+     "joint": "wing_roll_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -1.0,
+      1.5
+     ]
+    },
+    {
+     "joint": "wing_pitch_right",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -1.27,
+      2.92
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "abdomen",
+   "parent": "thorax",
+   "joints": [
+    {
+     "joint": "abdomen_abduct",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.1,
+      0.1
+     ]
+    },
+    {
+     "joint": "abdomen",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.15,
+      0.1
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "abdomen_2",
+   "parent": "abdomen",
+   "joints": [
+    {
+     "joint": "abdomen_abduct_2",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.1,
+      0.1
+     ]
+    },
+    {
+     "joint": "abdomen_2",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.15,
+      0.1
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "abdomen_3",
+   "parent": "abdomen_2",
+   "joints": [
+    {
+     "joint": "abdomen_abduct_3",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.1,
+      0.1
+     ]
+    },
+    {
+     "joint": "abdomen_3",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.15,
+      0.1
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "abdomen_4",
+   "parent": "abdomen_3",
+   "joints": [
+    {
+     "joint": "abdomen_abduct_4",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.1,
+      0.1
+     ]
+    },
+    {
+     "joint": "abdomen_4",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.15,
+      0.1
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "abdomen_5",
+   "parent": "abdomen_4",
+   "joints": [
+    {
+     "joint": "abdomen_abduct_5",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.1,
+      0.1
+     ]
+    },
+    {
+     "joint": "abdomen_5",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.15,
+      0.1
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "abdomen_6",
+   "parent": "abdomen_5",
+   "joints": [
+    {
+     "joint": "abdomen_abduct_6",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.1,
+      0.1
+     ]
+    },
+    {
+     "joint": "abdomen_6",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.15,
+      0.1
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "abdomen_7",
+   "parent": "abdomen_6",
+   "joints": [
+    {
+     "joint": "abdomen_abduct_7",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.1,
+      0.1
+     ]
+    },
+    {
+     "joint": "abdomen_7",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.15,
+      0.1
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "haltere_left",
+   "parent": "thorax",
+   "joints": [
+    {
+     "joint": "haltere_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.2,
+      0.2
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "haltere_right",
+   "parent": "thorax",
+   "joints": [
+    {
+     "joint": "haltere_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.2,
+      0.2
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "coxa_T1_left",
+   "parent": "thorax",
+   "joints": [
+    {
+     "joint": "coxa_abduct_T1_left",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -1.0,
+      0.7
+     ]
+    },
+    {
+     "joint": "coxa_twist_T1_left",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -0.8,
+      0.8
+     ]
+    },
+    {
+     "joint": "coxa_T1_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.2,
+      1.7
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "femur_T1_left",
+   "parent": "coxa_T1_left",
+   "joints": [
+    {
+     "joint": "femur_twist_T1_left",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -1.0,
+      1.0
+     ]
+    },
+    {
+     "joint": "femur_T1_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.15,
+      2.0
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "tibia_T1_left",
+   "parent": "femur_T1_left",
+   "joints": [
+    {
+     "joint": "tibia_T1_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -1.35,
+      1.3
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "tarsus_T1_left",
+   "parent": "tibia_T1_left",
+   "joints": [
+    {
+     "joint": "tarsus_T1_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.7,
+      1.2
+     ]
+    }
+   ],
+   "folded_bodies": [
+    "tarsus2_T1_left",
+    "tarsus3_T1_left",
+    "tarsus4_T1_left",
+    "claw_T1_left"
+   ]
+  },
+  {
+   "bone": "coxa_T1_right",
+   "parent": "thorax",
+   "joints": [
+    {
+     "joint": "coxa_abduct_T1_right",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -1.0,
+      0.7
+     ]
+    },
+    {
+     "joint": "coxa_twist_T1_right",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -0.8,
+      0.8
+     ]
+    },
+    {
+     "joint": "coxa_T1_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.2,
+      1.7
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "femur_T1_right",
+   "parent": "coxa_T1_right",
+   "joints": [
+    {
+     "joint": "femur_twist_T1_right",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -1.0,
+      1.0
+     ]
+    },
+    {
+     "joint": "femur_T1_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.15,
+      2.0
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "tibia_T1_right",
+   "parent": "femur_T1_right",
+   "joints": [
+    {
+     "joint": "tibia_T1_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -1.35,
+      1.3
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "tarsus_T1_right",
+   "parent": "tibia_T1_right",
+   "joints": [
+    {
+     "joint": "tarsus_T1_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.7,
+      1.2
+     ]
+    }
+   ],
+   "folded_bodies": [
+    "tarsus2_T1_right",
+    "tarsus3_T1_right",
+    "tarsus4_T1_right",
+    "claw_T1_right"
+   ]
+  },
+  {
+   "bone": "coxa_T2_left",
+   "parent": "thorax",
+   "joints": [
+    {
+     "joint": "coxa_abduct_T2_left",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.5,
+      0.3
+     ]
+    },
+    {
+     "joint": "coxa_twist_T2_left",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -0.75,
+      0.8
+     ]
+    },
+    {
+     "joint": "coxa_T2_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.2,
+      0.9
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "femur_T2_left",
+   "parent": "coxa_T2_left",
+   "joints": [
+    {
+     "joint": "femur_twist_T2_left",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -1.0,
+      1.0
+     ]
+    },
+    {
+     "joint": "femur_T2_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.15,
+      2.0
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "tibia_T2_left",
+   "parent": "femur_T2_left",
+   "joints": [
+    {
+     "joint": "tibia_T2_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -1.35,
+      1.3
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "tarsus_T2_left",
+   "parent": "tibia_T2_left",
+   "joints": [
+    {
+     "joint": "tarsus_T2_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -1.0,
+      1.8
+     ]
+    }
+   ],
+   "folded_bodies": [
+    "tarsus2_T2_left",
+    "tarsus3_T2_left",
+    "tarsus4_T2_left",
+    "claw_T2_left"
+   ]
+  },
+  {
+   "bone": "coxa_T2_right",
+   "parent": "thorax",
+   "joints": [
+    {
+     "joint": "coxa_abduct_T2_right",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.5,
+      0.3
+     ]
+    },
+    {
+     "joint": "coxa_twist_T2_right",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -0.75,
+      0.8
+     ]
+    },
+    {
+     "joint": "coxa_T2_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.2,
+      0.9
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "femur_T2_right",
+   "parent": "coxa_T2_right",
+   "joints": [
+    {
+     "joint": "femur_twist_T2_right",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -1.0,
+      1.0
+     ]
+    },
+    {
+     "joint": "femur_T2_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.15,
+      2.0
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "tibia_T2_right",
+   "parent": "femur_T2_right",
+   "joints": [
+    {
+     "joint": "tibia_T2_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -1.35,
+      1.3
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "tarsus_T2_right",
+   "parent": "tibia_T2_right",
+   "joints": [
+    {
+     "joint": "tarsus_T2_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -1.0,
+      1.8
+     ]
+    }
+   ],
+   "folded_bodies": [
+    "tarsus2_T2_right",
+    "tarsus3_T2_right",
+    "tarsus4_T2_right",
+    "claw_T2_right"
+   ]
+  },
+  {
+   "bone": "coxa_T3_left",
+   "parent": "thorax",
+   "joints": [
+    {
+     "joint": "coxa_abduct_T3_left",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.9,
+      0.25
+     ]
+    },
+    {
+     "joint": "coxa_twist_T3_left",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -0.15,
+      0.8
+     ]
+    },
+    {
+     "joint": "coxa_T3_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.3,
+      1.3
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "femur_T3_left",
+   "parent": "coxa_T3_left",
+   "joints": [
+    {
+     "joint": "femur_twist_T3_left",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -1.0,
+      1.0
+     ]
+    },
+    {
+     "joint": "femur_T3_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.7,
+      1.5
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "tibia_T3_left",
+   "parent": "femur_T3_left",
+   "joints": [
+    {
+     "joint": "tibia_T3_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -1.35,
+      1.3
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "tarsus_T3_left",
+   "parent": "tibia_T3_left",
+   "joints": [
+    {
+     "joint": "tarsus_T3_left",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.8,
+      1.2
+     ]
+    }
+   ],
+   "folded_bodies": [
+    "tarsus2_T3_left",
+    "tarsus3_T3_left",
+    "tarsus4_T3_left",
+    "claw_T3_left"
+   ]
+  },
+  {
+   "bone": "coxa_T3_right",
+   "parent": "thorax",
+   "joints": [
+    {
+     "joint": "coxa_abduct_T3_right",
+     "axis_body": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "axis_gltf": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "range": [
+      -0.9,
+      0.25
+     ]
+    },
+    {
+     "joint": "coxa_twist_T3_right",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -0.15,
+      0.8
+     ]
+    },
+    {
+     "joint": "coxa_T3_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.3,
+      1.3
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "femur_T3_right",
+   "parent": "coxa_T3_right",
+   "joints": [
+    {
+     "joint": "femur_twist_T3_right",
+     "axis_body": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "axis_gltf": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "range": [
+      -1.0,
+      1.0
+     ]
+    },
+    {
+     "joint": "femur_T3_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.7,
+      1.5
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "tibia_T3_right",
+   "parent": "femur_T3_right",
+   "joints": [
+    {
+     "joint": "tibia_T3_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -1.35,
+      1.3
+     ]
+    }
+   ],
+   "folded_bodies": []
+  },
+  {
+   "bone": "tarsus_T3_right",
+   "parent": "tibia_T3_right",
+   "joints": [
+    {
+     "joint": "tarsus_T3_right",
+     "axis_body": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "axis_gltf": [
+      1.0,
+      0.0,
+      -0.0
+     ],
+     "range": [
+      -0.8,
+      1.2
+     ]
+    }
+   ],
+   "folded_bodies": [
+    "tarsus2_T3_right",
+    "tarsus3_T3_right",
+    "tarsus4_T3_right",
+    "claw_T3_right"
+   ]
+  }
+ ]
+}
