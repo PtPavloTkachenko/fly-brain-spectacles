@@ -32,7 +32,8 @@ The brain decides. The lens only senses and executes. Where a body needs somethi
 | `fly_model/` | flybody MJCF to skinned GLB pipeline (Blender) |
 | `tools/` | Offline generators: brain anatomy meshes, animation poses, font atlases, treat model |
 | `shaders_src/` | GLSL sources of the lens shaders |
-| `scripts/` | `setup_mac.sh` (one-time runtime setup), `run_server.sh` (start the brains) |
+| `scripts/` | `setup_mac.sh` (one-time runtime setup), `run_server.sh` (start the brains), `verify_brain.sh` (end-to-end check, prints PASS) |
+| `AGENTS.md`, `CLAUDE.md` | Instructions for coding agents: deploy, human-only steps, rules |
 | `docs/` | Architecture, Metal kernel, senses and readouts, decisions, troubleshooting |
 
 ## Requirements
@@ -88,14 +89,15 @@ The CPU kernel gives the same spikes, only slower (measured on a fresh clone: ab
 
 Both start a WebSocket on port 8790, announced over mDNS as `flybrain.local`. Wait for `ready baseline` for each fly (the first run also compiles the kernels) and allow incoming connections when macOS asks. Other options: `BG=1` runs in the background, `DRY_RUN=1` prints the command, extra flags pass through (`--flies 1`). Stop: `pkill -f brain_server/server.py`.
 
-Check the brains without glasses (in a second terminal):
+Check the brains without glasses, in one command (stop any running server first):
 
 ```sh
-cd "${CYBERFLY_RUNTIME:-$HOME/cyberfly_runtime}/fly-wirehead"
-uv run --with websockets python <path-to-repo>/brain_server/fake_lens.py --fly 0 --secs 5
+scripts/verify_brain.sh            # METAL=0 scripts/verify_brain.sh for the CPU kernel
 ```
 
-You should see a table where `food_left` turns the fly left, `loom_left` fires `escape_L` and `bitter` raises `stop`.
+It starts a one-fly server, drives it with `brain_server/fake_lens.py`, checks that food turns the fly toward it, a looming threat fires the escape on that side and bitter taste stops it, then stops the server and prints `PASS`.
+
+**Using a coding agent?** Point it at [AGENTS.md](AGENTS.md) (Claude Code reads `CLAUDE.md`, which points there): it has the deploy steps, what only a human can do in Lens Studio, and the rules for changing the code.
 
 ### 4. Add your own Remote Service Gateway token (Gemini)
 
