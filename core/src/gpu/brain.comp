@@ -1,0 +1,439 @@
+// Vulkan compute port of the exact brain kernel (one fly), from kernel_serial in flybrain.cpp.
+// Same operations in the same order per neuron; the only cross-neuron order the CPU has is the
+// active list, reproduced here with (epoch, seq) keys:
+//   epoch 0 = carried over from the previous call (seq = position), 1 = woken by a drive change at
+//   the call start (seq = the reference index), 2+t = woken at tick t (seq = the global delivery
+//   sequence number r of the first waking delivery). Spikes of a tick are sorted by key, so the
+//   delay queue is the CPU's queue.
+// Deliveries are INTEGER (ADR 82): a synapse is an exact whole number of weight units, so a tick's
+// deliveries into one cell are summed with atomicAdd -- integer addition is associative, so the
+// order the scheduler happens to run them in cannot change the result, and the sum enters g with a
+// single float rounding. That replaced a per-target linked list of records that had to be sorted and
+// applied in r order, and with it went the 64 MB record buffer, the scratch, and both overflow paths.
+// Exactness on any Vulkan GPU (DETERMINISM.md):
+//   * `plain` mode (P.acc == 0, the default): evolve uses NOTHING but +, - and *, each of which the
+//     Vulkan spec requires to be correctly rounded, all marked `precise` so the driver may not fuse
+//     them. The two divisions (/3, /(tau-20)) are gone: the host pre-divides them into the decay
+//     tables (blocks 3 and 4). A driver whose fma() is an unfused mad, or whose divide takes the
+//     allowed 2.5 ULP, therefore cannot make this kernel disagree with the CPU.
+//   * `fma` mode (P.acc == 1): the pre-16.09 form -- fma written out exactly as clang contracts the
+//     CPU statements, and the two divisions emulated with two fmas, correctly rounded for every float
+//     (tools/divcheck.cpp, exhaustive). Kept so a device can A/B the two without a rebuild; the CPU
+//     switches with it, so both modes are self-consistent.
+//   * no subgroup ops, no 64-bit integers, no float atomics: positions from atomics are arbitrary and
+//     never matter (everything order-dependent goes through the keys);
+//   * denormals may be flushed by the GPU (tiny remainders that the CPU keeps; absorbed, as on Metal).
+// Compiled six times (-DK_BEGIN .. -DK_RANK) by tools/build_spv.sh into brain_spv.h.
+#version 450
+layout(local_size_x = 256) in;
+
+const uint TG = 256u;
+const uint EMPTY = 0xFFFFFFFFu;
+const uint ENDL = 0x7FFFFFFFu;
+const uint LOCALSORT = 2048u;
+const int INT_MIN_ = -2147483647 - 1;
+const uint EPART_SHIFT = 23u;  // edges live in 2^23-edge slices (the storage-buffer range limit of small GPUs)
+const uint EPART = 1u << EPART_SHIFT;
+
+struct Cell { int last; int spk; float v, g, adapt, rest, drive; int pk; };  // pk = refr | flag << 16 | kc << 24
+struct Edge { int post; int units; };
+struct NConst { float rest; uint kc; uint oldof; uint mod; };
+struct IO { float prev; float drive; int counts; int pad; };
+
+layout(std140, set = 0, binding = 0) uniform Params {
+  int n, slots, delay, rfc, TA, NP, CS, MAXT;
+  int ga1, ga2, gb1, nblk;
+  uint upad0, upad1; float w_unit; uint acc;
+  float adapt_jump, tau, tau20, inv_tau20;
+  uint o_key, o_act, o_active, o_spkey, o_spid, o_prefix, o_head, o_touched;  // work-arena offsets (uints)
+  // o_head is now "the smallest r that hit this target this tick" (EMPTY = untouched)
+  int steps, slot0, na0, ipad;
+} P;
+layout(push_constant) uniform Push { int t; } PC;
+
+layout(std430, set = 0, binding = 1) readonly buffer B_PTR { uint ptr[]; };
+layout(std430, set = 0, binding = 2) readonly buffer B_E0 { Edge e0[]; };
+layout(std430, set = 0, binding = 3) readonly buffer B_E1 { Edge e1[]; };
+layout(std430, set = 0, binding = 4) readonly buffer B_E2 { Edge e2[]; };
+layout(std430, set = 0, binding = 5) readonly buffer B_E3 { Edge e3[]; };
+layout(std430, set = 0, binding = 6) readonly buffer B_NC { NConst nc[]; };
+layout(std430, set = 0, binding = 7) readonly buffer B_TAB { float tab[]; };  // av ag aa ab3 adk, TA each
+layout(std430, set = 0, binding = 8) buffer B_CELLS { Cell cells[]; };
+layout(std430, set = 0, binding = 9) buffer B_IO { IO io[]; };
+layout(std430, set = 0, binding = 10) buffer B_W { uint W[]; };
+layout(std430, set = 0, binding = 11) buffer B_ACC { int ACC[]; };   // this tick's integer units per target
+layout(std430, set = 0, binding = 12) buffer B_Q { int Q[]; };       // queue[slots * n], then qcount[slots]
+layout(std430, set = 0, binding = 13) buffer B_SCR { uint SCR[]; };  // sortk[2 * NP], sortid[NP]
+layout(std430, set = 0, binding = 14) buffer B_CTR { uint ctr[]; };
+
+// per-call counters, as in brain.metal
+uint C_NA(int t) { return uint(t); }
+uint C_NSP(int t) { return uint(P.MAXT + 1 + t); }
+uint C_NT(int t) { return uint(2 * (P.MAXT + 1) + t); }
+uint C_R(int t) { return uint(3 * (P.MAXT + 1) + t); }
+uint C_SC(int t) { return uint(4 * (P.MAXT + 1) + t); }
+uint C_OVF() { return uint(5 * (P.MAXT + 1) + 1); }
+
+Edge edge(uint e) {
+  const uint b = e >> EPART_SHIFT, o = e & (EPART - 1u);
+  if (b == 0u) return e0[o];
+  if (b == 1u) return e1[o];
+  if (b == 2u) return e2[o];
+  return e3[o];
+}
+uint deg(int i) { return nc[i].mod != 0u ? 0u : ptr[i + 1] - ptr[i]; }  // modulatory sources deliver nothing
+
+// work arena views
+uvec2 keyAt(int i) { return uvec2(W[P.o_key + 2u * uint(i)], W[P.o_key + 2u * uint(i) + 1u]); }
+void keySet(int i, uvec2 k) { W[P.o_key + 2u * uint(i)] = k.x; W[P.o_key + 2u * uint(i) + 1u] = k.y; }
+bool keyLess(uvec2 a, uvec2 b) { return a.x < b.x || (a.x == b.x && a.y < b.y); }
+uint actIdx(int parity, uint k) { return P.o_act + uint(parity) * uint(P.n) + k; }
+
+struct L { int last; int spk; float v, g, adapt, rest, drive; int refr; int flag; int kc; };
+L unpack(Cell c) {
+  L l;
+  l.last = c.last; l.spk = c.spk; l.v = c.v; l.g = c.g; l.adapt = c.adapt; l.rest = c.rest; l.drive = c.drive;
+  l.refr = c.pk & 0xFFFF; l.flag = (c.pk >> 16) & 0xFF; l.kc = (c.pk >> 24) & 0xFF;
+  return l;
+}
+Cell pack(L l) {
+  Cell c;
+  c.last = l.last; c.spk = l.spk; c.v = l.v; c.g = l.g; c.adapt = l.adapt; c.rest = l.rest; c.drive = l.drive;
+  c.pk = (l.refr & 0xFFFF) | (l.flag << 16) | (l.kc << 24);
+  return c;
+}
+
+// correctly rounded x / y with y a compile-time constant (tools/divcheck.cpp: exhaustive)
+float div3(float x) {
+  precise float q = x * 0.333333343267440796f;
+  precise float r = fma(-q, 3.0f, x);
+  precise float q2 = fma(r, 0.333333343267440796f, q);
+  return q2;
+}
+float divTau20(float x) {  // tau20 = 180 for the reference model; P.tau20 and its reciprocal come from the host
+  precise float q = x * P.inv_tau20;
+  precise float r = fma(-q, P.tau20, x);
+  precise float q2 = fma(r, P.inv_tau20, q);
+  return q2;
+}
+
+// flybrain.cpp's evolve_cell<FMA>, operation for operation. P.acc picks the form; the CPU is on the
+// same switch, so a mismatch here is a mismatch there too and gpu_check sees it.
+void evolve(inout L c, int now, float cur) {
+  int d = now - c.last;
+  if (d <= 0) return;
+  const int frozen = c.refr > 0 ? c.refr - 1 : 0;
+  const int skip = d < frozen ? d : frozen;
+  if (skip > 0 && c.adapt > 0.0) c.adapt = c.adapt * tab[2 * P.TA + min(skip, P.TA - 1)];
+  c.refr = d >= c.refr ? 0 : c.refr - d;
+  d -= skip;
+  if (d > 0) {
+    const int k = min(d, P.TA - 1);
+    const float a = tab[k], b = tab[P.TA + k];
+    if (P.acc == 0u) {  // plain: only correctly-rounded +, - and *, nothing the driver may fuse
+      precise float t1 = c.rest + (c.v - c.rest) * a;
+      precise float t2 = t1 + cur * (1.0f - a);
+      precise float v = t2 + c.g * tab[3 * P.TA + k];
+      c.v = v;
+      precise float g = c.g * b;
+      c.g = g;
+      if (c.adapt > 0.0) {
+        precise float v2 = c.v - c.adapt * tab[4 * P.TA + k];
+        c.v = v2;
+        precise float ad = c.adapt * tab[2 * P.TA + k];
+        c.adapt = ad;
+      }
+    } else {  // fma: the pre-16.09 form (clang's contractions + the emulated divisions)
+      precise float t1 = fma(c.v - c.rest, a, c.rest);
+      precise float t1b = fma(cur, 1.0f - a, t1);
+      precise float gm = c.g * (a - b);
+      precise float t2 = div3(gm);
+      precise float v = t1b + t2;
+      c.v = v;
+      precise float g = c.g * b;
+      c.g = g;
+      if (c.adapt > 0.0) {
+        const float cc = tab[2 * P.TA + k];
+        precise float at = -(c.adapt * P.tau);
+        precise float x = divTau20(at);
+        precise float v2 = fma(x, cc - a, c.v);
+        c.v = v2;
+        precise float ad = c.adapt * cc;
+        c.adapt = ad;
+      }
+    }
+  }
+  c.last = now;
+}
+
+shared uint sums[TG];
+
+// exclusive prefix of the out-degrees of the spikes queued in `slot` (queue order); total -> ctr[R]
+void prefix_tg(int slot, uint R, uint lid) {
+  const int n = P.n;
+  const uint qb = uint(slot) * uint(n);
+  const int c = Q[uint(P.slots) * uint(n) + uint(slot)];
+  const int chunk = (c + int(TG) - 1) / int(TG);
+  const int s0 = int(lid) * chunk, s1 = min(c, s0 + chunk);
+  uint s = 0u;
+  for (int k = s0; k < s1; k++) s += deg(Q[qb + uint(k)]);
+  sums[lid] = s;
+  barrier();
+  // Hillis-Steele inclusive scan over the 256 per-thread sums
+  for (uint off = 1u; off < TG; off <<= 1u) {
+    uint v = sums[lid];
+    if (lid >= off) v += sums[lid - off];
+    barrier();
+    sums[lid] = v;
+    barrier();
+  }
+  uint run = sums[lid] - s;  // exclusive
+  if (lid == TG - 1u) ctr[R] = sums[TG - 1u];
+  for (int k = s0; k < s1; k++) { W[P.o_prefix + uint(k)] = run; run += deg(Q[qb + uint(k)]); }
+}
+
+uint pow2ceil(uint x) { uint p = 1u; while (p < x) p <<= 1u; return p; }
+
+#ifdef K_BEGIN
+// ---- call start: keys of the carried-over list, drive-change wake-ups, prefix of the first slot ----
+void main() {
+  const uint lid = gl_LocalInvocationID.x;
+  const int per = (P.n + int(TG) - 1) / int(TG) + 1;
+  const int lt = int(gl_WorkGroupID.x);
+  const int n = P.n;
+  if (lt == per - 1) { prefix_tg(P.slot0, C_R(0), lid); return; }
+  const int i = lt * int(TG) + int(lid);
+  if (i >= n) return;
+  L c = unpack(cells[i]);
+  c.spk = INT_MIN_;
+  c.drive = io[i].drive;
+  if (i < P.na0) { const int j = int(W[P.o_active + uint(i)]); keySet(j, uvec2(0u, uint(i))); W[actIdx(0, uint(i))] = uint(j); }
+  const float pd = io[i].prev;
+  bool wake = false;
+  if (c.drive != pd) {
+    evolve(c, -1, pd);
+    io[i].prev = c.drive;
+    if (c.flag == 0) { c.flag = 1; wake = true; keySet(i, uvec2(1u, nc[i].oldof)); }
+  }
+  if (wake) { const uint pos = atomicAdd(ctr[C_NA(0)], 1u); W[actIdx(0, pos)] = uint(i); }
+  cells[i] = pack(c);
+}
+#endif
+
+#ifdef K_TICKA
+// ---- tick part A: phase 1 (active neurons) + delivery records of this tick's slot ----
+void main() {
+  const uint lid = gl_LocalInvocationID.x;
+  const int t = PC.t;
+  const int lt = int(gl_WorkGroupID.x);
+  if (t >= P.steps) return;
+  const int n = P.n;
+  if (lt < P.ga1) {
+    const uint na = ctr[C_NA(t)];
+    const int pin = t & 1, pout = (t + 1) & 1;
+    const uint stride = uint(P.ga1) * TG;
+    for (uint base = 0u; base < na; base += stride) {
+      const uint k = base + uint(lt) * TG + lid;
+      if (k >= na) continue;
+      const int i = int(W[actIdx(pin, k)]);
+      L c = unpack(cells[i]);
+      if (c.spk == t - 1) { c.v = c.rest; c.g = 0.0f; c.refr = P.rfc; }  // phase 3 of tick t-1
+      evolve(c, t, c.drive);
+      if (c.refr == 0 && c.v > -45.0f) {
+        const uint s = atomicAdd(ctr[C_NSP(t)], 1u);
+        const uvec2 key = keyAt(i);
+        W[P.o_spkey + 2u * s] = key.x; W[P.o_spkey + 2u * s + 1u] = key.y; W[P.o_spid + s] = uint(i);
+        io[i].counts++;
+        c.spk = t;
+        if (c.kc != 0) { precise float ad = c.adapt + P.adapt_jump; c.adapt = ad; }
+      }
+      const float gap = -45.0f - c.rest;
+      const bool keep = c.v > -45.0f || c.drive > gap || c.drive + c.g > gap;
+      if (!keep) c.flag = 0;
+      cells[i] = pack(c);
+      if (keep) { const uint p = atomicAdd(ctr[C_NA(t + 1)], 1u); W[actIdx(pout, p)] = uint(i); }
+    }
+  } else {
+    const int slot = (P.slot0 + t) % P.slots;
+    const int c = Q[uint(P.slots) * uint(n) + uint(slot)];
+    const uint R = ctr[C_R(t)];
+    const uint qb = uint(slot) * uint(n);
+    const uint stride = uint(P.ga2) * TG;
+    for (uint base = 0u; base < R; base += stride) {
+      const uint r = base + uint(lt - P.ga1) * TG + lid;
+      if (r >= R) continue;
+      int lo = 0, hi = c - 1;  // largest q with prefix[q] <= r
+      while (lo < hi) { const int mid = (lo + hi + 1) >> 1; if (W[P.o_prefix + uint(mid)] <= r) lo = mid; else hi = mid - 1; }
+      const int i = Q[qb + uint(lo)];
+      const Edge ed = edge(ptr[i] + (r - W[P.o_prefix + uint(lo)]));
+      const int j = ed.post;
+      atomicAdd(ACC[j], ed.units);          // integer: associative, so the scatter order cannot matter
+      const uint old = atomicMin(W[P.o_head + uint(j)], r);  // smallest r = the CPU's first delivery
+      if (old == EMPTY) { const uint p = atomicAdd(ctr[C_NT(t)], 1u); W[P.o_touched + p] = uint(j); }
+    }
+  }
+}
+#endif
+
+#ifdef K_TICKB
+// ---- tick part B: ordered delivery per target + sort this tick's spikes into the queue ----
+void main() {
+  const uint lid = gl_LocalInvocationID.x;
+  const int t = PC.t;
+  const int lt = int(gl_WorkGroupID.x);
+  if (t >= P.steps) return;
+  const int n = P.n;
+  if (lt < P.gb1) {
+    const uint nt = ctr[C_NT(t)];
+    const int pout = (t + 1) & 1;
+    const uint stride = uint(P.gb1) * TG;
+    for (uint base = 0u; base < nt; base += stride) {
+      const uint u = base + uint(lt) * TG + lid;
+      if (u >= nt) continue;
+      const int j = int(W[P.o_touched + u]);
+      const uint r = W[P.o_head + uint(j)];  // smallest delivery sequence that hit j this tick
+      const int a = ACC[j];
+      ACC[j] = 0;
+      W[P.o_head + uint(j)] = EMPTY;
+      L c = unpack(cells[j]);
+      evolve(c, t, c.drive);
+      bool wake = false;
+      if (c.refr == 0) {  // a refractory target drops the whole tick, exactly as the CPU does
+        precise float add = float(a) * P.w_unit;
+        precise float g = c.g + add;
+        c.g = g;
+        if (c.flag == 0) { c.flag = 1; wake = true; keySet(j, uvec2(uint(2 + t), r)); }
+      }
+      cells[j] = pack(c);
+      if (wake) { const uint p = atomicAdd(ctr[C_NA(t + 1)], 1u); W[actIdx(pout, p)] = uint(j); }
+    }
+  } else {
+    // spikes of tick t in active-list (key) order -> queue slot `fs`
+    const uint ns = ctr[C_NSP(t)];
+    const int fs = (P.slot0 + t + P.delay) % P.slots;
+    const uint qf = uint(fs) * uint(n);
+    if (ns <= LOCALSORT) {  // rank sort: keys are unique, position = number of smaller keys
+      for (uint x = lid; x < ns; x += TG) {
+        const uvec2 kx = uvec2(W[P.o_spkey + 2u * x], W[P.o_spkey + 2u * x + 1u]);
+        uint pos = 0u;
+        for (uint y = 0u; y < ns; y++) {
+          const uvec2 ky = uvec2(W[P.o_spkey + 2u * y], W[P.o_spkey + 2u * y + 1u]);
+          pos += keyLess(ky, kx) ? 1u : 0u;
+        }
+        Q[qf + pos] = int(W[P.o_spid + x]);
+      }
+    } else {
+      const uint Pn = pow2ceil(ns);
+      for (uint x = lid; x < Pn; x += TG) {
+        SCR[2u * x] = x < ns ? W[P.o_spkey + 2u * x] : 0xFFFFFFFFu;
+        SCR[2u * x + 1u] = x < ns ? W[P.o_spkey + 2u * x + 1u] : 0xFFFFFFFFu;
+        SCR[2u * uint(P.NP) + x] = x < ns ? W[P.o_spid + x] : 0u;
+      }
+      barrier(); memoryBarrierBuffer();
+      for (uint k = 2u; k <= Pn; k <<= 1u)
+        for (uint j = k >> 1u; j > 0u; j >>= 1u) {
+          for (uint x = lid; x < Pn; x += TG) {
+            const uint y = x ^ j;
+            if (y > x) {
+              const bool up = (x & k) == 0u;
+              const uvec2 a = uvec2(SCR[2u * x], SCR[2u * x + 1u]), b = uvec2(SCR[2u * y], SCR[2u * y + 1u]);
+              if (keyLess(b, a) == up) {
+                SCR[2u * x] = b.x; SCR[2u * x + 1u] = b.y; SCR[2u * y] = a.x; SCR[2u * y + 1u] = a.y;
+                const uint ti = SCR[2u * uint(P.NP) + x]; SCR[2u * uint(P.NP) + x] = SCR[2u * uint(P.NP) + y]; SCR[2u * uint(P.NP) + y] = ti;
+              }
+            }
+          }
+          barrier(); memoryBarrierBuffer();
+        }
+      for (uint x = lid; x < ns; x += TG) Q[qf + x] = int(SCR[2u * uint(P.NP) + x]);
+    }
+    if (lid == 0u) {
+      Q[uint(P.slots) * uint(n) + uint(fs)] = int(ns);
+      Q[uint(P.slots) * uint(n) + uint((P.slot0 + t) % P.slots)] = 0;  // delivered this tick
+    }
+    barrier(); memoryBarrierBuffer();
+    if (t + 1 < P.steps) prefix_tg((P.slot0 + t + 1) % P.slots, C_R(t + 1), lid);
+  }
+}
+#endif
+
+#ifdef K_END
+// ---- call end: phase 3 of the last tick, boundary evolve, rebase the clock to the next call ----
+void main() {
+  const int i = int(gl_WorkGroupID.x) * int(TG) + int(gl_LocalInvocationID.x);
+  if (i >= P.n) return;
+  const int T = P.steps;
+  L c = unpack(cells[i]);
+  if (c.spk == T - 1) { c.v = c.rest; c.g = 0.0f; c.refr = P.rfc; }
+  evolve(c, T - 1, c.drive);
+  c.last -= T;  // the next call counts its ticks from 0 again
+  c.spk = INT_MIN_;
+  cells[i] = pack(c);
+}
+#endif
+
+#ifdef K_BLKSORT
+// ---- call end (2): sort the final active list's keys in blocks of LOCALSORT ----
+shared uvec2 SK[LOCALSORT];
+shared int SI[LOCALSORT];
+void main() {
+  const uint lid = gl_LocalInvocationID.x;
+  const uint blk = gl_WorkGroupID.x;
+  const int T = P.steps;
+  const uint na = ctr[C_NA(T)];
+  const uint s0 = blk * LOCALSORT;
+  if (s0 >= na) return;
+  const uint cnt = min(LOCALSORT, na - s0);
+  const int pin = T & 1;
+  const uint Pn = pow2ceil(cnt);
+  for (uint x = lid; x < Pn; x += TG) {
+    const int j = x < cnt ? int(W[actIdx(pin, s0 + x)]) : 0;
+    SK[x] = x < cnt ? keyAt(j) : uvec2(0xFFFFFFFFu, 0xFFFFFFFFu);
+    SI[x] = j;
+  }
+  barrier();
+  for (uint k = 2u; k <= Pn; k <<= 1u)
+    for (uint j = k >> 1u; j > 0u; j >>= 1u) {
+      for (uint x = lid; x < Pn; x += TG) {
+        const uint y = x ^ j;
+        if (y > x) {
+          const bool up = (x & k) == 0u;
+          const uvec2 a = SK[x], b = SK[y];
+          if (keyLess(b, a) == up) { SK[x] = b; SK[y] = a; const int ti = SI[x]; SI[x] = SI[y]; SI[y] = ti; }
+        }
+      }
+      barrier();
+    }
+  for (uint x = lid; x < cnt; x += TG) {
+    SCR[2u * (s0 + x)] = SK[x].x; SCR[2u * (s0 + x) + 1u] = SK[x].y;
+    SCR[2u * uint(P.NP) + s0 + x] = uint(SI[x]);
+  }
+}
+#endif
+
+#ifdef K_RANK
+// ---- call end (3): merge the sorted blocks by rank -> active[] in the CPU's order ----
+void main() {
+  const uint k = gl_WorkGroupID.x * TG + gl_LocalInvocationID.x;
+  const int T = P.steps;
+  const uint na = ctr[C_NA(T)];
+  if (k == 0u) ctr[C_OVF() + 1u] = na;  // nactive for the host
+  if (k >= na) return;
+  const uvec2 key = uvec2(SCR[2u * k], SCR[2u * k + 1u]);
+  const uint mb = k / LOCALSORT;
+  uint pos = k - mb * LOCALSORT;
+  const uint nb = (na + LOCALSORT - 1u) / LOCALSORT;
+  for (uint bb = 0u; bb < nb; bb++) {
+    if (bb == mb) continue;
+    uint lo = bb * LOCALSORT, hi = min(na, lo + LOCALSORT);  // count of keys < key in block bb
+    const uint start = lo;
+    while (lo < hi) {
+      const uint mid = (lo + hi) >> 1u;
+      const uvec2 km = uvec2(SCR[2u * mid], SCR[2u * mid + 1u]);
+      if (keyLess(km, key)) lo = mid + 1u; else hi = mid;
+    }
+    pos += lo - start;
+  }
+  W[P.o_active + pos] = SCR[2u * uint(P.NP) + k];
+}
+#endif

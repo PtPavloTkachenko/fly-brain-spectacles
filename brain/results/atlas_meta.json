@@ -1,0 +1,8558 @@
+{
+ "sense|/|L": {
+  "n": 15,
+  "superclass": "cb_sensory_tbc",
+  "class": "",
+  "subclass": ""
+ },
+ "sense|/|R": {
+  "n": 36,
+  "superclass": "cb_sensory_tbc",
+  "class": "",
+  "subclass": ""
+ },
+ "sense|BM|L": {
+  "n": 39,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM|R": {
+  "n": 30,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_Hau|L": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_Hau|R": {
+  "n": 4,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_InOm|L": {
+  "n": 340,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_InOm|R": {
+  "n": 405,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_MaPa|L": {
+  "n": 6,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_MaPa|R": {
+  "n": 9,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_Taste|L": {
+  "n": 23,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_Taste|R": {
+  "n": 17,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_Vib|L": {
+  "n": 12,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_Vib|R": {
+  "n": 10,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_Vt_PoOc|L": {
+  "n": 4,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_Vt_PoOc|R": {
+  "n": 4,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_vOcci_vPoOr|L": {
+  "n": 5,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|BM_vOcci_vPoOr|R": {
+  "n": 21,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|CB4246|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory_tbc",
+  "subclass": ""
+ },
+ "sense|CB4246|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory_tbc",
+  "subclass": ""
+ },
+ "sense|DNx01|L": {
+  "n": 1,
+  "superclass": "sensory_descending",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|DNx01|R": {
+  "n": 1,
+  "superclass": "sensory_descending",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|DNx02|L": {
+  "n": 2,
+  "superclass": "sensory_descending",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|DNx02|R": {
+  "n": 2,
+  "superclass": "sensory_descending",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|ENS1|L": {
+  "n": 4,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|ENS1|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|ENS2|L": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|ENS2|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|ENS3|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|ENS3|R": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|ENS4|L": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|ENS4|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|ENS5|R": {
+  "n": 6,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|GNG642|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|GNG642|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|GNG643|L": {
+  "n": 10,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|GNG643|R": {
+  "n": 8,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|GNG644|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|GNG644|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|GNG654|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|GNG654|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|GNG655|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|GNG655|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|HBeyelet|both": {
+  "n": 7,
+  "superclass": "ol_sensory",
+  "class": "",
+  "subclass": ""
+ },
+ "sense|HRN_VP1d|L": {
+  "n": 10,
+  "superclass": "cb_sensory",
+  "class": "hygrosensory",
+  "subclass": ""
+ },
+ "sense|HRN_VP1d|R": {
+  "n": 8,
+  "superclass": "cb_sensory",
+  "class": "hygrosensory",
+  "subclass": ""
+ },
+ "sense|HRN_VP1l|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "hygrosensory",
+  "subclass": ""
+ },
+ "sense|HRN_VP1l|R": {
+  "n": 6,
+  "superclass": "cb_sensory",
+  "class": "hygrosensory",
+  "subclass": ""
+ },
+ "sense|HRN_VP4|L": {
+  "n": 13,
+  "superclass": "cb_sensory",
+  "class": "hygrosensory",
+  "subclass": ""
+ },
+ "sense|HRN_VP4|R": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "hygrosensory",
+  "subclass": ""
+ },
+ "sense|HRN_VP5|L": {
+  "n": 4,
+  "superclass": "cb_sensory",
+  "class": "hygrosensory",
+  "subclass": ""
+ },
+ "sense|HRN_VP5|R": {
+  "n": 8,
+  "superclass": "cb_sensory",
+  "class": "hygrosensory",
+  "subclass": ""
+ },
+ "sense|JO-A-unclear|R": {
+  "n": 24,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-A1|L": {
+  "n": 4,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-A1|R": {
+  "n": 4,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-A2|L": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-A2|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-A3|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-A4|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-A4|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-B-unclear|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-B-unclear|R": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-B1_a|L": {
+  "n": 12,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-B1_a|R": {
+  "n": 5,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-B1_b|L": {
+  "n": 7,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-B1_b|R": {
+  "n": 5,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-B1_c|L": {
+  "n": 9,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-B1_c|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-B2|L": {
+  "n": 7,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-B2|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-B3|L": {
+  "n": 10,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-B3|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-B4_a|L": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-B4_b|L": {
+  "n": 9,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-B4_b|R": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-CA1|L": {
+  "n": 8,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-CA1|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-CA2|L": {
+  "n": 9,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "auditory"
+ },
+ "sense|JO-CL|L": {
+  "n": 13,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-CL|R": {
+  "n": 6,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-CM|L": {
+  "n": 16,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|JO-CM|R": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|JO-DA|L": {
+  "n": 5,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-DP|L": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-ED1|L": {
+  "n": 13,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-ED1|R": {
+  "n": 5,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-ED2_a|L": {
+  "n": 23,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-ED2_a|R": {
+  "n": 15,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-ED2_b|L": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-ED2_b|R": {
+  "n": 10,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-ED2_c|L": {
+  "n": 9,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-ED2_c|R": {
+  "n": 5,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-EV1|L": {
+  "n": 31,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-EV1|R": {
+  "n": 19,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-EV2|L": {
+  "n": 20,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-EV2|R": {
+  "n": 16,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-EV3|L": {
+  "n": 22,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-EV3|R": {
+  "n": 23,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-EV4|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-EV5|L": {
+  "n": 13,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-EV5|R": {
+  "n": 10,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-EV6|L": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-EV6|R": {
+  "n": 7,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-FD1|L": {
+  "n": 4,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "grooming"
+ },
+ "sense|JO-FD2|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-FD2|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-FV|L": {
+  "n": 36,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "grooming"
+ },
+ "sense|JO-FV|R": {
+  "n": 34,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "grooming"
+ },
+ "sense|JO-mz|L": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|JO-unclear|L": {
+  "n": 7,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|JO-unclear|R": {
+  "n": 95,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "wind_gravity"
+ },
+ "sense|LB1a|L": {
+  "n": 6,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB1a|R": {
+  "n": 5,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB1b|L": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB1b|R": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB1c|L": {
+  "n": 9,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB1c|R": {
+  "n": 7,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB1d|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB1d|R": {
+  "n": 4,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB1e|L": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB1e|R": {
+  "n": 8,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB2a|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB2a|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB2b|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB2b|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB2c|L": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB2c|R": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB2d|L": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB2d|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB3|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB3a|L": {
+  "n": 9,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB3a|R": {
+  "n": 8,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB3b|L": {
+  "n": 5,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB3b|R": {
+  "n": 6,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB3c|L": {
+  "n": 12,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB3c|R": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB3d|L": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB3d|R": {
+  "n": 15,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB4a|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB4a|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB4b|L": {
+  "n": 4,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LB4b|R": {
+  "n": 4,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|LN-DN1|L": {
+  "n": 1,
+  "superclass": "sensory_descending",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|LN-DN1|R": {
+  "n": 1,
+  "superclass": "sensory_descending",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|LN-DN2|L": {
+  "n": 2,
+  "superclass": "sensory_descending",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|LN-DN2|R": {
+  "n": 2,
+  "superclass": "sensory_descending",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|LgAG1|L": {
+  "n": 12,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG1|R": {
+  "n": 13,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG2|L": {
+  "n": 5,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG2|R": {
+  "n": 6,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG3|L": {
+  "n": 4,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG3|R": {
+  "n": 3,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG4|L": {
+  "n": 4,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG4|R": {
+  "n": 4,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG5|L": {
+  "n": 2,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG5|R": {
+  "n": 2,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG6|L": {
+  "n": 2,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG6|R": {
+  "n": 2,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG7|L": {
+  "n": 2,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG7|R": {
+  "n": 3,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG8|L": {
+  "n": 5,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG8|R": {
+  "n": 4,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG9|L": {
+  "n": 1,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgAG9|R": {
+  "n": 2,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG1a|L": {
+  "n": 68,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG1a|R": {
+  "n": 68,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG1b|L": {
+  "n": 65,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG1b|R": {
+  "n": 69,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG2|L": {
+  "n": 65,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG2|R": {
+  "n": 65,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG3|L": {
+  "n": 78,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG3|R": {
+  "n": 84,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG4|L": {
+  "n": 23,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG4|R": {
+  "n": 20,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG5|L": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG5|R": {
+  "n": 7,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG6|L": {
+  "n": 9,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG6|R": {
+  "n": 7,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG7|L": {
+  "n": 11,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG7|R": {
+  "n": 10,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG8|L": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|LgLG8|R": {
+  "n": 8,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|ORN_D|L": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_D|R": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DA1|L": {
+  "n": 51,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DA1|R": {
+  "n": 105,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DA2|L": {
+  "n": 21,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DA2|R": {
+  "n": 20,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DA3|L": {
+  "n": 9,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DA3|R": {
+  "n": 15,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DA4l|L": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DA4l|R": {
+  "n": 15,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DA4m|L": {
+  "n": 15,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DA4m|R": {
+  "n": 16,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DC1|L": {
+  "n": 17,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DC1|R": {
+  "n": 15,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DC2|L": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DC2|R": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DC3|L": {
+  "n": 16,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DC3|R": {
+  "n": 18,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DC4|L": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DC4|R": {
+  "n": 12,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DL1|L": {
+  "n": 36,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DL1|R": {
+  "n": 40,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DL2d|L": {
+  "n": 7,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DL2d|R": {
+  "n": 8,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DL2v|L": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DL2v|R": {
+  "n": 12,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DL3|L": {
+  "n": 17,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DL3|R": {
+  "n": 31,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DL4|L": {
+  "n": 12,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DL4|R": {
+  "n": 21,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DL5|L": {
+  "n": 23,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DL5|R": {
+  "n": 19,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DM1|L": {
+  "n": 35,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DM1|R": {
+  "n": 39,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DM2|L": {
+  "n": 24,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DM2|R": {
+  "n": 29,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DM3|L": {
+  "n": 23,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DM3|R": {
+  "n": 32,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DM4|L": {
+  "n": 16,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DM4|R": {
+  "n": 15,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DM5|L": {
+  "n": 10,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DM5|R": {
+  "n": 18,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DM6|L": {
+  "n": 22,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DM6|R": {
+  "n": 29,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DP1l|L": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DP1l|R": {
+  "n": 18,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DP1m|L": {
+  "n": 17,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_DP1m|R": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_V|L": {
+  "n": 16,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_V|R": {
+  "n": 39,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA1d|L": {
+  "n": 23,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA1d|R": {
+  "n": 76,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA1v|L": {
+  "n": 15,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA1v|R": {
+  "n": 73,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA2|L": {
+  "n": 33,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA2|R": {
+  "n": 41,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA3|L": {
+  "n": 7,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA3|R": {
+  "n": 13,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA4|L": {
+  "n": 18,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA4|R": {
+  "n": 16,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA5|L": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA5|R": {
+  "n": 7,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA6|L": {
+  "n": 29,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA6|R": {
+  "n": 28,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA7l|L": {
+  "n": 12,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA7l|R": {
+  "n": 16,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA7m|L": {
+  "n": 7,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VA7m|R": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VC1|L": {
+  "n": 13,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VC1|R": {
+  "n": 15,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VC2|L": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VC2|R": {
+  "n": 17,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VC3|L": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VC3|R": {
+  "n": 18,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VC4|L": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VC4|R": {
+  "n": 17,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VC5|L": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VC5|R": {
+  "n": 17,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VL1|L": {
+  "n": 21,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VL1|R": {
+  "n": 61,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VL2a|L": {
+  "n": 23,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VL2a|R": {
+  "n": 50,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VL2p|L": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VL2p|R": {
+  "n": 22,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM1|L": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM1|R": {
+  "n": 18,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM2|L": {
+  "n": 17,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM2|R": {
+  "n": 20,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM3|L": {
+  "n": 15,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM3|R": {
+  "n": 22,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM4|L": {
+  "n": 12,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM4|R": {
+  "n": 47,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM5d|L": {
+  "n": 30,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM5d|R": {
+  "n": 36,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM5v|L": {
+  "n": 15,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM5v|R": {
+  "n": 19,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM6l|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM6l|R": {
+  "n": 12,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM6m|L": {
+  "n": 10,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM6m|R": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM6v|L": {
+  "n": 9,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM6v|R": {
+  "n": 20,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM7d|L": {
+  "n": 18,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM7d|R": {
+  "n": 18,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM7v|L": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|ORN_VM7v|R": {
+  "n": 14,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|PhG10|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG10|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG11|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG11|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG12|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG12|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG13|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG13|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG14|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG14|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG15|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG15|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG16|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG16|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG1a|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG1a|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG1b|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG1b|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG1c|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG1c|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG2|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG2|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG3|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG3|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG4|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG4|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG5|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG5|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG6|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG6|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG7|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG7|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG8|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG8|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG9|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|PhG9|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|R1-R6|L": {
+  "n": 1112,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R1-R6|R": {
+  "n": 2265,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R7R8_unclear|R": {
+  "n": 85,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R7_unclear|L": {
+  "n": 165,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R7_unclear|R": {
+  "n": 239,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R7d|L": {
+  "n": 40,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R7d|R": {
+  "n": 42,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R7p|L": {
+  "n": 173,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R7p|R": {
+  "n": 159,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R7y|L": {
+  "n": 230,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R7y|R": {
+  "n": 252,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R8_unclear|L": {
+  "n": 188,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R8_unclear|R": {
+  "n": 254,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R8d|L": {
+  "n": 35,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R8d|R": {
+  "n": 41,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R8p|L": {
+  "n": 172,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R8p|R": {
+  "n": 158,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R8y|L": {
+  "n": 230,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|R8y|R": {
+  "n": 251,
+  "superclass": "ol_sensory",
+  "class": "visual",
+  "subclass": ""
+ },
+ "sense|SApp|L": {
+  "n": 75,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SApp|R": {
+  "n": 73,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SApp01|L": {
+  "n": 9,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp01|R": {
+  "n": 10,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp02,SApp03|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp02,SApp03|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp04|L": {
+  "n": 4,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp04|R": {
+  "n": 5,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp05|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp05|R": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp06,SApp15|L": {
+  "n": 17,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp06,SApp15|R": {
+  "n": 20,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp07|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp07|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp08|L": {
+  "n": 23,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp08|R": {
+  "n": 24,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp09,SApp22|L": {
+  "n": 35,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp09,SApp22|R": {
+  "n": 39,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp10|L": {
+  "n": 18,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp10|R": {
+  "n": 19,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp11,SApp18|L": {
+  "n": 4,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp11,SApp18|R": {
+  "n": 4,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp13|L": {
+  "n": 4,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp13|R": {
+  "n": 4,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp14|L": {
+  "n": 4,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp14|R": {
+  "n": 3,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp19|L": {
+  "n": 5,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp19|R": {
+  "n": 4,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp20|L": {
+  "n": 1,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp20|R": {
+  "n": 1,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp21|L": {
+  "n": 1,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp21|R": {
+  "n": 2,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SApp23|L": {
+  "n": 12,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SApp23|R": {
+  "n": 11,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SApp23,SNpp56|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SApp23,SNpp56|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SAxx01|L": {
+  "n": 6,
+  "superclass": "sensory_ascending",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SAxx01|R": {
+  "n": 7,
+  "superclass": "sensory_ascending",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SAxx02|L": {
+  "n": 6,
+  "superclass": "sensory_ascending",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|SAxx02|R": {
+  "n": 6,
+  "superclass": "sensory_ascending",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|SNch01|L": {
+  "n": 17,
+  "superclass": "vnc_sensory",
+  "class": "chemosensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNch01|R": {
+  "n": 18,
+  "superclass": "vnc_sensory",
+  "class": "chemosensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNch05|L": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|SNch05|R": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|SNch10|L": {
+  "n": 35,
+  "superclass": "vnc_sensory",
+  "class": "",
+  "subclass": "taste bristle"
+ },
+ "sense|SNch10|R": {
+  "n": 46,
+  "superclass": "vnc_sensory",
+  "class": "",
+  "subclass": "taste bristle"
+ },
+ "sense|SNpp01|L": {
+  "n": 12,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "abdomen"
+ },
+ "sense|SNpp01|R": {
+  "n": 13,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "abdomen"
+ },
+ "sense|SNpp02|L": {
+  "n": 20,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "abdomen"
+ },
+ "sense|SNpp02|R": {
+  "n": 16,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "abdomen"
+ },
+ "sense|SNpp03|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "abdomen"
+ },
+ "sense|SNpp03|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "abdomen"
+ },
+ "sense|SNpp04|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp04|R": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp05|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp05|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp06|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp06|R": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp07|L": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp07|R": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp08|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp08|R": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp09|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp09|R": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp10|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp10|R": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp11|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp11|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp12|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp12|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp13|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "notum"
+ },
+ "sense|SNpp13|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "notum"
+ },
+ "sense|SNpp14|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp14|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp15|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp15|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp16|L": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp16|R": {
+  "n": 7,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp17|L": {
+  "n": 12,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp18|L": {
+  "n": 11,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp18|R": {
+  "n": 7,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp19|L": {
+  "n": 18,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "hair plate"
+ },
+ "sense|SNpp19|R": {
+  "n": 17,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "hair plate"
+ },
+ "sense|SNpp20|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp20|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp20,SApp02|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp21|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp21|R": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp22|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp23|L": {
+  "n": 8,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "notum"
+ },
+ "sense|SNpp23|R": {
+  "n": 8,
+  "superclass": "sensory_ascending",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "notum"
+ },
+ "sense|SNpp24|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp24|R": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp25|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp25|R": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp26|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp26|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp27|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp27|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp28|L": {
+  "n": 8,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp28|R": {
+  "n": 9,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp29,SNpp63|L": {
+  "n": 9,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp29,SNpp63|R": {
+  "n": 9,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp30|L": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp30|R": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp31|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp31|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp32|L": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp32|R": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp33|L": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp33|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp34|L": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp34|R": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp34,SApp16|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp34,SApp16|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp35|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp35|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|SNpp36|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp36|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp37|L": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp37|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp38|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp38|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp39|L": {
+  "n": 18,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp39|R": {
+  "n": 21,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp40|L": {
+  "n": 16,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp40|R": {
+  "n": 16,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp41|L": {
+  "n": 7,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp41|R": {
+  "n": 15,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp42|L": {
+  "n": 10,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp42|R": {
+  "n": 10,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp43|L": {
+  "n": 10,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp43|R": {
+  "n": 9,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp44|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp44|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp45|L": {
+  "n": 28,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "hair plate"
+ },
+ "sense|SNpp45|R": {
+  "n": 25,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "hair plate"
+ },
+ "sense|SNpp46|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp46|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp47|L": {
+  "n": 21,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp47|R": {
+  "n": 19,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp48|L": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp48|R": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp49|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp49|R": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp50|L": {
+  "n": 33,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp50|R": {
+  "n": 29,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp51|L": {
+  "n": 17,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp51|R": {
+  "n": 15,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp52|L": {
+  "n": 19,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "hair plate"
+ },
+ "sense|SNpp52|R": {
+  "n": 24,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "hair plate"
+ },
+ "sense|SNpp53|L": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp53|R": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "campaniform sensilla"
+ },
+ "sense|SNpp55|L": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "leg"
+ },
+ "sense|SNpp55|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "leg"
+ },
+ "sense|SNpp56|L": {
+  "n": 7,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp56|R": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp57|L": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp57|R": {
+  "n": 7,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp58|L": {
+  "n": 8,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp58|R": {
+  "n": 8,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp59|L": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp59|R": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp60|L": {
+  "n": 23,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp60|R": {
+  "n": 18,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|SNpp61|L": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "wing"
+ },
+ "sense|SNpp61|R": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "wing"
+ },
+ "sense|SNpp62|L": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "wing"
+ },
+ "sense|SNpp62|R": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "wing"
+ },
+ "sense|SNppxx|L": {
+  "n": 41,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "leg"
+ },
+ "sense|SNppxx|R": {
+  "n": 39,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "leg"
+ },
+ "sense|SNta02|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta02|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta02,SNta09|L": {
+  "n": 119,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "notum"
+ },
+ "sense|SNta02,SNta09|R": {
+  "n": 122,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "notum"
+ },
+ "sense|SNta03|L": {
+  "n": 20,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta03|R": {
+  "n": 19,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta04|L": {
+  "n": 43,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta04|R": {
+  "n": 40,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta04,SNta11|L": {
+  "n": 24,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta04,SNta11|R": {
+  "n": 29,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta05|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta05|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta06|L": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta06|R": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta07|L": {
+  "n": 16,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta07|R": {
+  "n": 14,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta10|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "notum"
+ },
+ "sense|SNta10|R": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "notum"
+ },
+ "sense|SNta11|L": {
+  "n": 35,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta11|R": {
+  "n": 32,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta11,SNta14|L": {
+  "n": 22,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta11,SNta14|R": {
+  "n": 20,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta12|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta12|R": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta13|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta13|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta14|L": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta14|R": {
+  "n": 7,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta18|L": {
+  "n": 28,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta18|R": {
+  "n": 27,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta19|L": {
+  "n": 16,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta19|R": {
+  "n": 12,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta19,SNta37|L": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta19,SNta37|R": {
+  "n": 7,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta20|L": {
+  "n": 67,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta20|R": {
+  "n": 89,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta20,SNta29|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta21|L": {
+  "n": 54,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta21|R": {
+  "n": 63,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta21,SNta38|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta21,SNta38|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta22|L": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta22,SNta23|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta22,SNta33|L": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta22,SNta33|R": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta23|L": {
+  "n": 14,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta23|R": {
+  "n": 26,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta24|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "leg"
+ },
+ "sense|SNta25|L": {
+  "n": 29,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta25|R": {
+  "n": 34,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta25,SNta30|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta25,SNta30|R": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta26|L": {
+  "n": 16,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta26|R": {
+  "n": 15,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta27|L": {
+  "n": 16,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "leg"
+ },
+ "sense|SNta27|R": {
+  "n": 31,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "leg"
+ },
+ "sense|SNta27,SNta28|L": {
+  "n": 7,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta27,SNta28|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta28|L": {
+  "n": 31,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta28|R": {
+  "n": 43,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta28,SNta29|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta28,SNta40|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "leg"
+ },
+ "sense|SNta28,SNta44|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta28,SNta44|R": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta29|L": {
+  "n": 144,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta29|R": {
+  "n": 116,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta30|L": {
+  "n": 31,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta30|R": {
+  "n": 34,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta31|L": {
+  "n": 42,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta31|R": {
+  "n": 34,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta31,SNta34|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta32|L": {
+  "n": 23,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta32|R": {
+  "n": 30,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta33|L": {
+  "n": 13,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta33|R": {
+  "n": 12,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta34|L": {
+  "n": 29,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta34|R": {
+  "n": 25,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta35|L": {
+  "n": 18,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta35|R": {
+  "n": 25,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta36|L": {
+  "n": 8,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta36|R": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta37|L": {
+  "n": 101,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta37|R": {
+  "n": 127,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta38|L": {
+  "n": 52,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta38|R": {
+  "n": 70,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta39|L": {
+  "n": 16,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta39|R": {
+  "n": 7,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta40|L": {
+  "n": 31,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta40|R": {
+  "n": 19,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta41|L": {
+  "n": 23,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta41|R": {
+  "n": 31,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta42|L": {
+  "n": 37,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta42|R": {
+  "n": 40,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta43|L": {
+  "n": 37,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta43|R": {
+  "n": 36,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta44|L": {
+  "n": 19,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta44|R": {
+  "n": 17,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta44,SNta45|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta45|L": {
+  "n": 13,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNta45|R": {
+  "n": 18,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNtaxx|L": {
+  "n": 11,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "leg"
+ },
+ "sense|SNtaxx|R": {
+  "n": 8,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "leg"
+ },
+ "sense|SNxx01|L": {
+  "n": 11,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx01|R": {
+  "n": 10,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx02|L": {
+  "n": 12,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx02|R": {
+  "n": 13,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx03|L": {
+  "n": 90,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx03|R": {
+  "n": 96,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx04|L": {
+  "n": 63,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx04|R": {
+  "n": 67,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx05|L": {
+  "n": 14,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx05|R": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx06|L": {
+  "n": 17,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx06|R": {
+  "n": 20,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx07|L": {
+  "n": 14,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx07|R": {
+  "n": 13,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx08|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx08|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx09|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx09|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx10|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx10|R": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx11|L": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx11|R": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx14|L": {
+  "n": 35,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx14|R": {
+  "n": 31,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx15|L": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx15|R": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx16|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx16|R": {
+  "n": 4,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx17|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx17|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx19|L": {
+  "n": 7,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx19|R": {
+  "n": 7,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx20|L": {
+  "n": 15,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx20|R": {
+  "n": 11,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx21|L": {
+  "n": 9,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx21|R": {
+  "n": 9,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx22|L": {
+  "n": 13,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx22|R": {
+  "n": 21,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx23|L": {
+  "n": 10,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx23|R": {
+  "n": 12,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|SNxx24|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "wing"
+ },
+ "sense|SNxx24|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "wing"
+ },
+ "sense|SNxx25|L": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "wing"
+ },
+ "sense|SNxx25|R": {
+  "n": 5,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "wing"
+ },
+ "sense|SNxx26|L": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "wing"
+ },
+ "sense|SNxx26|R": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "wing"
+ },
+ "sense|SNxx27,SNxx29|L": {
+  "n": 2,
+  "superclass": "sensory_ascending",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|SNxx27,SNxx29|R": {
+  "n": 2,
+  "superclass": "sensory_ascending",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|SNxx28|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "notum"
+ },
+ "sense|SNxx28|R": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "notum"
+ },
+ "sense|SNxx29|L": {
+  "n": 10,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|SNxx29|R": {
+  "n": 10,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|SNxx30|L": {
+  "n": 3,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|SNxx30|R": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|SNxx31|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNxx31|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "mechanosensory bristle"
+ },
+ "sense|SNxx32|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|SNxx32|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|SNxx33|L": {
+  "n": 44,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|SNxx33|R": {
+  "n": 28,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|SNxxxx|L": {
+  "n": 53,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "leg"
+ },
+ "sense|SNxxxx|R": {
+  "n": 49,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "leg"
+ },
+ "sense|TPMN1|L": {
+  "n": 20,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|TPMN1|R": {
+  "n": 28,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|TPMN2|L": {
+  "n": 6,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|TPMN2|R": {
+  "n": 6,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|TRN_VP1m|L": {
+  "n": 5,
+  "superclass": "cb_sensory",
+  "class": "thermosensory",
+  "subclass": ""
+ },
+ "sense|TRN_VP1m|R": {
+  "n": 6,
+  "superclass": "cb_sensory",
+  "class": "thermosensory",
+  "subclass": ""
+ },
+ "sense|TRN_VP2|L": {
+  "n": 4,
+  "superclass": "cb_sensory",
+  "class": "thermosensory",
+  "subclass": ""
+ },
+ "sense|TRN_VP2|R": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "thermosensory",
+  "subclass": ""
+ },
+ "sense|TRN_VP3a|L": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "thermosensory",
+  "subclass": ""
+ },
+ "sense|TRN_VP3a|R": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "thermosensory",
+  "subclass": ""
+ },
+ "sense|TRN_VP3b|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "thermosensory",
+  "subclass": ""
+ },
+ "sense|WG1|L": {
+  "n": 48,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "wing bristle"
+ },
+ "sense|WG1|R": {
+  "n": 48,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "wing bristle"
+ },
+ "sense|WG2|L": {
+  "n": 49,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "wing bristle"
+ },
+ "sense|WG2|R": {
+  "n": 48,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "wing bristle"
+ },
+ "sense|WG3|L": {
+  "n": 48,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "wing bristle"
+ },
+ "sense|WG3|R": {
+  "n": 48,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "wing bristle"
+ },
+ "sense|WG4|L": {
+  "n": 48,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "wing bristle"
+ },
+ "sense|WG4|R": {
+  "n": 48,
+  "superclass": "vnc_sensory",
+  "class": "gustatory",
+  "subclass": "wing bristle"
+ },
+ "sense|aPhM1|L": {
+  "n": 11,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|aPhM1|R": {
+  "n": 10,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|aPhM2a|L": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|aPhM2a|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|aPhM2b|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|aPhM2b|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|aPhM3|L": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|aPhM3|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|aPhM4|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|aPhM4|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|aPhM5|L": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|aPhM5|R": {
+  "n": 2,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": "pharyngeal sensillum"
+ },
+ "sense|chemosensory/|both": {
+  "n": 1,
+  "superclass": "sensory_ascending",
+  "class": "chemosensory",
+  "subclass": ""
+ },
+ "sense|chemosensory/abdomen|L": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "chemosensory",
+  "subclass": "abdomen"
+ },
+ "sense|chemosensory/abdomen|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "chemosensory",
+  "subclass": "abdomen"
+ },
+ "sense|chemosensory/leg|L": {
+  "n": 6,
+  "superclass": "vnc_sensory",
+  "class": "chemosensory",
+  "subclass": "leg"
+ },
+ "sense|chemosensory/leg|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "chemosensory",
+  "subclass": "leg"
+ },
+ "sense|claw_tpGRN|L": {
+  "n": 25,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "taste peg"
+ },
+ "sense|claw_tpGRN|R": {
+  "n": 25,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "taste peg"
+ },
+ "sense|dorsal_tpGRN|L": {
+  "n": 5,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "taste peg"
+ },
+ "sense|dorsal_tpGRN|R": {
+  "n": 5,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "taste peg"
+ },
+ "sense|gustatory/labellar bristle|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|gustatory/labellar bristle|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "gustatory",
+  "subclass": "labellar bristle"
+ },
+ "sense|gustatory/leg bristle|L": {
+  "n": 6,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|gustatory/leg bristle|R": {
+  "n": 4,
+  "superclass": "sensory_ascending",
+  "class": "gustatory",
+  "subclass": "leg bristle"
+ },
+ "sense|mechanosensory/|L": {
+  "n": 10,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|mechanosensory/|R": {
+  "n": 18,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory",
+  "subclass": ""
+ },
+ "sense|mechanosensory_proprioceptive/abdomen|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "abdomen"
+ },
+ "sense|mechanosensory_proprioceptive/chordotonal organ|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "chordotonal organ"
+ },
+ "sense|mechanosensory_proprioceptive/haltere|L": {
+  "n": 2,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "haltere"
+ },
+ "sense|mechanosensory_proprioceptive/leg|L": {
+  "n": 34,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "leg"
+ },
+ "sense|mechanosensory_proprioceptive/leg|R": {
+  "n": 32,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "leg"
+ },
+ "sense|mechanosensory_proprioceptive/neck|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_proprioceptive",
+  "subclass": "neck"
+ },
+ "sense|mechanosensory_tactile/leg|L": {
+  "n": 40,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "leg"
+ },
+ "sense|mechanosensory_tactile/leg|R": {
+  "n": 15,
+  "superclass": "vnc_sensory",
+  "class": "mechanosensory_tactile",
+  "subclass": "leg"
+ },
+ "sense|mechanosensory_tbc/|L": {
+  "n": 7,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory_tbc",
+  "subclass": ""
+ },
+ "sense|mechanosensory_tbc/|R": {
+  "n": 3,
+  "superclass": "cb_sensory",
+  "class": "mechanosensory_tbc",
+  "subclass": ""
+ },
+ "sense|olfactory/|L": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|olfactory/|R": {
+  "n": 1,
+  "superclass": "cb_sensory",
+  "class": "olfactory",
+  "subclass": ""
+ },
+ "sense|unknown_sensory/|L": {
+  "n": 21,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|unknown_sensory/|R": {
+  "n": 27,
+  "superclass": "cb_sensory",
+  "class": "unknown_sensory",
+  "subclass": ""
+ },
+ "sense|unknown_sensory/abdomen|L": {
+  "n": 210,
+  "superclass": "sensory_ascending",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|unknown_sensory/abdomen|R": {
+  "n": 148,
+  "superclass": "sensory_ascending",
+  "class": "unknown_sensory",
+  "subclass": "abdomen"
+ },
+ "sense|unknown_sensory/haltere|L": {
+  "n": 1,
+  "superclass": "sensory_ascending",
+  "class": "unknown_sensory",
+  "subclass": "haltere"
+ },
+ "sense|unknown_sensory/haltere|R": {
+  "n": 1,
+  "superclass": "sensory_ascending",
+  "class": "unknown_sensory",
+  "subclass": "haltere"
+ },
+ "sense|unknown_sensory/leg|L": {
+  "n": 115,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|unknown_sensory/leg|R": {
+  "n": 138,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "leg"
+ },
+ "sense|unknown_sensory/neck|R": {
+  "n": 1,
+  "superclass": "vnc_sensory",
+  "class": "unknown_sensory",
+  "subclass": "neck"
+ },
+ "vpn|5thsLNv_LNd6|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|5thsLNv_LNd6|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|AOTU045|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|AOTU045|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|CL125|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|CL125|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|H2|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|H2|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|HSE|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|HSE|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|HSN|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|HSN|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|HSS|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|HSS|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|HST|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|HST|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10_unclear|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10_unclear|R": {
+  "n": 7,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10a|L": {
+  "n": 135,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10a|R": {
+  "n": 140,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10b|L": {
+  "n": 47,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10b|R": {
+  "n": 48,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10c-1|L": {
+  "n": 64,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10c-1|R": {
+  "n": 66,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10c-2|L": {
+  "n": 59,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10c-2|R": {
+  "n": 66,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10d|L": {
+  "n": 108,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10d|R": {
+  "n": 106,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10e|L": {
+  "n": 62,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC10e|R": {
+  "n": 48,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC11|L": {
+  "n": 68,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC11|R": {
+  "n": 75,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC12|L": {
+  "n": 256,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC12|R": {
+  "n": 242,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC13|L": {
+  "n": 83,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC13|R": {
+  "n": 94,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC15|L": {
+  "n": 61,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC15|R": {
+  "n": 65,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC16|L": {
+  "n": 88,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC16|R": {
+  "n": 94,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC17|L": {
+  "n": 178,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC17|R": {
+  "n": 175,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC18|L": {
+  "n": 104,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC18|R": {
+  "n": 104,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC19|L": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC19|R": {
+  "n": 8,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC20a|L": {
+  "n": 32,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC20a|R": {
+  "n": 30,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC20b|L": {
+  "n": 39,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC20b|R": {
+  "n": 40,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC21|L": {
+  "n": 75,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC21|R": {
+  "n": 78,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC22|L": {
+  "n": 38,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC22|R": {
+  "n": 35,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC23|L": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC23|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC24|L": {
+  "n": 40,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC24|R": {
+  "n": 54,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC25|L": {
+  "n": 29,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC25|R": {
+  "n": 27,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC26|L": {
+  "n": 38,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC26|R": {
+  "n": 37,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC27|L": {
+  "n": 23,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC27|R": {
+  "n": 23,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC28|L": {
+  "n": 31,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC28|R": {
+  "n": 31,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC29|L": {
+  "n": 21,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC29|R": {
+  "n": 19,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC30|L": {
+  "n": 27,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC30|R": {
+  "n": 30,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC31a|L": {
+  "n": 16,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC31a|R": {
+  "n": 16,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC31b|L": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC31b|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC33|L": {
+  "n": 16,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC33|R": {
+  "n": 16,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC34|L": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC34|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC35a|L": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC35a|R": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC35b|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC35b|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC36|L": {
+  "n": 16,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC36|R": {
+  "n": 16,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC37|L": {
+  "n": 7,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC37|R": {
+  "n": 8,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC39a|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC39a|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC39b|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC39b|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC4|L": {
+  "n": 71,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC4|R": {
+  "n": 55,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC40|L": {
+  "n": 19,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC40|R": {
+  "n": 15,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC41|L": {
+  "n": 7,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC41|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC43|L": {
+  "n": 8,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC43|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC44|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC44|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC46b|L": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC46b|R": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC6|L": {
+  "n": 59,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC6|R": {
+  "n": 65,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC9|L": {
+  "n": 104,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LC9|R": {
+  "n": 115,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LLPC1|L": {
+  "n": 143,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LLPC1|R": {
+  "n": 142,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LLPC2|L": {
+  "n": 125,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LLPC2|R": {
+  "n": 125,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LLPC3|L": {
+  "n": 107,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LLPC3|R": {
+  "n": 112,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LLPC4|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LLPC4|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LLPC_unclear|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPC1|L": {
+  "n": 115,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPC1|R": {
+  "n": 109,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPC2|L": {
+  "n": 75,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPC2|R": {
+  "n": 79,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPC_unclear|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPLC1|L": {
+  "n": 68,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPLC1|R": {
+  "n": 66,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPLC2|L": {
+  "n": 94,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPLC2|R": {
+  "n": 91,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPLC4|L": {
+  "n": 48,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPLC4|R": {
+  "n": 49,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPLC_unclear|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT100|L": {
+  "n": 21,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT100|R": {
+  "n": 19,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT101|L": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT101|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT21|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT21|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT22|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT22|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT23|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT23|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT26|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT26|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT27|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT27|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT28|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT28|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT29|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT29|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT30|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT30|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT31|L": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT31|R": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT49|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT49|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT50|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT50|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT51|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT51|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT52|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT52|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT54|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LPT54|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT11|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT11|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT1a|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT1a|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT1b|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT1b|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT1c|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT1c|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT1d|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT1d|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT43|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT43|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT47|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT47|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT51|L": {
+  "n": 11,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT51|R": {
+  "n": 11,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT52|L": {
+  "n": 17,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT52|R": {
+  "n": 17,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT55|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT55|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT59|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT59|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT60|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT60|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT61a|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT61a|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT61b|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT61b|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT62|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT62|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT63|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT63|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT64|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT64|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT65|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT65|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT66|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT66|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT67|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT67|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT68|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT68|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT69|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT69|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT72|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT72|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT73|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT73|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT74|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT74|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT75|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT75|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT76|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT76|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT77|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT77|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT78|L": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT78|R": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT79|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT79|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT80|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT80|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT81|L": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT81|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT82a|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT82a|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT82b|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT82b|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT83|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT83|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT84|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT84|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT85|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT85|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT86|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT86|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT87|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LT87|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP1|L": {
+  "n": 25,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP1|R": {
+  "n": 27,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP10|L": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP10|R": {
+  "n": 9,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP100|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP100|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP101|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP101|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP102|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP102|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP103|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP103|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP106|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP106|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP107|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP107|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP108|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP108|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP109|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP11|L": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP11|R": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP12|L": {
+  "n": 23,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP12|R": {
+  "n": 19,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP13|L": {
+  "n": 27,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP13|R": {
+  "n": 24,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP14|L": {
+  "n": 10,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP14|R": {
+  "n": 9,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP16|L": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP16|R": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP17|L": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP17|R": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP18|L": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP18|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP19|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP19|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP2|L": {
+  "n": 21,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP2|R": {
+  "n": 23,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP20|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP20|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP21|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP21|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP22|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP22|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP23|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP23|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP24|L": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP24|R": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP25|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP25|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP26|L": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP26|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP27|L": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP27|R": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP28|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP28|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP29|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP29|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP3|L": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP3|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP30|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP30|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP31|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP32|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP32|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP33|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP33|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP34|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP34|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP35|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP35|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP36|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP36|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP38|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP38|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP39|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP39|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP4|L": {
+  "n": 7,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP4|R": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP40|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP40|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP41|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP41|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP42|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP42|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP43|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP43|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP44|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP44|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP45|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP45|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP46|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP46|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP47|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP47|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP48|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP48|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP49|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP49|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP5|L": {
+  "n": 15,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP5|R": {
+  "n": 12,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP50|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP50|R": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP51|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP51|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP52|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP52|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP53|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP53|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP54|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP54|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP55|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP55|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP56|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP56|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP57|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP57|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP58|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP58|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP59|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP59|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP6|L": {
+  "n": 11,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP6|R": {
+  "n": 11,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP60|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP60|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP61|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP61|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP62|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP62|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP63|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP63|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP64|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP64|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP65|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP65|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP66|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP66|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP67|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP67|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP68|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP68|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP69|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP69|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP7|L": {
+  "n": 8,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP7|R": {
+  "n": 12,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP70|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP70|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP71|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP71|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP72|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP72|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP73|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP73|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP74|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP74|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP75|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP75|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP76|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP76|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP77|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP77|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP78|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP78|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP79|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP79|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP8|L": {
+  "n": 13,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP8|R": {
+  "n": 9,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP80|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP80|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP82|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP82|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP83|L": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP83|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP84|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP84|R": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP85|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP85|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP86|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP86|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP88|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP88|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP89|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP89|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP9|L": {
+  "n": 7,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP9|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP90a|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP90a|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP90b|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP90b|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP90c|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP90c|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP92|L": {
+  "n": 7,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP92|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP93|L": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP93|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP95|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP95|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP98|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP98|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP99|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP99|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP_unclear|L": {
+  "n": 10,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|LoVP_unclear|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu1|L": {
+  "n": 126,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu1|R": {
+  "n": 124,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu2a|L": {
+  "n": 34,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu2a|R": {
+  "n": 36,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu2b|L": {
+  "n": 15,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu2b|R": {
+  "n": 16,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu3a|L": {
+  "n": 20,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu3a|R": {
+  "n": 22,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu3b|L": {
+  "n": 42,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu3b|R": {
+  "n": 38,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu3c|L": {
+  "n": 82,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu3c|R": {
+  "n": 91,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu4_unclear|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu4a|L": {
+  "n": 46,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu4a|R": {
+  "n": 49,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu4b|L": {
+  "n": 16,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu4b|R": {
+  "n": 16,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu4c|L": {
+  "n": 46,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu4c|R": {
+  "n": 41,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu4d|L": {
+  "n": 20,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu4d|R": {
+  "n": 20,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu4e|L": {
+  "n": 26,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu4e|R": {
+  "n": 25,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu4f|L": {
+  "n": 28,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeTu4f|R": {
+  "n": 28,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP1|L": {
+  "n": 63,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP1|R": {
+  "n": 59,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP10|L": {
+  "n": 28,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP10|R": {
+  "n": 33,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP11|L": {
+  "n": 25,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP11|R": {
+  "n": 30,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP12|L": {
+  "n": 9,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP12|R": {
+  "n": 18,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP14|L": {
+  "n": 16,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP14|R": {
+  "n": 17,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP15|L": {
+  "n": 13,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP15|R": {
+  "n": 11,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP16|L": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP16|R": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP17|L": {
+  "n": 7,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP17|R": {
+  "n": 7,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP18|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP18|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP2|L": {
+  "n": 40,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP2|R": {
+  "n": 36,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP20|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP20|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP21|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP21|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP22|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP22|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP23|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP23|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP24|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP24|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP25|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP25|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP26|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP26|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP27|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP27|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP28|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP28|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP29|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP29|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP3|L": {
+  "n": 34,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP3|R": {
+  "n": 35,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP30|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP30|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP31|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP31|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP32|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP32|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP33|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP33|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP34|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP34|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP35|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP35|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP36|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP36|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP38|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP38|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP39|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP39|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP4|L": {
+  "n": 18,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP4|R": {
+  "n": 22,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP40|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP40|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP41|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP41|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP42|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP42|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP43|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP43|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP45|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP45|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP46|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP46|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP47|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP47|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP48|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP48|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP49|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP49|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP5|L": {
+  "n": 8,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP5|R": {
+  "n": 9,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP50|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP50|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP51|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP51|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP52|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP52|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP53|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP53|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP54|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP54|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP55|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP55|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP56|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP56|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP57|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP58|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP58|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP59|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP59|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP6|L": {
+  "n": 50,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP6|R": {
+  "n": 49,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP60|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP60|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP61|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP61|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP62|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP62|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP63|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP63|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP64|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP6_unclear|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP7|L": {
+  "n": 11,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP7|R": {
+  "n": 12,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP8|L": {
+  "n": 7,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP8|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP9|L": {
+  "n": 7,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP9|R": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPLo1|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPLo1|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPLo2|L": {
+  "n": 7,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPLo2|R": {
+  "n": 7,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPLp1|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPLp1|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe1|L": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe1|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe11|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe11|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe2|L": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe2|R": {
+  "n": 5,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe3|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe3|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe4|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe4|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe6|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe6|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe8|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe8|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe9|L": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPMe9|R": {
+  "n": 6,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVP_unclear|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPaMe1|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPaMe1|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPaMe2|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|MeVPaMe2|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|Nod1|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|Nod1|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|Nod2|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|Nod2|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|Nod3|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|Nod3|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|Nod4|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|Nod4|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|Nod5|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|Nod5|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG01a|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG01a|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG01b|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG01b|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG01c|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG01c|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG01d|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG01d|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG01e|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG01e|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG01f|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG01f|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG02b|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG02b|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG02c|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG02c|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG03|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OCG03|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|OLVp_unclear|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|SLP250|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|SLP250|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|TmY14|L": {
+  "n": 243,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|TmY14|R": {
+  "n": 234,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|VS|L": {
+  "n": 9,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|VS|R": {
+  "n": 9,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|VST1|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|VST1|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|VST2|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|VST2|R": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|VSm|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|VSm|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe1|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe1|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe10|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe10|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe12|L": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe12|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe20|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe20|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe25|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe25|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe26|L": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe26|R": {
+  "n": 3,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe3|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe3|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe5|L": {
+  "n": 25,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe5|R": {
+  "n": 17,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe6a|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe6a|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe8|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe8|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe9|L": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|aMe9|R": {
+  "n": 2,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|s-LNv|L": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|s-LNv|R": {
+  "n": 4,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|vCal1|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|vCal1|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|vCal2|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|vCal2|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|vCal3|L": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ },
+ "vpn|vCal3|R": {
+  "n": 1,
+  "superclass": "visual_projection",
+  "class": "",
+  "subclass": ""
+ }
+}

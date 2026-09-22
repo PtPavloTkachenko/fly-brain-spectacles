@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="CyberFly">
+  <!-- the page's own language at 16 px: a dark plate, cyan brackets, and a fly made of somata -->
+  <rect width="32" height="32" fill="#04070a"/>
+  <path d="M2 8V2h6M30 24v6h-6" fill="none" stroke="#2d8aa5" stroke-width="1.6"/>
+  <g fill="#5fd8f5" opacity=".85">
+    <ellipse cx="11" cy="12.5" rx="6.5" ry="3.4" transform="rotate(-24 11 12.5)"/>
+    <ellipse cx="21" cy="12.5" rx="6.5" ry="3.4" transform="rotate(24 21 12.5)"/>
+  </g>
+  <g fill="#33ff73">
+    <circle cx="16" cy="9" r="3.1"/>
+    <ellipse cx="16" cy="18.5" rx="3.6" ry="6.2"/>
+  </g>
+  <g fill="#ffcf5a">
+    <circle cx="13.6" cy="8.2" r="1.15"/>
+    <circle cx="18.4" cy="8.2" r="1.15"/>
+  </g>
+</svg>

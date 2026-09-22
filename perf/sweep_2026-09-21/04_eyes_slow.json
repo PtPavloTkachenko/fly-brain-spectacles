@@ -1,0 +1,63 @@
+{
+ "n": 23,
+ "from": "21:10:37",
+ "to": "21:11:22",
+ "fps_mean": 20.1,
+ "fps_min": 19,
+ "frame_ms_mean": 49.7,
+ "worst_median_ms": 160,
+ "worst_max_ms": 178,
+ "script_mean_ms": 2.89,
+ "per": {
+  "ours": {
+   "mean_ms": 1.565,
+   "worst_ms": 7.17
+  },
+  "board": {
+   "mean_ms": 0.57,
+   "worst_ms": 2.57
+  },
+  "bodies": {
+   "mean_ms": 0.28,
+   "worst_ms": 0.98
+  },
+  "vision": {
+   "mean_ms": 0.129,
+   "worst_ms": 1.91
+  },
+  "eye": {
+   "mean_ms": 0.117,
+   "worst_ms": 1.5
+  },
+  "webscene": {
+   "mean_ms": 0.088,
+   "worst_ms": 1.98
+  },
+  "fx": {
+   "mean_ms": 0.081,
+   "worst_ms": 1.01
+  },
+  "eyedots": {
+   "mean_ms": 0.024,
+   "worst_ms": 0.49
+  },
+  "eyerays": {
+   "mean_ms": 0.02,
+   "worst_ms": 1.04
+  },
+  "senses": {
+   "mean_ms": 0.007,
+   "worst_ms": 0.51
+  },
+  "net": {
+   "mean_ms": 0.006,
+   "worst_ms": 0.53
+  },
+  "sound": {
+   "mean_ms": 0.001,
+   "worst_ms": 0.17
+  }
+ },
+ "label": "04_eyes_slow",
+ "log": "LensStudioLog-2026-09-21-12-20-59-474-da0fd.txt"
+}

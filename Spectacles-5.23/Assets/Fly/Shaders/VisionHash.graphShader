@@ -1,0 +1,333 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 0
+      LevelID: 2
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        DepthMap:
+          Variable: false
+        ExtraOutputs:
+          Variable: false
+        Group:
+          String: ""
+        PixelSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        ScriptName:
+          String: colors
+        SortIndex:
+          Variable: 0
+        Texture:
+          ClassType1: LINK
+          IOType: 1
+          Property:
+            Variables:
+              {}
+        TextureSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Title:
+          String: colors
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 0
+      TemplateID: nodes_inputs_parameters_texture2d_object
+      Title1: Texture 2D Object Parameter
+      Title2: colors
+    Node1:
+      DependencyIndex: 1
+      LevelID: 3
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: gain
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: gain
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 80
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: gain
+    Node2:
+      DependencyIndex: 2
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: blocky
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: blocky
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 160
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: blocky
+    Node3:
+      DependencyIndex: 3
+      LevelID: 5
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: voxel
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: voxel
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 240
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: voxel
+    Node4:
+      DependencyIndex: 4
+      LevelID: 0
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Code:
+          ClassType1: TEXT
+          String: |
+            // VisionHash - the tracked world mesh as the fly-eye cameras see it (vision layer only, after the
+            // intro scan). Room colours live in a 256x256 "voxel hash" texture baked by WorldColorBake: the
+            // 8 cm voxel (ix, iy, iz) of a world position maps to texel
+            //   u = mod(ix, 64) + 64 * mod(iz, 4),  v = mod(iy, 32) + 32 * mod(floor(iz / 4), 8)
+            // (periods 5.1 x 2.6 x 2.6 m; every intermediate stays < 256 so it is exact even in FP16 on device).
+            // Alpha = baked; unbaked texels show neutral grey. A faint world-space block pattern (+-blocky)
+            // keeps optic flow trackable on flat colours. The world mesh sits at the origin with an identity
+            // transform, so object space == world space. ASCII only.
+            
+            input_texture_2d colors;
+            input_float gain;
+            input_float blocky;
+            input_float voxel;
+            
+            output_vec4 vertexColor;
+            
+            float hash3(vec3 p) {
+                // 12.09 shader audit: `+ 33.33` pushed the intermediate to ~2e4, where mediump steps by ~16 and
+                // `fract` returns bands instead of noise. Same hash, kept under ~500 (see RoomPaint).
+                p = fract(p * 0.1031);
+                p += dot(p, p.yzx + 3.33);
+                return fract((p.x + p.y) * p.z * 7.0);
+            }
+            
+            void main() {
+                vec3 wp = system.getSurfacePositionObjectSpace();
+                float vs = voxel;
+                if (vs < 1.0) vs = 1.0;
+                vec3 iv = floor(wp / vs);
+                float u = mod(iv.x, 64.0) + 64.0 * mod(iv.z, 4.0);
+                float v = mod(iv.y, 32.0) + 32.0 * mod(floor(iv.z / 4.0), 8.0);
+                vec4 c = colors.sample(vec2((u + 0.5) / 256.0, (v + 0.5) / 256.0));
+                vec3 col = mix(vec3(0.35, 0.35, 0.35), c.rgb, c.a);
+                float blocks = hash3(iv * 0.5 + 5.0) * 2.0 - 1.0;
+                vertexColor = vec4(col * gain * (1.0 + blocky * blocks), 1.0);
+            }
+
+        Description:
+          ClassType1: TEXT
+          String: ""
+        Examples:
+          ItemIndex: 0
+          ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+        ID:
+          Variable: 0
+        Locked:
+          Variable: false
+        Stage:
+          ItemIndex: 1
+          ItemList: "Vertex : Pixel"
+        Title:
+          String: Custom Code
+        blocky:
+          Connection0:
+            NodeLevelID: 4
+            PortID: Output
+          Variable: 0.0
+        colors:
+          ClassType1: LINK
+          Connection0:
+            NodeLevelID: 2
+            PortID: Texture
+          Property:
+            Variables:
+              {}
+        gain:
+          Connection0:
+            NodeLevelID: 3
+            PortID: Output
+          Variable: 0.0
+        ngs_Height:
+          Variable: 400
+        ngs_Version:
+          String: 0.1.0
+        vertexColor:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        voxel:
+          Connection0:
+            NodeLevelID: 5
+            PortID: Output
+          Variable: 0.0
+      PositionX: 0
+      PositionY: 0
+      TemplateID: node_util_custom
+      TemplateVersionMinor: 2
+      Title1: Custom Code
+    Node5:
+      DependencyIndex: 5
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) : 		Linear - Normalized [-1 to 1] : 		View Space - Non-Normalized [-near to -far]	
+          ItemName: |2-
+            		Non-Linear - Normalized [0 to 1] )
+        DontFreezeSpec:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 0
+            PortID: vertexColor
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        GSplatRotation:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        GSplatScale:
+          Variable: [0.0, 0.0, 0.0]
+        Motion Vector Pass:
+          ItemIndex: 0
+          ItemList: "Write Velocity and Depth : Discard Velocity but Write Depth : Discard Velocity and Depth"
+        Negative:
+          Variable: false
+        PrevWorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        RayDirection:
+          Variable: [0.0, 0.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        ShowPrevPos:
+          Variable: false
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 0.0, 0.0]
+        WorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 0.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 300
+      PositionY: 0
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders

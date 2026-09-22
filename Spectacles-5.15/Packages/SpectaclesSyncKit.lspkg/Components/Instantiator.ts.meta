@@ -1,0 +1,68 @@
+- !<AssetImportMetadata/defa3ce9-3ea0-ba4a-349e-55de4e27e7fa>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0f0500cb-c58a-434d-a171-94167130d106
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0f0500cb-c58a-434d-a171-94167130d106
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> bec79aa4-1cd9-4173-8521-f2e73e0b3d13
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/bec79aa4-1cd9-4173-8521-f2e73e0b3d13>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 7dc9743e-46d2-479d-991e-9e7719d1f344
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    autoInstantiate: false
+    autoInstantiateOwnershipString: false
+    autoInstantiatePrefabs: false
+    persistenceString: false
+    prefabs: false
+    spawnAsChildren: false
+    spawnUnderParent: false
+    spawnerOwnsObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefabs: !<reference.ObjectPrefab[]>
+        []
+      spawnerOwnsObject: false
+      spawnAsChildren: false
+      spawnUnderParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      autoInstantiate: false
+      autoInstantiatePrefabs: !<reference.ObjectPrefab[]>
+        []
+      persistenceString: Session
+      autoInstantiateOwnershipString: Unowned
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - "// @input Asset.ObjectPrefab[] prefabs = {}"
+    - '// @input boolean spawnerOwnsObject = "false"'
+    - '// @input boolean spawnAsChildren = "false"'
+    - '// @input SceneObject spawnUnderParent {"showIf":"spawnAsChildren"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input boolean autoInstantiate = "false"'
+    - '// @input Asset.ObjectPrefab[] autoInstantiatePrefabs = {} {"label":"Prefabs", "showIf":"autoInstantiate"}'
+    - '// @input string persistenceString = "Session" {"label":"Persistence", "widget":"combobox", "values":[{"label":"Ephemeral", "value":"Ephemeral"}, {"label":"Owner", "value":"Owner"}, {"label":"Session", "value":"Session"}, {"label":"Persist", "value":"Persist"}], "showIf":"autoInstantiate"}'
+    - '// @input string autoInstantiateOwnershipString = "Unowned" {"label":"Auto Instantiate Ownership", "widget":"combobox", "values":[{"label":"Owned", "value":"Owned"}, {"label":"Unowned", "value":"Unowned"}], "showIf":"autoInstantiate"}'

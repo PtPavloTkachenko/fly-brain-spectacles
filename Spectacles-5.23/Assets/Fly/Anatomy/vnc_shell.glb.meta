@@ -1,0 +1,129 @@
+- !<AssetImportMetadata/0f933521-6c78-4f27-af10-040f0fa43442>
+  ImportedAssetIds:
+    09c1609493715f83: !<reference> 487b5a0d-01bf-4383-97d1-78f4140038e5
+    4a3e924fad0e2f27: !<reference> b7256da9-da28-4824-925a-5b007c0fce1d
+    66780cf3a4dcb2b8: !<reference> 00ffd37b-38bd-46c3-8333-dc4c08222114
+    756080effe452629: !<reference> a21426c1-eec2-484a-9b37-71524010e5db
+    Meshes/vnc_shell: !<reference> d05fc6bd-64a5-4951-b1f7-678a8d8c7331
+    Scene: !<reference> d7dee0ec-523b-4740-914e-9393ede100ad
+    f3f35d1c39dd01cb: !<reference> 4cb27b12-cb14-427e-86c2-f1cc31afb83e
+  ImporterName: GltfImporter
+  PrimaryAsset: !<reference> d7dee0ec-523b-4740-914e-9393ede100ad
+  PackageType: LegacyPackage
+  LegacyPackagePolicy: CanBeUnpackedTransparent
+  ExtraData:
+    {}
+  AssetDataMap:
+    Scene: !<own> 2c78789c-45fa-4476-9362-155564c07c24
+  DependentFiles:
+    []
+  ImporterSettings: !<GltfImporterSettings>
+    UseLegacyImporter: false
+    WithMaterials: true
+    NamingConvention: ByCategorySanitizeV2
+    PersistentIdGenerationAlgorithm: DescriptorBased
+    AnimationCurveOptimization: true
+    CustomAnimationSamplingRate: 30.000000
+    ImportVertexColor: true
+    ImportTangents: true
+    ImportMorphTargetAnimation: true
+    ConvertMetersToCentimeters: true
+    RegenerateTangents: false
+  CompressionSettings: !<ComplexCompressionSettings>
+    Presets:
+      None Compression: !<DracoCompressionSettings>
+        EnableDracoCompression: true
+        CompressionLevel: 8
+        PositionBits: 11
+        TexcoordBits: 10
+        NormalBits: 8
+        ColorBits: 8
+    ExtensionMappings:
+      mesh: None Compression
+    Overrides:
+      {}
+- !<SceneObject/00ffd37b-38bd-46c3-7ccc-23b3f7dddeeb>
+  PrefabRemaps:
+    []
+  Name: vnc_shell
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 100.000000, y: 100.000000, z: 100.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> b7256da9-da28-4824-6da5-a4ff83f031e2
+  Components:
+    []
+- !<ObjectPrefabAssetData/2c78789c-45fa-4476-9362-155564c07c24>
+  Prototype: !<ObjectOwner/ed9cd3f0-4d9f-4157-8f6d-8cf4a83ac3b0>
+    PackagePath: ""
+    objects:
+      - !<own> 00ffd37b-38bd-46c3-7ccc-23b3f7dddeeb
+- !<SceneObject/487b5a0d-01bf-4383-682e-870bebffc71a>
+  PrefabRemaps:
+    []
+  Name: Scene0
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> a21426c1-eec2-484a-64c8-8eadbfef1a24
+  Components:
+    []
+- !<RenderMeshVisual/4cb27b12-cb14-427e-793d-0e33ce5047c1>
+  PrefabRemaps:
+    []
+  Name: vnc_shell
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    []
+  Mesh: !<reference> d05fc6bd-64a5-4951-b1f7-678a8d8c7331
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/a21426c1-eec2-484a-64c8-8eadbfef1a24>
+  PrefabRemaps:
+    []
+  Name: vnc_shell
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 4cb27b12-cb14-427e-793d-0e33ce5047c1
+- !<SceneObject/b7256da9-da28-4824-6da5-a4ff83f031e2>
+  PrefabRemaps:
+    []
+  Name: Scenes
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 487b5a0d-01bf-4383-682e-870bebffc71a
+  Components:
+    []

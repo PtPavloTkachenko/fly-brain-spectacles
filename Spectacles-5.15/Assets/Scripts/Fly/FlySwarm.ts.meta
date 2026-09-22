@@ -1,0 +1,117 @@
+- !<AssetImportMetadata/b3b860f8-7b9b-4961-a498-82e92d7450c8>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> a04f6ed6-b03e-4cb6-818a-a26f1136a1b8
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> a04f6ed6-b03e-4cb6-818a-a26f1136a1b8
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d417bb21-17a6-4c23-a88c-0388b972822d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d417bb21-17a6-4c23-a88c-0388b972822d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: f0b673be-bf14-4ba4-9800-99bc0a59a58e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    brainMaterial: false
+    brainShell: false
+    buzzTrack: false
+    cameraModule: false
+    cameraObject: false
+    debugScenario: false
+    flyCount: false
+    flyPrefab: false
+    holoMaterial: false
+    markerMaterial: false
+    markerMesh: false
+    micTrack: false
+    miniFlyPrefab: false
+    monoFont: false
+    neonBatchMaterial: false
+    neonMaterial: false
+    scanGridMaterial: false
+    showSourceMarkers: false
+    songTrack: false
+    treatPrefab: false
+    treatPrefabs: false
+    uiFont: false
+    visionColorMaterial: false
+    vncShell: false
+    worldMeshObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - flyPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      cameraObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      cameraModule: !<reference.CameraModule> 00000000-0000-0000-0000-000000000000
+      holoMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      neonMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      brainMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      miniFlyPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      uiFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      monoFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      worldMeshObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      scanGridMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      neonBatchMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      visionColorMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      buzzTrack: !<reference.AudioTrackAsset> 00000000-0000-0000-0000-000000000000
+      songTrack: !<reference.AudioTrackAsset> 00000000-0000-0000-0000-000000000000
+      micTrack: !<reference.AudioTrackAsset> 00000000-0000-0000-0000-000000000000
+      markerMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      markerMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      treatPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      treatPrefabs: !<reference.ObjectPrefab[]>
+        []
+      brainShell: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      vncShell: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      showSourceMarkers: true
+      flyCount: !<float> 5.000000
+      debugScenario: none
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Asset.ObjectPrefab flyPrefab
+    - // @input SceneObject cameraObject
+    - '// @input Asset.CameraModule cameraModule {"hint":"CameraModule asset (Asset Browser + > Camera Module). Bind it for the device build."}'
+    - '// @input Asset.Material holoMaterial {"hint":"FlyHolo material (neon rim hologram); cloned per fly"}'
+    - '// @input Asset.Material neonMaterial {"hint":"NeonGlow material: status board, selected-fly glow + trail"}'
+    - "// @input Asset.Material brainMaterial {\"hint\":\"BrainCloud material: 16,000-neuron hologram of the selected fly's brain\"}"
+    - '// @input Asset.ObjectPrefab miniFlyPrefab {"hint":"fly_lod1 prefab: the mini hologram on the board that mirrors the selected fly"}'
+    - '// @input Asset.Font uiFont {"hint":"Board words font (titles, labels): Chakra Petch SemiBold"}'
+    - '// @input Asset.Font monoFont {"hint":"Board numbers font (tabular digits, no jitter): Share Tech Mono"}'
+    - '// @input SceneObject worldMeshObject {"hint":"World Mesh object (preset): shown while the room is scanned at the start"}'
+    - '// @input Asset.Material scanGridMaterial {"hint":"RoomPaint material: neon grid painted with the baked room colours, dissolves after the scan"}'
+    - '// @input Asset.Material neonBatchMaterial {"hint":"NeonBatch material: every board quad + the eye dots in one draw call each (perf)"}'
+    - '// @input Asset.Material visionColorMaterial {"hint":"VisionColor material: baked room colours on the world-mesh copy the fly-eye cameras see"}'
+    - '// @input Asset.AudioTrackAsset buzzTrack {"hint":"fly_buzz.wav: wingbeat loop (audio/gen_fly_sounds.py)"}'
+    - '// @input Asset.AudioTrackAsset songTrack {"hint":"fly_song.wav: courtship song loop, plays while pIP10 fires"}'
+    - '// @input Asset.AudioTrackAsset micTrack {"hint":"Fly/Audio/Microphone.micaudio: the Spectacles mic -> hearing (FlyEars, JO-A/B)"}'
+    - // @input Asset.RenderMesh markerMesh
+    - // @input Asset.Material markerMaterial
+    - '// @input Asset.ObjectPrefab treatPrefab {"hint":"Treat prefab (Fly/Treats): a long LEFT pinch drops one — food the flies smell, land on and eat"}'
+    - '// @input Asset.ObjectPrefab[] treatPrefabs {"hint":"Treat variety (Fly/Treats/*.glb): one is drawn at random per spawn; empty falls back to treatPrefab"}'
+    - '// @input Asset.ObjectPrefab brainShell {"hint":"MaleCNS brain outline mesh (Fly/Anatomy/brain_shell.glb) drawn around the live brain cloud"}'
+    - '// @input Asset.ObjectPrefab vncShell {"hint":"MaleCNS VNC outline mesh (Fly/Anatomy/vnc_shell.glb)"}'
+    - // @input bool showSourceMarkers = true
+    - // @input float flyCount = 5
+    - "// @input string debugScenario = \"none\" {\"hint\":\"'+'-joined tokens: none | auto_solo | lure_front | food_left | food_right | threat_approach | treats | train[_danger|_forget|_test|_choice|_transfer|_reset] | pin=NNNN (a fixed web PIN, tests)\"}"

@@ -1,0 +1,366 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 0
+      LevelID: 2
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        DepthMap:
+          Variable: false
+        ExtraOutputs:
+          Variable: false
+        Group:
+          String: ""
+        PixelSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        ScriptName:
+          String: eye
+        SortIndex:
+          Variable: 0
+        Texture:
+          ClassType1: LINK
+          IOType: 1
+          Property:
+            Variables:
+              {}
+        TextureSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Title:
+          String: eye
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 0
+      TemplateID: nodes_inputs_parameters_texture2d_object
+      Title1: Texture 2D Object Parameter
+      Title2: eye
+    Node1:
+      DependencyIndex: 1
+      LevelID: 3
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: tint
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: tint
+      PositionX: -400
+      PositionY: 80
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: tint
+    Node2:
+      DependencyIndex: 2
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: gain
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: gain
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 160
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: gain
+    Node3:
+      DependencyIndex: 3
+      LevelID: 5
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: grid
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: grid
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 240
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: grid
+    Node4:
+      DependencyIndex: 4
+      LevelID: 6
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: cells
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: cells
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 320
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: cells
+    Node5:
+      DependencyIndex: 5
+      LevelID: 0
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Code:
+          ClassType1: TEXT
+          String: |
+            // RetinaView - the little panel on the board that shows WHAT THE BRAIN SEES (12.09 Pavlo: "can we
+            // show the fly-eye render target the way its brain sees it, in a small corner near the brain?").
+            //
+            // Not the camera image: the texture is built from FlyVision.retina(i), the same 16x8 RGB array that
+            // is sent to the brain as its retina (mean brightness pinned, ADR 15). One texel per ommatidial
+            // block, sampled NEAREST so the blocks stay blocks - that coarseness IS the honest part.
+            //
+            // `eye` carries the retina, `tint` is the selected fly's colour, `gain` lifts it for the additive
+            // display, `grid` draws faint cell borders so it reads as a sensor, not a photo. ASCII only;
+            // no input named `color` (the Spectacles cross-compiler rejects it).
+            
+            input_texture_2d eye;
+            input_color4 tint;
+            input_float gain;
+            input_float grid;
+            input_float cells;
+            
+            output_vec4 vertexColor;
+            
+            void main() {
+                vec2 uv = system.getSurfaceUVCoord0();
+                vec2 flipped = vec2(uv.x, 1.0 - uv.y); // LS flips V on import; the retina's first row is the top
+                vec3 seen = eye.sample(flipped).rgb;
+            
+                // faint per-cell border: a thin dark line at each block edge
+                float c = cells;
+                if (c < 2.0) c = 2.0;
+                vec2 f = fract(uv * vec2(c, c * 0.5));
+                vec2 e = min(f, 1.0 - f);
+                float line = 1.0 - smoothstep(0.0, 0.06, min(e.x, e.y));
+            
+                vec3 col = seen * gain * tint.rgb * (1.0 - grid * line);
+                vertexColor = vec4(col, 1.0);
+            }
+
+        Description:
+          ClassType1: TEXT
+          String: ""
+        Examples:
+          ItemIndex: 0
+          ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+        ID:
+          Variable: 0
+        Locked:
+          Variable: false
+        Stage:
+          ItemIndex: 1
+          ItemList: "Vertex : Pixel"
+        Title:
+          String: Custom Code
+        cells:
+          Connection0:
+            NodeLevelID: 6
+            PortID: Output
+          Variable: 0.0
+        eye:
+          ClassType1: LINK
+          Connection0:
+            NodeLevelID: 2
+            PortID: Texture
+          Property:
+            Variables:
+              {}
+        gain:
+          Connection0:
+            NodeLevelID: 4
+            PortID: Output
+          Variable: 0.0
+        grid:
+          Connection0:
+            NodeLevelID: 5
+            PortID: Output
+          Variable: 0.0
+        ngs_Height:
+          Variable: 400
+        ngs_Version:
+          String: 0.1.0
+        tint:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 3
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 1.0]
+        vertexColor:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+      PositionX: 0
+      PositionY: 0
+      TemplateID: node_util_custom
+      TemplateVersionMinor: 2
+      Title1: Custom Code
+    Node6:
+      DependencyIndex: 6
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) : 		Linear - Normalized [-1 to 1] : 		View Space - Non-Normalized [-near to -far]	
+          ItemName: |2-
+            		Non-Linear - Normalized [0 to 1] )
+        DontFreezeSpec:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 0
+            PortID: vertexColor
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        GSplatRotation:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        GSplatScale:
+          Variable: [0.0, 0.0, 0.0]
+        Motion Vector Pass:
+          ItemIndex: 0
+          ItemList: "Write Velocity and Depth : Discard Velocity but Write Depth : Discard Velocity and Depth"
+        Negative:
+          Variable: false
+        PrevWorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        RayDirection:
+          Variable: [0.0, 0.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        ShowPrevPos:
+          Variable: false
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 0.0, 0.0]
+        WorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 0.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 300
+      PositionY: 0
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders

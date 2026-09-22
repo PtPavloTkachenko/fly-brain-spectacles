@@ -1,0 +1,177 @@
+- !<AssetImportMetadata/c1c3dcaf-a272-49b7-a37b-4cf37f8eebe9>
+  ImportedAssetIds:
+    .hidden/Apple: !<reference> 1885db28-554f-4871-a515-3ad372b76bc2
+    17c7a813c1caec72: !<reference> 67f7d8a6-8aaa-4ff1-822d-21ad93a4fcfb
+    3e8cb2f8163dc676: !<reference> e5e5bc32-a7fa-4fda-9b18-3d8544a56a56
+    3e8cb2f8163de654: !<reference> 98666fb2-d7e5-48d6-a703-07489f91bc0f
+    3e8cb2f8163df6c7: !<reference> 37b630fc-cbbd-4eaf-94e9-7e31a410b905
+    4a3e924fad0e2f27: !<reference> b8045232-9686-4bbb-b82e-103597b83e16
+    66780cf3a4dcb2b8: !<reference> 8d3afca0-4b08-4b36-bd44-fb4871acc2de
+    96f664b015fcd573: !<reference> 2ad53655-5e74-4867-9231-4af5aad20a2a
+    Materials/Apple: !<reference> c27359ce-ffee-445f-b687-c330e1af5f47
+    Materials/Apple|Apple|GraphPassInfo: !<reference> 999a3b98-1b3c-4c37-817d-cca33389a877
+    Materials/Leaf: !<reference> f94b8193-394b-4fd0-ba47-2acd21e228e9
+    Materials/Leaf|Leaf|GraphPassInfo: !<reference> f88eda6b-0896-43c3-9f46-7d418aefca18
+    Materials/Stem: !<reference> 4125c016-c072-4949-aa4d-59b8cfcb7cb6
+    Materials/Stem|Stem|GraphPassInfo: !<reference> 1c92df33-09c7-4116-9a61-59b5e48beb9a
+    Meshes/Sphere: !<reference> 563c7470-6749-48d5-b17b-1f6a6f7c603d
+    Meshes/Sphere1: !<reference> fcff014b-05b9-4060-9168-5501dd483313
+    Meshes/Sphere2: !<reference> 63f8ff18-744f-4ca1-a57b-bf1dc46132d7
+    Scene: !<reference> f39b2fa7-77b9-4fee-9e8d-9c78e2e3d2a0
+  ImporterName: GltfImporter
+  PrimaryAsset: !<reference> f39b2fa7-77b9-4fee-9e8d-9c78e2e3d2a0
+  PackageType: LegacyPackage
+  LegacyPackagePolicy: CanBeUnpackedTransparent
+  ExtraData:
+    {}
+  AssetDataMap:
+    Scene: !<own> d1317876-7e84-4318-97e6-d2d6513eebf2
+  DependentFiles:
+    []
+  ImporterSettings: !<GltfImporterSettings>
+    UseLegacyImporter: false
+    WithMaterials: true
+    NamingConvention: ByCategorySanitizeV2
+    PersistentIdGenerationAlgorithm: DescriptorBased
+    AnimationCurveOptimization: true
+    CustomAnimationSamplingRate: 30.000000
+    ImportVertexColor: true
+    ImportTangents: true
+    ImportMorphTargetAnimation: true
+    ConvertMetersToCentimeters: true
+    RegenerateTangents: false
+  CompressionSettings: !<ComplexCompressionSettings>
+    Presets:
+      None Compression: !<FileCompressionSettings>
+        {}
+    ExtensionMappings:
+      mesh: None Compression
+    Overrides:
+      {}
+- !<SceneObject/2ad53655-5e74-4867-6dce-b50a552df5d5>
+  PrefabRemaps:
+    []
+  Name: Scene
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 67f7d8a6-8aaa-4ff1-7dd2-de526c5b0304
+  Components:
+    []
+- !<RenderMeshVisual/37b630fc-cbbd-4eaf-6b16-81ce5bef46fa>
+  PrefabRemaps:
+    []
+  Name: Sphere
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 4125c016-c072-4949-aa4d-59b8cfcb7cb6
+  Mesh: !<reference> fcff014b-05b9-4060-9168-5501dd483313
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/67f7d8a6-8aaa-4ff1-7dd2-de526c5b0304>
+  PrefabRemaps:
+    []
+  Name: apple
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> e5e5bc32-a7fa-4fda-64e7-c27abb5a95a9
+    - !<own> 37b630fc-cbbd-4eaf-6b16-81ce5bef46fa
+    - !<own> 98666fb2-d7e5-48d6-58fc-f8b7606e43f0
+- !<SceneObject/8d3afca0-4b08-4b36-42bb-04b78e533d21>
+  PrefabRemaps:
+    []
+  Name: apple
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 100.000000, y: 100.000000, z: 100.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> b8045232-9686-4bbb-47d1-efca6847c1e9
+  Components:
+    []
+- !<RenderMeshVisual/98666fb2-d7e5-48d6-58fc-f8b7606e43f0>
+  PrefabRemaps:
+    []
+  Name: Sphere
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> f94b8193-394b-4fd0-ba47-2acd21e228e9
+  Mesh: !<reference> 63f8ff18-744f-4ca1-a57b-bf1dc46132d7
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/b8045232-9686-4bbb-47d1-efca6847c1e9>
+  PrefabRemaps:
+    []
+  Name: Scenes
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 2ad53655-5e74-4867-6dce-b50a552df5d5
+  Components:
+    []
+- !<ObjectPrefabAssetData/d1317876-7e84-4318-97e6-d2d6513eebf2>
+  Prototype: !<ObjectOwner/9a7e51a5-4ed6-425b-9945-676492a87e72>
+    PackagePath: ""
+    objects:
+      - !<own> 8d3afca0-4b08-4b36-42bb-04b78e533d21
+- !<RenderMeshVisual/e5e5bc32-a7fa-4fda-64e7-c27abb5a95a9>
+  PrefabRemaps:
+    []
+  Name: Sphere
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> c27359ce-ffee-445f-b687-c330e1af5f47
+  Mesh: !<reference> 563c7470-6749-48d5-b17b-1f6a6f7c603d
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}

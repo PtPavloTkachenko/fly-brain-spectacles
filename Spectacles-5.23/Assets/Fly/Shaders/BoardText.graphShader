@@ -1,0 +1,366 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 0
+      LevelID: 2
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        DepthMap:
+          Variable: false
+        ExtraOutputs:
+          Variable: false
+        Group:
+          String: ""
+        PixelSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        ScriptName:
+          String: atlas
+        SortIndex:
+          Variable: 0
+        Texture:
+          ClassType1: LINK
+          IOType: 1
+          Property:
+            Variables:
+              {}
+        TextureSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Title:
+          String: atlas
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 0
+      TemplateID: nodes_inputs_parameters_texture2d_object
+      Title1: Texture 2D Object Parameter
+      Title2: atlas
+    Node1:
+      DependencyIndex: 1
+      LevelID: 3
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: tint
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: tint
+      PositionX: -400
+      PositionY: 80
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: tint
+    Node2:
+      DependencyIndex: 2
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: outlineColor
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: outlineColor
+      PositionX: -400
+      PositionY: 160
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: outlineColor
+    Node3:
+      DependencyIndex: 3
+      LevelID: 5
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: outlineSize
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: outlineSize
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 240
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: outlineSize
+    Node4:
+      DependencyIndex: 4
+      LevelID: 6
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: gain
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: gain
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 320
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: gain
+    Node5:
+      DependencyIndex: 5
+      LevelID: 0
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Code:
+          ClassType1: TEXT
+          String: |
+            // BoardText - all the board's text of one font in ONE mesh, one draw call.
+            // Ported from the author's MSDF text engine (an earlier Spectacles lens), minus the karaoke wipe.
+            //
+            // Atlas channels (see tools/text/build_atlas.py):
+            //   atlas.rgb = MSDF, 3-channel median -> a sharp glyph body at any size
+            //   atlas.a   = plain SDF             -> a rounded outline, so text stays readable on the room
+            //
+            // UV channels (LS specific): index 0 is the engine's own auto UV and cannot be written, so the
+            // mesh's atlas UV lives in "texture1" = getSurfaceUVCoord1(). Lens Studio flips V on PNG import.
+            // ASCII only, no input named `color` (the Spectacles cross-compiler rejects it).
+            
+            input_texture_2d atlas;
+            input_color4 tint;
+            input_color4 outlineColor;
+            input_float outlineSize;
+            input_float gain;
+            
+            output_vec4 vertexColor;
+            
+            void main() {
+                vec2 uv = system.getSurfaceUVCoord1();
+                uv.y = 1.0 - uv.y;
+                // per-vertex colour (uv2 = r,g and uv3 = b,a): one batch can hold captions, labels and the
+                // Gemini section in their own colours and still be ONE draw call
+                vec2 c01 = system.getSurfaceUVCoord2();
+                vec2 c23 = system.getSurfaceUVCoord3();
+                vec4 vcol = vec4(c01.x, c01.y, c23.x, c23.y);
+                vec4 s = atlas.sample(uv);
+            
+                vec3 msd = s.rgb;
+                float fill = max(min(msd.r, msd.g), min(max(msd.r, msd.g), msd.b));
+            
+                // adaptive antialiasing: crisp whether the board is at arm's length or across the room
+                float fillAA = max(fwidth(fill), 0.001);
+                float fillEdge = smoothstep(0.43 - fillAA, 0.43 + fillAA, fill);
+            
+                // 12.09 shader audit: the outline is always off on an additive display (an outline could only
+                // ADD dark pixels), so its SDF path - a second fwidth, a second smoothstep and the alpha
+                // channel fetch - was paid on every glyph pixel for nothing. The A channel of the atlas stays
+                // in the file; turn outlineSize up and this comes back with one line.
+                vec4 c = vec4(tint.r * vcol.r, tint.g * vcol.g, tint.b * vcol.b, tint.a * vcol.a * fillEdge * gain);
+                vertexColor = c;
+            }
+
+        Description:
+          ClassType1: TEXT
+          String: ""
+        Examples:
+          ItemIndex: 0
+          ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+        ID:
+          Variable: 0
+        Locked:
+          Variable: false
+        Stage:
+          ItemIndex: 1
+          ItemList: "Vertex : Pixel"
+        Title:
+          String: Custom Code
+        atlas:
+          ClassType1: LINK
+          Connection0:
+            NodeLevelID: 2
+            PortID: Texture
+          Property:
+            Variables:
+              {}
+        gain:
+          Connection0:
+            NodeLevelID: 6
+            PortID: Output
+          Variable: 0.0
+        ngs_Height:
+          Variable: 400
+        ngs_Version:
+          String: 0.1.0
+        outlineColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 4
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 1.0]
+        outlineSize:
+          Connection0:
+            NodeLevelID: 5
+            PortID: Output
+          Variable: 0.0
+        tint:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 3
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 1.0]
+        vertexColor:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+      PositionX: 0
+      PositionY: 0
+      TemplateID: node_util_custom
+      TemplateVersionMinor: 2
+      Title1: Custom Code
+    Node6:
+      DependencyIndex: 6
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) : 		Linear - Normalized [-1 to 1] : 		View Space - Non-Normalized [-near to -far]	
+          ItemName: |2-
+            		Non-Linear - Normalized [0 to 1] )
+        DontFreezeSpec:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 0
+            PortID: vertexColor
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        GSplatRotation:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        GSplatScale:
+          Variable: [0.0, 0.0, 0.0]
+        Motion Vector Pass:
+          ItemIndex: 0
+          ItemList: "Write Velocity and Depth : Discard Velocity but Write Depth : Discard Velocity and Depth"
+        Negative:
+          Variable: false
+        PrevWorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        RayDirection:
+          Variable: [0.0, 0.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        ShowPrevPos:
+          Variable: false
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 0.0, 0.0]
+        WorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 0.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 300
+      PositionY: 0
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders

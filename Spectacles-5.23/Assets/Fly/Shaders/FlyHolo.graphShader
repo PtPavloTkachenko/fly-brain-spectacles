@@ -1,0 +1,517 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 0
+      LevelID: 2
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: rimColor
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: rimColor
+      PositionX: -400
+      PositionY: 0
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: rimColor
+    Node1:
+      DependencyIndex: 1
+      LevelID: 3
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: bodyColor
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: bodyColor
+      PositionX: -400
+      PositionY: 80
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: bodyColor
+    Node2:
+      DependencyIndex: 2
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: rimPower
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: rimPower
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 160
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: rimPower
+    Node3:
+      DependencyIndex: 3
+      LevelID: 5
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: glow
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: glow
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 240
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: glow
+    Node4:
+      DependencyIndex: 4
+      LevelID: 6
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: bodyGlow
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: bodyGlow
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 320
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: bodyGlow
+    Node5:
+      DependencyIndex: 5
+      LevelID: 7
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: scanDensity
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: scanDensity
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 400
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: scanDensity
+    Node6:
+      DependencyIndex: 6
+      LevelID: 8
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: scanSpeed
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: scanSpeed
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 480
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: scanSpeed
+    Node7:
+      DependencyIndex: 7
+      LevelID: 9
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: scanAmount
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: scanAmount
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 560
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: scanAmount
+    Node8:
+      DependencyIndex: 8
+      LevelID: 0
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Code:
+          ClassType1: TEXT
+          String: |
+            // FlyHolo - neon rim-light hologram for the giant flies (pixel-only: skinning stays default).
+            // v2 (11.09 Pavlo: "stronger, softer rim; paint them nicely"):
+            //  - two neon colours per fly: rimColor at the head -> bodyColor at the abdomen tip
+            //  - iridescent shift of that gradient with the viewing angle
+            //  - soft wide rim halo + thin hot edge, faint body fill, fine abdomen stripes, scan bands
+            // On the additive Spectacles display black is transparent, so this reads as a hologram.
+            // Source: shaders_src/FlyHolo.glsl (edit there, paste the body into this Custom Code node; ASCII only)
+            
+            input_color4 rimColor;
+            input_color4 bodyColor;
+            input_float rimPower;
+            input_float glow;
+            input_float bodyGlow;
+            input_float scanDensity;
+            input_float scanSpeed;
+            input_float scanAmount;
+            
+            output_vec4 vertexColor;
+            
+            void main() {
+                vec3 po = system.getSurfacePositionObjectSpace();
+                mat4 world = system.getMatrixWorld();
+                vec3 p = (world * vec4(po, 1.0)).xyz;
+                vec3 n = normalize((world * vec4(system.getSurfaceNormalObjectSpace(), 0.0)).xyz);
+                vec3 cam = system.getMatrixCamera()[3].xyz;
+                vec3 v = normalize(cam - p);
+                float facing = abs(dot(n, v));
+                float edge = 1.0 - facing;
+            
+                // head (+x) -> abdomen tip (-x) gradient, shifted by viewing angle (iridescence)
+                float g = (0.12 - po.x) / 0.36;
+                g = g + 0.35 * edge;
+                if (g < 0.0) g = 0.0;
+                if (g > 1.0) g = 1.0;
+                vec3 tint = mix(rimColor.rgb, bodyColor.rgb, g);
+            
+                float halo = pow(edge, rimPower);
+                float hot = pow(edge, rimPower * 4.0) * 0.8;
+                // 12.09 shader audit: getTimeElapsed grows without bound, and a mediump sin() argument in the
+                // thousands quantises (at 10 min t*37 is ~22200, where the spacing is +-16) - the flicker and the
+                // scan bands freeze or judder on device. Both time phases are wrapped into 0..2pi instead.
+                float t = system.getTimeElapsed();
+                float TAU = 6.2831853;
+                float scanPhase = fract(t * scanSpeed / TAU) * TAU;
+                float band = 0.5 + 0.5 * sin(p.y * scanDensity - scanPhase);
+                float scan = smoothstep(0.85, 1.0, band) * scanAmount;
+                float stripes = 0.0;
+                if (po.x < -0.06) stripes = smoothstep(0.6, 1.0, 0.5 + 0.5 * sin(po.x * 140.0)) * 0.25;
+                float flicker = 0.95 + 0.05 * sin(fract(t * 5.8887) * TAU); // 37 rad/s = 5.8887 Hz, phase wrapped
+            
+                float light = (halo + hot + scan + stripes * (0.3 + halo)) * glow * flicker;
+                vec3 col = tint * (bodyGlow + light) + vec3(1.0, 1.0, 1.0) * hot * 0.35 * glow;
+                float a = bodyGlow + halo + scan;
+                if (a > 1.0) a = 1.0;
+                vertexColor = vec4(col, a);
+            }
+
+        CustomCodeNodeAsset:
+          ClassType1: REFUID
+          BaseType: Asset.CustomCodeNodeAsset
+          ScriptType: All
+          String: ""
+        Description:
+          ClassType1: TEXT
+          String: ""
+        Examples:
+          ItemIndex: 0
+          ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+        ID:
+          Variable: 0
+        Locked:
+          Variable: false
+        Stage:
+          ItemIndex: 1
+          ItemList: "Vertex : Pixel"
+        Title:
+          String: Custom Code
+        UseExternalFile:
+          Variable: false
+        bodyColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 3
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 1.0]
+        bodyGlow:
+          Connection0:
+            NodeLevelID: 6
+            PortID: Output
+          Variable: 0.0
+        glow:
+          Connection0:
+            NodeLevelID: 5
+            PortID: Output
+          Variable: 0.0
+        ngs_Height:
+          Variable: 400
+        ngs_Version:
+          String: 0.1.0
+        rimColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 2
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 1.0]
+        rimPower:
+          Connection0:
+            NodeLevelID: 4
+            PortID: Output
+          Variable: 0.0
+        scanAmount:
+          Connection0:
+            NodeLevelID: 9
+            PortID: Output
+          Variable: 0.0
+        scanDensity:
+          Connection0:
+            NodeLevelID: 7
+            PortID: Output
+          Variable: 0.0
+        scanSpeed:
+          Connection0:
+            NodeLevelID: 8
+            PortID: Output
+          Variable: 0.0
+        vertexColor:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+      PositionX: 0
+      PositionY: 0
+      TemplateID: node_util_custom
+      TemplateVersionMinor: 2
+      Title1: Custom Code
+    Node9:
+      DependencyIndex: 9
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) :		Linear - Normalized [-1 to 1] :		View Space - Non-Normalized [-near to -far]	
+        DontFreezeSpec:
+          Variable: false
+        EnableHighPrecisionSampling:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 0
+            PortID: vertexColor
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        GSplatRotation:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        GSplatScale:
+          Variable: [0.0, 0.0, 0.0]
+        Motion Vector Pass:
+          ItemIndex: 0
+          ItemList: "Write Velocity and Depth : Discard Velocity but Write Depth : Discard Velocity and Depth"
+        Negative:
+          Variable: false
+        PrevWorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        RayDirection:
+          Variable: [0.0, 0.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        ShowPrevPos:
+          Variable: false
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 0.0, 0.0]
+        WorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 0.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 300
+      PositionY: 0
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders

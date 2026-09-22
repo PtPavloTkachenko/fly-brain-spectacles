@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/b2bfab50-048d-df5b-98b4-668446485093>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 52035ba7-5959-48d4-a5a5-4a84f6209e2b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 52035ba7-5959-48d4-a5a5-4a84f6209e2b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f8413007-5eea-42e1-8236-fd7a5226bfad
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f8413007-5eea-42e1-8236-fd7a5226bfad>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: d19be4fc-fce5-4f94-bc82-9bb2f664d96a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    guidancePrefab: false
+    locatedAtComponent: false
+    parentObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - locatedAtComponent: !<reference.LocatedAtComponent> 00000000-0000-0000-0000-000000000000
+      guidancePrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      parentObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.LocatedAtComponent locatedAtComponent
+    - // @input Asset.ObjectPrefab guidancePrefab
+    - // @input SceneObject parentObject

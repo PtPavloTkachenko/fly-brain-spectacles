@@ -1,0 +1,4 @@
+traces_*/
+sweep_run*.log
+sweep_chain.log
+sweep_*/FlyConfig.backup.ts

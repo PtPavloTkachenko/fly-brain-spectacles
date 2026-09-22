@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/e3aa9d14-b266-4a55-fcd8-28ac6d65d1dc>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 56b19452-7132-42b7-b713-78f32f694e5b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 56b19452-7132-42b7-b713-78f32f694e5b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> aa03badc-858d-4744-8e2d-60b7beacae0e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/aa03badc-858d-4744-8e2d-60b7beacae0e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: d81cc3d0-66d4-462c-a8e9-bf894b994560
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    claimOwnership: false
+    instantiator: false
+    prefab: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - instantiator: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      claimOwnership: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType instantiator
+    - // @input Asset.ObjectPrefab prefab
+    - // @input bool claimOwnership = true

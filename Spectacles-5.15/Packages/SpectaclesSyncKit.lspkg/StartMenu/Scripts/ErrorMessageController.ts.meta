@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/3cda796c-d2c5-fe54-444a-76bfac02e094>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b1b038f2-b47f-4ff2-ad10-0b20ecfc968c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b1b038f2-b47f-4ff2-ad10-0b20ecfc968c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e570bde9-ab9c-46a6-ad8f-f1a6665ba88d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e570bde9-ab9c-46a6-ad8f-f1a6665ba88d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 3f2b3e5f-94da-41d3-b062-d558386d4cff
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    connectionFailedErrorObject: false
+    defaultDistanceFromUser: false
+    errorDisplayContainer: false
+    noInternetErrorObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - noInternetErrorObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      connectionFailedErrorObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      errorDisplayContainer: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      defaultDistanceFromUser: !<float> 150.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject noInternetErrorObject
+    - // @input SceneObject connectionFailedErrorObject
+    - // @input SceneObject errorDisplayContainer
+    - '// @input float defaultDistanceFromUser = "150.0"'

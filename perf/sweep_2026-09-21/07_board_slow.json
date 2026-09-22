@@ -1,0 +1,51 @@
+{
+ "n": 22,
+ "from": "21:18:20",
+ "to": "21:19:04",
+ "fps_mean": 5.6,
+ "fps_min": 3,
+ "frame_ms_mean": 177.4,
+ "worst_median_ms": 286.0,
+ "worst_max_ms": 742,
+ "script_mean_ms": 25.36,
+ "per": {
+  "ours": {
+   "mean_ms": 14.096,
+   "worst_ms": 366.05
+  },
+  "bake": {
+   "mean_ms": 4.292,
+   "worst_ms": 195.31
+  },
+  "webscene": {
+   "mean_ms": 3.648,
+   "worst_ms": 44.27
+  },
+  "scan": {
+   "mean_ms": 2.848,
+   "worst_ms": 361.19
+  },
+  "sound": {
+   "mean_ms": 0.172,
+   "worst_ms": 15.09
+  },
+  "board": {
+   "mean_ms": 0.136,
+   "worst_ms": 23.17
+  },
+  "present": {
+   "mean_ms": 0.126,
+   "worst_ms": 18.54
+  },
+  "weather": {
+   "mean_ms": 0.028,
+   "worst_ms": 7.47
+  },
+  "net": {
+   "mean_ms": 0.011,
+   "worst_ms": 0.13
+  }
+ },
+ "label": "07_board_slow",
+ "log": "LensStudioLog-2026-09-21-12-20-59-474-da0fd.txt"
+}

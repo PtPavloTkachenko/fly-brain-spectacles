@@ -1,0 +1,701 @@
+SchemaVersion: 1
+Nodes:
+  ChildNodes:
+    Node0:
+      DependencyIndex: 0
+      LevelID: 2
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        DepthMap:
+          Variable: false
+        ExtraOutputs:
+          Variable: false
+        Group:
+          String: ""
+        PixelSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        ScriptName:
+          String: activity
+        SortIndex:
+          Variable: 0
+        Texture:
+          ClassType1: LINK
+          IOType: 1
+          Property:
+            Variables:
+              {}
+        TextureSize:
+          IOType: 1
+          Variable: [0.0, 0.0]
+        Title:
+          String: activity
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 0
+      TemplateID: nodes_inputs_parameters_texture2d_object
+      Title1: Texture 2D Object Parameter
+      Title2: activity
+    Node1:
+      DependencyIndex: 1
+      LevelID: 3
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 0
+          ItemList: "rgba : rgb"
+        Default:
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        Group:
+          String: ""
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: tint
+        SortIndex:
+          Variable: 0
+        Tooltip:
+          String: ""
+        UniqueID:
+          String: tint
+      PositionX: -400
+      PositionY: 80
+      TemplateID: nodes_inputs_parameters_color
+      Title1: Color Parameter
+      Title2: tint
+    Node10:
+      DependencyIndex: 10
+      LevelID: 12
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 2
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: axisZ
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: axisZ
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 800
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: axisZ
+    Node11:
+      DependencyIndex: 11
+      LevelID: 0
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Code:
+          ClassType1: TEXT
+          String: |
+            // NeuronDots (was BrainDots) - v3 of the brain hologram. The mesh object sits at the scene root with an
+            // identity transform, so object space == world space whatever the Object->World node does
+            // (gpu-particles recipe). TS feeds the placement: origin + axisX/Y/Z (world, scaled) map the
+            // unit neuron positions onto the board's holo stage; camRight/camUp + pointSize billboard
+            // every neuron in world space. uv1 = activity texel, uv2.x = superclass hue. ASCII only.
+            
+            input_texture_2d activity;
+            input_color4 tint;
+            input_float pointSize;
+            input_float flash;
+            input_float baseGlow;
+            input_vec3 camRight;
+            input_vec3 camUp;
+            input_vec3 origin;
+            input_vec3 axisX;
+            input_vec3 axisY;
+            input_vec3 axisZ;
+            
+            output_vec3 transformedPosition;
+            output_vec4 vertexColor;
+            
+            vec3 hueRgb(float h) {
+                vec3 k = vec3(1.0, 0.6666667, 0.3333333);
+                vec3 p = abs(fract(vec3(h, h, h) + k) * 6.0 - 3.0);
+                return clamp(p - 1.0, 0.0, 1.0);
+            }
+            
+            void main() {
+                vec3 u = system.getSurfacePositionObjectSpace();
+                vec2 corner = system.getSurfaceUVCoord0() - 0.5;
+                vec3 centre = origin + axisX * u.x + axisY * u.y + axisZ * u.z;
+            
+                // activity texel: r = spike level (decays), g = hovered branch, b = dimmed (another branch hovered)
+                vec4 tx = activity.sample(system.getSurfaceUVCoord1());
+                // uv2.y = 1 on a COMMAND cell (DNa02, the escape DNs, DNpe007, MN9, PPL101): 1 to 8 neurons each
+                // out of the 16,000 drawn, so at the shared dot size they were invisible and the hologram never
+                // showed the status (12.09 Pavlo). They are drawn as beacons; a hovered branch grows again.
+                // Only the command branches grow on hover: a region row is thousands of neurons, and growing
+                // those blew the whole lobe into one white cloud (12.09 Pavlo: "avoid such strong blowouts").
+                float cmd = system.getSurfaceUVCoord2().y;
+                float hl = cmd * tx.g;
+                // 12.09 shader audit: `grow` must NOT depend on the activity sample. This body is compiled into
+                // both stages, so anything the vertex output touches keeps its inputs alive there - through `hl`
+                // the texture was fetched 4 x 16,000 = 64,000 extra times per frame in the VERTEX stage alone.
+                // Size now comes from the command flag only; the hover still brightens the branch.
+                float grow = 1.0 + 2.5 * cmd;
+                float beacon = 1.0 + 1.2 * cmd + 2.5 * hl;
+                transformedPosition = centre + (camRight * corner.x + camUp * corner.y) * pointSize * grow;
+                float d = length(corner) * 2.0;
+                float core = 1.0 - smoothstep(0.0, 0.32, d);
+                float halo = exp(-d * d * 5.0);
+                float hot = tx.r * flash;
+                // hover isolation (11.09 Pavlo): never brighten the chosen branch - dim everything else
+                // silhouette always visible (11.09 Pavlo): dimmed branches keep half their resting glow,
+                // only their spikes drop to 10 %
+                float keepRest = 1.0 - 0.5 * tx.b;
+                float keepHot = 1.0 - 0.9 * tx.b;
+                // the whole brain wears the selected fly's colour (11.09 Pavlo); spikes = the same hue, whiter
+                vec3 rest = mix(vec3(0.5, 0.62, 0.78), tint.rgb, 0.8 + 0.1 * tx.g);
+                rest = mix(rest, hueRgb(system.getSurfaceUVCoord2().x), 0.08);
+                vec3 spark = mix(tint.rgb, vec3(1.0, 1.0, 1.0), 0.45);
+                // resting floor lives in each dot's CORE (11.09 Pavlo: "minimum brightness, silhouette always"):
+                // sparse VNC dots stay visible, dense optic lobes don't stack their halos into a milky blob
+                vec3 col = rest * baseGlow * keepRest * beacon * (core * 2.2 + halo * 0.35) + spark * hot * keepHot * beacon * (core * 1.6 + halo * 0.4);
+                // `core` and `halo` are already ~0 at d >= 1 (exp(-5) = 0.007), so the old `inside` mask and its
+                // two multiplies bought nothing; the branch on alpha becomes a min()
+                float a = min(1.0, (baseGlow * keepRest + hot * keepHot) * beacon * halo);
+                vertexColor = vec4(col, a);
+            }
+
+        Description:
+          ClassType1: TEXT
+          String: ""
+        Examples:
+          ItemIndex: 0
+          ItemList: "Custom : Input/Output/Global Types : Extra Functions : Procedural Execution : Lighting Loop : System Built-In Values/Functions"
+        ID:
+          Variable: 0
+        Locked:
+          Variable: false
+        Stage:
+          ItemIndex: 1
+          ItemList: "Vertex : Pixel"
+        Title:
+          String: Custom Code
+        activity:
+          ClassType1: LINK
+          Connection0:
+            NodeLevelID: 2
+            PortID: Texture
+          Property:
+            Variables:
+              {}
+        axisX:
+          Connection0:
+            NodeLevelID: 10
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        axisY:
+          Connection0:
+            NodeLevelID: 11
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        axisZ:
+          Connection0:
+            NodeLevelID: 12
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        baseGlow:
+          Connection0:
+            NodeLevelID: 6
+            PortID: Output
+          Variable: 0.0
+        camRight:
+          Connection0:
+            NodeLevelID: 7
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        camUp:
+          Connection0:
+            NodeLevelID: 8
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        flash:
+          Connection0:
+            NodeLevelID: 5
+            PortID: Output
+          Variable: 0.0
+        ngs_Height:
+          Variable: 400
+        ngs_Version:
+          String: 0.1.0
+        origin:
+          Connection0:
+            NodeLevelID: 9
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        pointSize:
+          Connection0:
+            NodeLevelID: 4
+            PortID: Output
+          Variable: 0.0
+        tint:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 3
+            PortID: Output
+          Variable: [0.0, 0.0, 0.0, 1.0]
+        transformedPosition:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        vertexColor:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+      PositionX: 0
+      PositionY: 0
+      TemplateID: node_util_custom
+      TemplateVersionMinor: 2
+      Title1: Custom Code
+    Node12:
+      DependencyIndex: 12
+      LevelID: 13
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        ApplyRotation:
+          Variable: false
+        ApplyTranslation:
+          Variable: false
+        From:
+          ItemIndex: 1
+          ItemList: "Tangent Space : Object Space : World Space : Camera Space : Screen Space ( NDC )"
+        To:
+          ItemIndex: 1
+          ItemList: "Object Space : World Space : Camera Space : Screen Space ( NDC )"
+        VectorIn:
+          Connection0:
+            NodeLevelID: 0
+            PortID: transformedPosition
+          Variable: [0.0, 0.0, 0.0]
+        VectorOut:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0]
+      PositionX: 150
+      PositionY: 0
+      TemplateID: node_math_transform
+      TemplateVersionMinor: 1
+      Title1: Transform Vector
+      Title2: Object to World
+    Node13:
+      DependencyIndex: 13
+      LevelID: 1
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Depth:
+          Variable: 1.0
+        DepthMode:
+          ItemIndex: 0
+          ItemList: |2-
+            		Non-Linear - Normalized [0 to 1] ) : 		Linear - Normalized [-1 to 1] : 		View Space - Non-Normalized [-near to -far]	
+          ItemName: |2-
+            		Non-Linear - Normalized [0 to 1] )
+        DontFreezeSpec:
+          Variable: false
+        FinalColor:
+          ClassType1: COLOR
+          Connection0:
+            NodeLevelID: 0
+            PortID: vertexColor
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor1:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor2:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        FinalColor3:
+          ClassType1: COLOR
+          Variable: [1.0, 1.0, 1.0, 1.0]
+        GSplatPointSize:
+          Variable: 0.0
+        GSplatRotation:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        GSplatScale:
+          Variable: [0.0, 0.0, 0.0]
+        Motion Vector Pass:
+          ItemIndex: 0
+          ItemList: "Write Velocity and Depth : Discard Velocity but Write Depth : Discard Velocity and Depth"
+        Negative:
+          Variable: false
+        PrevWorldPosition:
+          Variable: [0.0, 0.0, 0.0]
+        RayDirection:
+          Variable: [0.0, 0.0, 0.0]
+        RayOrigin:
+          Variable: [0.0, 0.0, 0.0]
+        ShowPrevPos:
+          Variable: false
+        Targets:
+          ItemIndex: 0
+          ItemList: "1 : 2 : 3 : 4"
+        Type:
+          ItemIndex: 0
+          ItemList: "3D : Post Effect : Hair : Gaussian Splatting"
+        WorldNormal:
+          Variable: [0.0, 0.0, 0.0]
+        WorldPosition:
+          Connection0:
+            NodeLevelID: 13
+            PortID: VectorOut
+          Variable: [0.0, 0.0, 0.0]
+        WorldTangent:
+          Variable: [0.0, 0.0, 0.0]
+        WriteDepth:
+          Variable: false
+      PositionX: 300
+      PositionY: 0
+      TemplateID: nodes_main_graph
+      Title1: Shader
+      Title2: 3D
+    Node2:
+      DependencyIndex: 2
+      LevelID: 4
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: pointSize
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: pointSize
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 160
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: pointSize
+    Node3:
+      DependencyIndex: 3
+      LevelID: 5
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: flash
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: flash
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 240
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: flash
+    Node4:
+      DependencyIndex: 4
+      LevelID: 6
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 5
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: baseGlow
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: baseGlow
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 320
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: baseGlow
+    Node5:
+      DependencyIndex: 5
+      LevelID: 7
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 2
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: camRight
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: camRight
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 400
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: camRight
+    Node6:
+      DependencyIndex: 6
+      LevelID: 8
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 2
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: camUp
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: camUp
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 480
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: camUp
+    Node7:
+      DependencyIndex: 7
+      LevelID: 9
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 2
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: origin
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: origin
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 560
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: origin
+    Node8:
+      DependencyIndex: 8
+      LevelID: 10
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 2
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: axisX
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: axisX
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 640
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: axisX
+    Node9:
+      DependencyIndex: 9
+      LevelID: 11
+      NodeCount: 0
+      NodeType: 1
+      Ports:
+        Channels:
+          ItemIndex: 2
+          ItemList: "xyzw : rgba : xyz : rgb : xy : x"
+        Default:
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        EnableMax:
+          Variable: false
+        EnableMin:
+          Variable: false
+        Group:
+          String: ""
+        Max:
+          Variable: 1.0
+        Min:
+          Variable: 0.0
+        Output:
+          IOType: 1
+          Variable: [0.0, 0.0, 0.0, 0.0]
+        ScriptName:
+          String: axisY
+        SortIndex:
+          Variable: 0
+        Step:
+          Variable: 0.01
+        Title:
+          String: axisY
+        Tooltip:
+          String: ""
+      PositionX: -400
+      PositionY: 720
+      TemplateID: nodes_inputs_parameters_float
+      Title1: Float Parameter
+      Title2: axisY
+  IsSubGraph0: true
+  IsSubGraph1: true
+  IsSubGraph2: true
+  IsSubGraph3: true
+  LevelID: 0
+  NodeType: 3
+  PositionX: 0
+  PositionY: 0
+  TemplateID: nodes_main_subgraph
+  Title1: ""
+SystemID: dev.snap.shaders

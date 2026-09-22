@@ -1,0 +1,95 @@
+- !<AssetImportMetadata/c5a31c89-75eb-bb75-ae70-eeadf26b9a84>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c994c919-53e9-4aae-92a6-3da767f2d6e7
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c994c919-53e9-4aae-92a6-3da767f2d6e7
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9ef1daf8-98df-47c6-99b4-7a3f7195dc9b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9ef1daf8-98df-47c6-99b4-7a3f7195dc9b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: d29412ea-5f48-4abc-a0b6-b40fea2c5b09
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    arrow: false
+    bullet1Copy: false
+    bullet1Title: false
+    bullet2Copy: false
+    bullet2Title: false
+    bullet3Copy: false
+    bullet3Title: false
+    bullet4Copy: false
+    bullet4Title: false
+    guidanceRoot: false
+    guidanceText: false
+    guidanceTimeoutMs: false
+    keepLookingButton: false
+    successRoot: false
+    successText: false
+    successVisibleMs: false
+    titleText: false
+    troubleshootingRoot: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - guidanceRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      guidanceText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      arrow: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      troubleshootingRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      bullet1Title: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      bullet1Copy: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      bullet2Title: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      bullet2Copy: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      bullet3Title: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      bullet3Copy: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      bullet4Title: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      bullet4Copy: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      keepLookingButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      successRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      successText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      guidanceTimeoutMs: 30000
+      successVisibleMs: 1000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject guidanceRoot
+    - // @input Component.Text guidanceText
+    - // @input SceneObject arrow
+    - // @input SceneObject troubleshootingRoot
+    - // @input Component.Text titleText
+    - // @input Component.Text bullet1Title
+    - // @input Component.Text bullet1Copy
+    - // @input Component.Text bullet2Title
+    - // @input Component.Text bullet2Copy
+    - // @input Component.Text bullet3Title
+    - // @input Component.Text bullet3Copy
+    - // @input Component.Text bullet4Title
+    - // @input Component.Text bullet4Copy
+    - // @input AssignableType keepLookingButton
+    - // @input SceneObject successRoot
+    - // @input Component.Text successText
+    - '// @input int guidanceTimeoutMs = "30000"'
+    - '// @input int successVisibleMs = "1000"'

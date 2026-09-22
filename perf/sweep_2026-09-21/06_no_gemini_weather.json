@@ -1,0 +1,63 @@
+{
+ "n": 23,
+ "from": "21:15:12",
+ "to": "21:15:57",
+ "fps_mean": 19.1,
+ "fps_min": 14,
+ "frame_ms_mean": 52.4,
+ "worst_median_ms": 140,
+ "worst_max_ms": 368,
+ "script_mean_ms": 3.94,
+ "per": {
+  "ours": {
+   "mean_ms": 2.12,
+   "worst_ms": 62.87
+  },
+  "board": {
+   "mean_ms": 0.8,
+   "worst_ms": 12.88
+  },
+  "eye": {
+   "mean_ms": 0.422,
+   "worst_ms": 60.6
+  },
+  "bodies": {
+   "mean_ms": 0.2,
+   "worst_ms": 5.64
+  },
+  "vision": {
+   "mean_ms": 0.144,
+   "worst_ms": 2.26
+  },
+  "webscene": {
+   "mean_ms": 0.111,
+   "worst_ms": 13.44
+  },
+  "fx": {
+   "mean_ms": 0.085,
+   "worst_ms": 1.9
+  },
+  "net": {
+   "mean_ms": 0.027,
+   "worst_ms": 2.48
+  },
+  "senses": {
+   "mean_ms": 0.016,
+   "worst_ms": 0.88
+  },
+  "sound": {
+   "mean_ms": 0.008,
+   "worst_ms": 0.69
+  },
+  "attn": {
+   "mean_ms": 0.002,
+   "worst_ms": 1.83
+  },
+  "eyedots": {
+   "mean_ms": 0.002,
+   "worst_ms": 1.21
+  }
+ },
+ "label": "06_no_gemini_weather",
+ "log": "LensStudioLog-2026-09-21-12-20-59-474-da0fd.txt"
+}

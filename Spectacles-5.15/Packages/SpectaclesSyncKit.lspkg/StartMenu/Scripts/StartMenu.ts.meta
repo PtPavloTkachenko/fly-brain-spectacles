@@ -1,0 +1,57 @@
+- !<AssetImportMetadata/6143b642-149a-dc8b-d6d3-cdfdc8665bea>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6c734bdf-0a2a-4a2b-9f60-1f89d8f7cc43
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6c734bdf-0a2a-4a2b-9f60-1f89d8f7cc43
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d6c89664-6ef8-4155-909e-473aeca8fc5d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d6c89664-6ef8-4155-909e-473aeca8fc5d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b6c08ee0-0d53-425b-8873-8078913593a1
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableOnSingleplayerNodes: false
+    multiPlayerButton: false
+    singlePlayerButton: false
+    singlePlayerType: false
+    startMenuDistanceFromUser: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - singlePlayerButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      multiPlayerButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      startMenuDistanceFromUser: !<float> 150.000000
+      singlePlayerType: manual
+      enableOnSingleplayerNodes: !<reference.SceneObject[]>
+        []
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType singlePlayerButton
+    - // @input AssignableType_1 multiPlayerButton
+    - '// @input float startMenuDistanceFromUser = "150.0"'
+    - '// @input string singlePlayerType = "manual" {"widget":"combobox", "values":[{"label":"Manual", "value":"manual"}, {"label":"Mocked Online (Automatic)", "value":"mocked_online"}]}'
+    - "// @input SceneObject[] enableOnSingleplayerNodes"
