@@ -1755,7 +1755,10 @@
       markerMaterial: !<reference.Material> 4199e99a-de09-47a1-8e97-658afeaac2d2
       treatPrefab: !<reference.ObjectPrefab> f39b2fa7-77b9-4fee-9e8d-9c78e2e3d2a0
       treatPrefabs: !<reference.ObjectPrefab[]>
-        []
+        - !<reference> 2e8b71d7-3ecd-4160-ba37-9dda6258e55f
+        - !<reference> 214cc169-e312-41c1-b6a1-7eeda608d029
+        - !<reference> 7fb986e2-f9d6-4146-9524-6aa2d4362ecc
+        - !<reference> d5efca6f-1502-4634-ad17-b7d0891dcc46
       brainShell: !<reference.ObjectPrefab> 52d2363a-7043-42f8-84e4-704fd2ee9d05
       vncShell: !<reference.ObjectPrefab> d7dee0ec-523b-4740-914e-9393ede100ad
       showSourceMarkers: true
