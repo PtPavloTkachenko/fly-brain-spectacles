@@ -258,6 +258,8 @@ export class FlySwarm extends BaseScriptComponent {
     this.humanize(this.rightHand, FlyConfig.HUMAN_SMELL_HAND_CM)
     if (FlyConfig.SCAN_ENABLED) this.scanner = new WorldScanner(this.sources, this.cameraObject, this.uiFont || null, this.cameraModule || null)
     if (FlyConfig.WEATHER_ENABLED) this.weather = new FlyWeather() // ADR 95: one forecast fetch, refreshed quietly
+    // Gemini estimates the climate during the room scan (no GPS) -> the weather baseline
+    if (this.scanner && this.weather) this.scanner.onWeather = (tC, rh, w) => this.weather!.setFromScan(tC, rh, w)
 
     const n = Math.max(1, Math.min(this.flyCount, FlyConfig.FLY_COUNT))
     const band = FlyConfig.CRUISE_ALT_CM
@@ -2009,7 +2011,9 @@ export class FlySwarm extends BaseScriptComponent {
     this.timed("present", () => this.presentTick(dt)) // ADR 70: a thing in your hand IS the cue
     // ADR 101: a thing you POINT at is inspected, never changed -- FlyAttention reads the sources and
     // writes none. The selected fly's own message: the caption's verdict is what THAT fly thinks.
-    if (this.attention && this.introT <= 0) this.timed("attn", () => this.attention!.tick(dt, this.link.latest[this.selected] || null))
+    // point-to-inspect is off (FlyConfig.ATTENTION_INTERACTIVE): no SIK interactable is created and no
+    // billboard caption/box/rings are drawn; the scan labels describe each thing statically instead.
+    if (this.attention && this.introT <= 0 && FlyConfig.ATTENTION_INTERACTIVE) this.timed("attn", () => this.attention!.tick(dt, this.link.latest[this.selected] || null))
     if (this.lure && this.lure.label === "hand_lure") {
       const p = this.pinchPoint("left")
       if (p) this.sources.move(this.lure, p)
@@ -2141,7 +2145,10 @@ export class FlySwarm extends BaseScriptComponent {
         print("RETINA_NONE vision=" + (this.vision ? "on" : "OFF") + " intro=" + this.introT.toFixed(1) +
           " " + (this.vision ? this.vision.status() : ""))
       }
-      this.timed("board", () => this.board!.update(dt, camT, palm, this.selected, sel, this.link.latest[this.selected] || null, this.link.connected))
+      // the board's "connected" follows the WEB brain (a page by PIN), not the LAN socket: WebBrainLink
+      // feeds latest and sets webActive but inherits BrainLink.connected, which stays false for a page brain.
+      const brainLive = this.link instanceof WebBrainLink ? (this.link as WebBrainLink).webActive : this.link.connected
+      this.timed("board", () => this.board!.update(dt, camT, palm, this.selected, sel, this.link.latest[this.selected] || null, brainLive))
       // onboarding (ADR 57): which step the session is at
       const web = this.link instanceof WebBrainLink ? this.link : null
       let friends = 0 // was Object.keys(...).length: an array allocated every frame to read a count

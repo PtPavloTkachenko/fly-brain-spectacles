@@ -12,6 +12,7 @@ const FlyGpuLib = {
     n: 0, E: 0, slots: 0, TA: 0, NP: 0, CS: 0, MAXT: 1024, ga1: 64, ga2: 128, gb1: 64, TAB_BLOCKS: 5,
     off: {}, ptrs: {}, sizes: {}, params: null, dirtyEdges: new Set(), staging: {}, LOCALSORT: 1024, TG: 256,
     shaderSrc: null, timing: { up: 0, gpu: 0, down: 0, runs: 0 },
+    runChunk: 8, // 22.09 Pavlo: drain the GPU every N steps inside run() so a long warm-up never freezes macOS (0 = off)
 
     err(msg) {
       FlyGpu.info = String(msg);
@@ -219,12 +220,19 @@ const FlyGpuLib = {
       let enc = g.dev.createCommandEncoder();
       pass(enc, "k_begin", nbt + 1);
       g.q.submit([enc.finish()]);
+      // 22.09 Pavlo: never queue a whole run at once. On macOS the window compositor shares this GPU,
+      // so a large in-flight compute batch (e.g. the ~260-step warm-up submitted back to back) starves
+      // the display and freezes the whole machine -- and the hung GPU work keeps freezing it even after
+      // the tab is closed. Drain every FB_RUN_CHUNK steps so the GPU services the compositor between
+      // batches. onSubmittedWorkDone waits for the work already queued, then we submit the next chunk.
+      const CHUNK = FlyGpu.runChunk;
       for (let t = 0; t < steps; t++) {
         g.q.writeBuffer(g.bufs.params, 0, paramsPerT[t].buffer);
         enc = g.dev.createCommandEncoder();
         pass(enc, "k_tickA", g.ga1 + g.ga2);
         pass(enc, "k_tickB", g.gb1 + 1);
         g.q.submit([enc.finish()]);
+        if (CHUNK > 0 && (t + 1) % CHUNK === 0 && t + 1 < steps) await g.q.onSubmittedWorkDone();
       }
       enc = g.dev.createCommandEncoder();
       pass(enc, "k_end", nbt);

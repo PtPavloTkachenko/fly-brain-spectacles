@@ -206,7 +206,8 @@ export const FlyConfig = {
   // BASELINE on the brain's hot / cold / dry / moist cells (TRN_VP2 / VP3 / HRN_VP4 / VP5) for every
   // fly. Gemini's per-thing fields (ADR 96) add on top of it near the thing.
   WEATHER_ENABLED: true,
-  WEATHER_LOCATION: true, // ask the glasses where they are (a location prompt once); false = the two lines below
+  WEATHER_LOCATION: false, // GPS off (disabled when the lens also uses internet); climate comes from Gemini (WEATHER_FROM_SCAN)
+  WEATHER_FROM_SCAN: true, // Gemini estimates the room's approximate climate during the scan; no GPS, no weather API
   WEATHER_LAT: 50.45, // the default city (change it for yours, ADR 95) -- used until a real position arrives, or when WEATHER_LOCATION is off
   WEATHER_LON: 30.52,
   WEATHER_LOCATION_WAIT_S: 6, // no position after this long -> fetch for WEATHER_LAT/LON, keep listening
@@ -322,7 +323,7 @@ export const FlyConfig = {
   INTRO_HEADLOCK_RATE: 6, // 21.09: the start + scan cards follow the head at this ease (per s) until the intro ends
   INTRO_RIGHT_CM: 0, // ...dead centre (the dashboard's own spot is BOARD_FRAME_RIGHT_CM to the right)
   INTRO_SETTLE_S: 1.2, // ...and after the intro the anchor slides to that spot over this long, then stays
-  BOARD_FRAME_RIGHT_CM: 30,
+  BOARD_FRAME_RIGHT_CM: 0, // dashboard stays where the intro cards were (was 30 -> flew right after the scan)
   BOARD_FRAME_DOWN_CM: 5,
   BOARD_FRAME_W_CM: 46, // frame around the 50x46 board (x BOARD_SCALE 0.85 = 42.5x39): + a small margin
   BOARD_FRAME_H_CM: 45,
@@ -540,6 +541,7 @@ export const FlyConfig = {
   SCAN_LABEL_CAP_CM: 2.05, // the batched world label's cap height (matches the old Text look pixel for pixel)
   SCAN_LABEL_SCALE: 2.5, // floating label above each found object (~4 cm caps)
   SCAN_LABEL_LIFT_CM: 5, // label origin above the anchor so the arrow tip sits on it (tune by eye)
+  ATTENTION_INTERACTIVE: false, // no point-to-inspect; every scan describes itself statically under its name label
   FOOD_ASSIST_CM: 70, // food within this of a fly's head = its landing target (altitude + touch-down; disclosed)
   FOOD_SATED: 0.97, // ...until its energy is back above this, then it takes off
   FOOD_SPOT_CM: 14, // each fly lands on its own spot on a ring this far from the food's centre (bench: one shared point = head in head; 7 cm = heads 12 cm apart, still a loom at arrival)

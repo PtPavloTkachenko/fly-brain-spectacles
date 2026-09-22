@@ -15,9 +15,30 @@ import { GeminiTypes } from "RemoteServiceGateway.lspkg/HostedExternal/GeminiTyp
 import { FlyConfig } from "./FlyConfig"
 import { Source, SourceClass, SourceProps, WorldSources } from "./WorldSources"
 import { TextBatch } from "./TextBatch"
+import { ODOUR_SMELL } from "./FlyAttention"
 import { requestWorldCamera, worldDeviceCamera } from "./WorldCameraId"
 
 const log = new NativeLogger("WorldScanner")
+
+// Every scanned thing carries its description under its name, statically (no billboard, no
+// interactable) -- the same batched world label as the name. The lines are the SMELL (static: the
+// odorant this thing is) and Gemini's physical fields, half the name's cap height. The verdict is
+// dynamic and lives on the board, not baked into a static label.
+const DESC_CAP_FRAC = 0.5 // the description cap height as a fraction of the name's
+function descOf(src: Source): string[] {
+  const out: string[] = []
+  if (src.cls === "bad") out.push("a smell she is born to avoid")
+  else out.push("she smells: " + (ODOUR_SMELL[src.odourId] || "something"))
+  // ADR 96: the physical fields Gemini gave, in plain words -- only the ones really there (> 0.3)
+  const P = 0.3
+  const bits: string[] = []
+  if (src.warm > P) bits.push(src.warm > 0.7 ? "warm to be near" : "a little warm")
+  if (src.cold > P) bits.push(src.cold > 0.7 ? "cold" : "a little cold")
+  if (src.humid > P) bits.push(src.humid > 0.7 ? "humid" : "a little humid")
+  if (src.wind > P) bits.push(src.wind > 0.7 ? "windy" : "a draught")
+  if (bits.length) out.push(bits.join(", "))
+  return out
+}
 
 // 11.09 Pavlo: "Gemini must report everything, not only food — cats, plants, the litter box,
 // a phone, AirPods, keys..." — a room inventory, each thing classified by what it means to a fly
@@ -45,7 +66,12 @@ const PROMPT =
   // 11.09 Pavlo: "Gemini must not detect the same thing 300 times"
   "You also get known_in_view: things already mapped in this view. Do NOT list them again - list only NEW " +
   "objects (an empty list is fine). Put every known_in_view label you can no longer see into gone. " +
-  'Answer as JSON {"objects": [{"label", "kind", "box_2d"}], "gone": [labels]}. Never use code fences.'
+  // Gemini also estimates the room's approximate climate, so the fly's thermo/hygro cells get a
+  // baseline without GPS or a weather API (ADR 95 supersede).
+  "Also estimate the approximate OUTDOOR weather right now from the scene, the light and the season - rough is fine: " +
+  "temp_c (outdoor air temperature in Celsius, a plausible number), humidity (relative humidity, percent 0 to 100), " +
+  "windy (0 to 1, how windy it is outside). " +
+  'Answer as JSON {"objects": [{"label", "kind", "box_2d"}], "gone": [labels], "weather": {"temp_c", "humidity", "windy"}}. Never use code fences.'
 
 const SCHEMA: GeminiTypes.Common.Schema = {
   type: "object",
@@ -68,6 +94,14 @@ const SCHEMA: GeminiTypes.Common.Schema = {
       },
     },
     gone: { type: "array", items: { type: "string" } },
+    weather: { // the room's approximate climate, estimated by Gemini (no GPS, no weather API)
+      type: "object",
+      properties: {
+        temp_c: { type: "number" },
+        humidity: { type: "number" },
+        windy: { type: "number" },
+      },
+    },
   },
   required: ["objects"],
 }
@@ -97,6 +131,7 @@ interface Found {
   src: Source
   seen: number
   text: string // the label as it is drawn (upper case), without the arrow
+  desc: string[] // the smell/physical line(s) under the name, half cap, static
   pos: vec3 // where the label sits: the anchor lifted by SCAN_LABEL_LIFT_CM
   right: vec3 // the plane it is drawn on, taken from the aim quaternion so the look is unchanged
   up: vec3
@@ -216,13 +251,30 @@ class WorldLabels {
         mb.appendIndices([base, base + 2, base + 1, base, base + 3, base + 2])
         base += 4
       }
-      // line 0: the name, centred. Its line box top sits at +lineCm (block = 2 lines about 0).
+      // the description under the name, half the cap, STATIC. The name is lifted by the description's
+      // height so the arrow (box top 0) keeps its tip on the anchor -- unchanged.
+      const dEm = (capCm * DESC_CAP_FRAC) / f.capEm // cm per EM for the half-height description
+      const dlaid = it.desc.map((line) => f.laid(line))
+      let descH = 0
+      for (const dl of dlaid) descH += dl.lineHeight * dEm
+      // line 0: the name, centred, its box top lifted by the description height.
       const w = laid.width * em
       const x = -w / 2
-      const top0 = lineCm // line 0's box top; the glyph rects carry their own offsets from it
+      const top0 = lineCm + descH // name box top; the arrow at box top 0 keeps its tip on the anchor
       for (const g of laid.glyphs) {
         if (base > 16000) break
         quad(x + g.x * em, top0 - g.y * em, x + (g.x + g.width) * em, top0 - (g.y + g.height) * em, g.u0, g.v0, g.u1, g.v1, 0)
+      }
+      // the description lines: half cap, filling the gap between the name and the arrow
+      let dy = top0 - lineCm // just under the name's line box
+      for (const dl of dlaid) {
+        const dw = dl.width * dEm
+        const dx = -dw / 2
+        for (const g of dl.glyphs) {
+          if (base > 16000) break
+          quad(dx + g.x * dEm, dy - g.y * dEm, dx + (g.x + g.width) * dEm, dy - (g.y + g.height) * dEm, g.u0, g.v0, g.u1, g.v1, 0)
+        }
+        dy -= dl.lineHeight * dEm
       }
       // line 1: the arrow. Line 1's box top is 0, and its baseline sits cap-top + cap below that
       // (the font's own `base`: 0.2917 + 0.698 = 0.9896 em, i.e. 95/96).
@@ -249,6 +301,8 @@ class WorldLabels {
 export class WorldScanner {
   /** Every captured frame + the camera pose it came from (WorldColorBake bakes room colours). */
   onFrame: (tex: Texture, camWorld: mat4) => void = () => {}
+  /** Gemini's approximate room climate from each scan -> FlyWeather (no GPS, no weather API). */
+  onWeather: (tC: number, rh: number, windKmh: number) => void = () => {}
   private root: SceneObject
   private cam: Camera
   private camTex: Texture | null = null
@@ -547,6 +601,12 @@ export class WorldScanner {
           return
         }
         const answer = JSON.parse(part.text)
+        // the scan's approximate climate -> FlyWeather (ADR 95: Gemini instead of GPS + forecast)
+        const w = answer.weather
+        if (w && typeof w.temp_c === "number" && typeof w.humidity === "number") {
+          const windy = typeof w.windy === "number" ? Math.max(0, Math.min(1, w.windy)) : 0
+          this.onWeather(w.temp_c, Math.max(0, Math.min(100, w.humidity)), windy * FlyConfig.WEATHER_WIND_FULL_KMH)
+        }
         const objs = answer.objects || []
         // known things Gemini says are gone -> forget; the rest were confirmed by not being re-listed
         const gone: string[] = (answer.gone || []).map((g: any) => String(g).toLowerCase())
@@ -693,7 +753,8 @@ export class WorldScanner {
         if (props) this.sources.setProps(f.src, props) // a second look refines the smell and the fields
         f.src.label = label
         f.text = label.toUpperCase()
-        if (f.obj) (f.obj.getComponent("Component.Text") as Text).text = f.text + "\n▼"
+        f.desc = descOf(f.src)
+        if (f.obj) (f.obj.getComponent("Component.Text") as Text).text = f.text + "\n" + f.desc.join("\n") + "\n▼"
         this.aimLabel(f) // also marks the batch dirty
         f.seen = this.now
         return
@@ -704,10 +765,11 @@ export class WorldScanner {
     // arrow points at the exact anchor instead
     const src = this.sources.add(label, cls, pos, size, -1, false, props)
     const text = label.toUpperCase()
+    const desc = descOf(src)
     const found: Found = {
-      src: src, seen: this.now, text: text, pos: pos, right: WorldScanner.RIGHT, up: WorldScanner.UP,
+      src: src, seen: this.now, text: text, desc: desc, pos: pos, right: WorldScanner.RIGHT, up: WorldScanner.UP,
       color: LABEL_COLOR[cls], hidden: false,
-      obj: this.labels ? null : this.makeLabel(text, cls), // batched, or the old one-Text-each path
+      obj: this.labels ? null : this.makeLabel(text, desc, cls), // batched, or the old one-Text-each path
     }
     this.found.push(found)
     this.aimLabel(found)
@@ -720,12 +782,12 @@ export class WorldScanner {
 
   /** Fallback only: one Component.Text per thing (= one draw call each), used when the MSDF
    *  material or the font metadata is missing. The batch is the normal path. */
-  private makeLabel(text: string, cls: SourceClass): SceneObject {
+  private makeLabel(text: string, desc: string[], cls: SourceClass): SceneObject {
     const so = global.scene.createSceneObject("ScanLabel")
     so.setParent(this.root)
     const t = so.createComponent("Component.Text") as Text
     if (this.font) t.font = this.font
-    t.text = text + "\n▼" // the arrow tip marks the anchor
+    t.text = text + (desc.length ? "\n" + desc.join("\n") : "") + "\n▼" // name, description, then the arrow tip on the anchor
     t.size = 48
     t.horizontalAlignment = HorizontalAlignment.Center
     t.horizontalOverflow = HorizontalOverflow.Overflow

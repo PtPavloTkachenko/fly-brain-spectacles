@@ -90,6 +90,8 @@ export class FlyWeather {
 
   tick(dt: number) {
     this.t += dt
+    // Gemini estimates the climate during the room scan (setFromScan); no GPS, no fetch.
+    if (FlyConfig.WEATHER_FROM_SCAN) return
     if (this.busy) return
     // give the position a few seconds to arrive, then go with the default rather than wait
     if (!this.locDone) {
@@ -184,6 +186,14 @@ export class FlyWeather {
   }
 
   /** One compact term for the `dbg` row: the reading, the room, the four cells, where from. */
+  /** The room scan estimates the outdoor weather; WorldScanner feeds it here instead of a fetch.
+   *  Same apply() pipeline, so nothing downstream changes. */
+  setFromScan(tC: number, rh: number, windKmh: number) {
+    if (!isFinite(tC) || !isFinite(rh)) return
+    this.locSrc = "gemini"
+    this.apply(tC, rh, isFinite(windKmh) ? windKmh : 0)
+  }
+
   status(): string {
     const ch = this.ch
     if (this.readAt < 0) return "clim=none" + (this.lastErr ? "(" + this.lastErr.substring(0, 40) + ")" : "") + " src=" + this.locSrc + " tries=" + this.fetches

@@ -92,7 +92,7 @@ const ODOUR_WORD = ["lime", "yellow", "pink", "teal", "blue", "amber", "orange",
  *  the odorant each glomerulus is tuned to -- VA2 2,3-butanedione (buttery, fermenting), DM4
  *  methyl acetate (a sweet solvent), DM2 ethyl hexanoate (ripe fruit), DM1 ethyl acetate (sharp,
  *  fruity). The hash decides which one a thing gets (ADR 65); the caption tells the truth about it. */
-const ODOUR_SMELL = ["buttery, fermenting", "pear drops", "ripe fruit", "mushroom", "sharp fruit", "a sweet solvent", "banana", "winey fruit", "wintergreen", "pineapple candy", "cut green leaves", "sharp ammonia", "citrus peel", "honey", "rose", "barnyard"]
+export const ODOUR_SMELL = ["buttery, fermenting", "pear drops", "ripe fruit", "mushroom", "sharp fruit", "a sweet solvent", "banana", "winey fruit", "wintergreen", "pineapple candy", "cut green leaves", "sharp ammonia", "citrus peel", "honey", "rose", "barnyard"]
 /** `bad` has no glomerulus (WorldSources sets odourId -1 for it): it drives the aversive channel.
  *  Its own colour, so it can never be read as one of the four. */
 const BAD_COLOR = new vec4(1.0, 0.35, 0.35, 1)
@@ -175,7 +175,7 @@ const DROP_S = 0.18
 // small nominal ring, because "this barely smells" is the lesson, not a missing drawing. These
 // constants live here (like the box's), not in FlyConfig, which stays untouched (see above).
 const RING_MULT = [0.5, 1.0, 1.5] // ring radii as multiples of sigma: inner, the sigma edge, faint outer
-const RING_INTEN = [2.2, 1.6, 0.9] // brightest inside, faint at the outer edge -- additive display (21.09: lifted, 'ледве видно радіуси')
+const RING_INTEN = [1.1, 0.8, 0.45] // brightest inside, faint at the outer edge -- additive display (21.09: lifted, 'ледве видно радіуси')
 const RING_DOTS = 40 // soft discs per ring; a dotted ring never fills and never washes out the room
 const RING_HOVER_SCALE = 0.45 // ring brightness while the cursor only hovers (the box used to do this job)
 const RING_NOMINAL_CM = 18 // the single ring a 0-sigma object gets: just outside its box
