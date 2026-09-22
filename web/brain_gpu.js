@@ -2,8 +2,8 @@
 // calls wgpu_create / wgpu_run / wgpu_upload_all / wgpu_fetch_all / wgpu_weight; the state lives in
 // the WASM heap (host copies) and in GPU buffers (the truth while the brain runs on the GPU).
 //
-// Buffer families (see brain.wgsl): params (uniform) | consts = ptr | nc | tab | e0..e3 (edge slices of
-// 2^23) | cells | io | W (work arena) | ACC (this tick's integer units per target) | QS = queue | qcount | scr | ctr.
+// Buffer families (see brain.wgsl): params (uniform) | consts = ptr | nc | tab | e0..e1 (edge slices of
+// 2^24) | cells | io | W (work arena) | ACC (this tick's integer units per target) | QS = queue | qcount | scr | ctr.
 // Per chunk: io up (drive), dispatches, ctr + io down (nactive, counts). Everything else moves only at
 // upload_all / fetch_all. Asyncify makes the C++ side wait for the readbacks.
 const FlyGpuLib = {
@@ -31,13 +31,15 @@ const FlyGpuLib = {
       if (!adapter) throw new Error("no WebGPU adapter");
       const L = adapter.limits;
       const want = {
-        maxStorageBuffersPerShaderStage: Math.min(10, L.maxStorageBuffersPerShaderStage),
+        maxStorageBuffersPerShaderStage: Math.min(8, L.maxStorageBuffersPerShaderStage),
         maxStorageBufferBindingSize: Math.min(L.maxStorageBufferBindingSize, 1 << 30),
         maxBufferSize: Math.min(L.maxBufferSize, 1 << 30),
         maxComputeWorkgroupStorageSize: Math.min(L.maxComputeWorkgroupStorageSize, 16384),
       };
-      if (L.maxStorageBuffersPerShaderStage < 10) throw new Error("adapter allows only " + L.maxStorageBuffersPerShaderStage + " storage buffers per stage (need 10)");
-      if (L.maxStorageBufferBindingSize < (1 << 26)) throw new Error("storage binding too small: " + L.maxStorageBufferBindingSize);
+      // 22.09: the kernel now binds 8 storage buffers (was 10). Metal gives 10+, but Chrome/Edge on
+      // Windows/D3D12 caps a stage at 8, so the old build only ran on the Mac. Two 128 MB edge buffers.
+      if (L.maxStorageBuffersPerShaderStage < 8) throw new Error("adapter allows only " + L.maxStorageBuffersPerShaderStage + " storage buffers per stage (need 8)");
+      if (L.maxStorageBufferBindingSize < (1 << 27)) throw new Error("storage binding too small: " + L.maxStorageBufferBindingSize + " (need 128 MB)");
       const dev = await adapter.requestDevice({ requiredLimits: want });
       dev.lost.then((i) => FlyGpu.err("device lost: " + i.message));
       FlyGpu.adapter = adapter;
@@ -57,7 +59,7 @@ const FlyGpuLib = {
       const ci = await mod.getCompilationInfo();
       for (const m of ci.messages) if (m.type === "error") throw new Error("WGSL " + m.lineNum + ":" + m.linePos + " " + m.message);
       const entries = [{ binding: 0, visibility: GPUShaderStage.COMPUTE, buffer: { type: "uniform" } }];
-      for (let b = 1; b <= 10; b++) entries.push({ binding: b, visibility: GPUShaderStage.COMPUTE, buffer: { type: b <= 5 ? "read-only-storage" : "storage" } });
+      for (let b = 1; b <= 8; b++) entries.push({ binding: b, visibility: GPUShaderStage.COMPUTE, buffer: { type: b <= 3 ? "read-only-storage" : "storage" } });
       const bgl = dev.createBindGroupLayout({ entries });
       const layout = dev.createPipelineLayout({ bindGroupLayouts: [bgl] });
       for (const k of ["k_begin", "k_tickA", "k_tickB", "k_end", "k_blksort", "k_rank"]) {
@@ -106,8 +108,8 @@ const FlyGpuLib = {
       g.up("consts", ptr32, 4 * (n + 1), 0);
       g.up("consts", nc, 16 * n, 4 * g.off.nc);
       g.up("consts", tab, 4 * g.TAB_BLOCKS * TA, 4 * g.off.tab);
-      const EPART = 1 << 23;
-      for (let s = 0; s < 4; s++) {
+      const EPART = 1 << 24;   // 22.09: 16M edges (128 MB) per buffer, TWO buffers -> 8 storage bindings, fits Windows/D3D12
+      for (let s = 0; s < 2; s++) {
         const s0 = s * EPART, cnt = Math.max(1, Math.min(EPART, E - s0));
         g.mk("e" + s, 8 * cnt, S);
         if (s0 < E) g.up("e" + s, edges, 8 * cnt, 0, 8 * s0);
@@ -120,7 +122,7 @@ const FlyGpuLib = {
       // empty target lists: head = 0xFFFFFFFF
       const heads = new Uint32Array(n).fill(0xFFFFFFFF);
       g.q.writeBuffer(g.bufs.W, 4 * g.off.head, heads.buffer);
-      const names = ["params", "consts", "e0", "e1", "e2", "e3", "cells", "io", "W", "ACC", "QS"];
+      const names = ["params", "consts", "e0", "e1", "cells", "io", "W", "ACC", "QS"];
       g.bind = g.dev.createBindGroup({ layout: g.bgl, entries: names.map((nm, i) => ({ binding: i, resource: { buffer: g.bufs[nm] } })) });
       g.params = new Int32Array(36);
       const P = g.params, F = new Float32Array(P.buffer), U = new Uint32Array(P.buffer);
@@ -159,14 +161,14 @@ const FlyGpuLib = {
       st.unmap();
     },
 
-    // The whole CSR, host copy -> e0..e3. flybrain.cpp::set_gpu fills edges() only AFTER create (one
+    // The whole CSR, host copy -> e0..e1. flybrain.cpp::set_gpu fills edges() only AFTER create (one
     // source array at a time, so bringing the GPU up never holds two 200 MB copies at once). On
     // Vulkan edges() is mapped device memory, so those writes are already on the GPU; here it is a
     // vector in the WASM heap, so webbrain.cpp calls this once before the first run -- without it
     // the kernel runs on an all-zero CSR and nothing but the directly driven cells ever fires.
     uploadEdges() {
-      const g = FlyGpu, EPART = 1 << 23;
-      for (let s = 0; s < 4; s++) {
+      const g = FlyGpu, EPART = 1 << 24;   // must match create()/flushEdges(): two 16M-edge buffers
+      for (let s = 0; s < 2; s++) {
         const s0 = s * EPART;
         if (s0 >= g.E) break;
         g.up("e" + s, g.ptrs.edges, 8 * Math.min(EPART, g.E - s0), 0, 8 * s0);
@@ -181,7 +183,7 @@ const FlyGpuLib = {
       const pages = new Set();
       for (const e of g.dirtyEdges) pages.add((e * 8) >> 12);
       g.dirtyEdges.clear();
-      const EPART = 1 << 23;
+      const EPART = 1 << 24;   // must match create()/uploadEdges(): two 16M-edge buffers
       for (const pg of pages) {
         const byte = pg << 12;
         const s = Math.floor(byte / (8 * EPART)), local = byte - s * 8 * EPART;

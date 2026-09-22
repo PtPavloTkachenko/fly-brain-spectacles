@@ -19,8 +19,9 @@ const EMPTY: u32 = 0xFFFFFFFFu;
 const ENDL: u32 = 0x7FFFFFFFu;
 const LOCALSORT: u32 = 1024u;
 const INT_MIN_: i32 = -2147483648;
-const EPART_SHIFT: u32 = 23u;
-const EPART: u32 = 1u << EPART_SHIFT;
+const EPART_SHIFT: u32 = 24u;   // 22.09: 16M edges per buffer (128 MB) in TWO buffers, not four of 8M.
+const EPART: u32 = 1u << EPART_SHIFT;   // frees two storage-buffer bindings so the kernel fits Windows/D3D12's
+// 8-per-stage limit (Metal gives more, which is why it only ever ran on the Mac). Same 32M-edge capacity.
 
 struct Cell { last: i32, spk: i32, v: f32, g: f32, adapt: f32, rest: f32, drive: f32, pk: i32 }
 struct Edge { post: i32, units: i32 }
@@ -40,13 +41,11 @@ struct Params {
 @group(0) @binding(1) var<storage, read> consts: array<u32>;
 @group(0) @binding(2) var<storage, read> e0: array<Edge>;
 @group(0) @binding(3) var<storage, read> e1: array<Edge>;
-@group(0) @binding(4) var<storage, read> e2: array<Edge>;
-@group(0) @binding(5) var<storage, read> e3: array<Edge>;
-@group(0) @binding(6) var<storage, read_write> cells: array<Cell>;
-@group(0) @binding(7) var<storage, read_write> io: array<IO>;
-@group(0) @binding(8) var<storage, read_write> W: array<atomic<u32>>;
-@group(0) @binding(9) var<storage, read_write> ACC: array<atomic<i32>>;  // this tick's integer units per target
-@group(0) @binding(10) var<storage, read_write> QS: array<i32>;
+@group(0) @binding(4) var<storage, read_write> cells: array<Cell>;
+@group(0) @binding(5) var<storage, read_write> io: array<IO>;
+@group(0) @binding(6) var<storage, read_write> W: array<atomic<u32>>;
+@group(0) @binding(7) var<storage, read_write> ACC: array<atomic<i32>>;  // this tick's integer units per target
+@group(0) @binding(8) var<storage, read_write> QS: array<i32>;
 
 fn C_NA(t: i32) -> u32 { return u32(t); }
 fn C_NSP(t: i32) -> u32 { return u32(P.MAXT + 1 + t); }
@@ -66,9 +65,7 @@ fn edge(e: u32) -> Edge {
   let b = e >> EPART_SHIFT;
   let o = e & (EPART - 1u);
   if (b == 0u) { return e0[o]; }
-  if (b == 1u) { return e1[o]; }
-  if (b == 2u) { return e2[o]; }
-  return e3[o];
+  return e1[o];
 }
 fn deg(i: i32) -> u32 {
   if (ncMod(i) != 0u) { return 0u; }
