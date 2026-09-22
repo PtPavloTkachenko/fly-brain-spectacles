@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>CyberFly — a real fly brain on your GPU</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ------------------------------------------------------------------ the dashboard -->
+<div id="app">
+
+  <!-- THE HEADER TELLS A STRANGER THREE THINGS (21.09, Pavlo: "no idea what this is"): what they are
+       looking at (the title), that it is alive (the BRAIN chip: a pulse and a step count), and — on
+       the glasses path only — whether the glasses are connected. Everything that is a tuning knob
+       (detail rung, GPU priority, mesh style, step time, fps) lives behind ADVANCED, with a plain
+       label and a tooltip that says what it does and why you would touch it. -->
+  <div id="top" class="enter">
+    <div id="title">A REAL FLY BRAIN <b id="titleFly">// RUNNING ON YOUR GRAPHICS CARD</b></div>
+    <!-- the tab strip is a hidden experiment tool: it appears only with ?tab=training (#app.lab) -->
+    <div class="seg" id="tabs" role="tablist" aria-label="sections">
+      <button class="tb on" data-t="brain" role="tab" aria-selected="true">1 BRAIN</button><button class="tb" data-t="training" role="tab" aria-selected="false">2 TRAINING</button>
+    </div>
+    <div class="chip" id="chipLive" title="One step = the brain thinking through 50 ms of the fly's life. The dot beats on every step."><em></em>brain <i>starting</i></div>
+    <div class="chip" id="chipRoom" title="the PIN you typed — click to change it or leave">pin <i>&mdash;</i></div>
+    <div class="chip" id="chipLens" title="whether the glasses are talking to this page">glasses <i>&mdash;</i></div>
+    <div id="fault" class="sp"></div>
+    <!-- 21.09 Pavlo: BOOST BRAIN — one tap stops ALL drawing (the panels say PREVIEW PAUSED) so the graphics card does nothing but think for the fly; big on a phone, small on a desktop -->
+    <button class="chip ctl fast" id="chipFast" type="button" aria-pressed="false"
+      title="BOOST BRAIN — stop drawing everything so the whole graphics card thinks for the fly. Tap again to draw.">&#9889; boost brain</button>
+    <button class="chip ctl adv" id="chipEngine" type="button" aria-haspopup="true" aria-expanded="false"
+      title="DETAIL — how much of the brain is drawn. Lower it if the picture stutters. It never changes what the brain computes.">detail <i>&mdash;</i></button>
+    <button class="chip ctl adv" id="chipPerf" type="button" aria-haspopup="true" aria-expanded="false"
+      title="PRIORITY — what your graphics card spends its time on: the picture, or the brain. BRAIN FIRST makes the fly think faster and draws less.">priority <i>&mdash;</i></button>
+    <!-- HOW THE ROOM IS DRAWN. Hidden until real room geometry exists (app.js shows it): with no mesh
+         there is nothing to offer four ways of drawing. -->
+    <button class="chip ctl adv" id="chipMesh" type="button" aria-haspopup="true" aria-expanded="false"
+      style="display:none" title="ROOM MESH — how the scanned room is drawn. It changes nothing the fly senses.">room mesh <i>&mdash;</i></button>
+    <div class="chip adv" id="chipStep" title="THINK TIME — how long the brain takes for one step (50 ms of fly time). About 100 ms on a laptop GPU, 600–900 on a CPU.">think time <i>&mdash;</i></div>
+    <div class="chip adv" id="chipFps" title="how many frames a second this page is drawing"><i>&mdash;</i></div>
+    <button class="chip ctl" id="chipAdv" type="button" aria-pressed="false" aria-label="advanced" title="the tuning knobs: detail, priority, timing"><span class="ph" aria-hidden="true">&#9776;</span><span class="wd">advanced</span></button>
+    <!-- what to DO about a slow engine, as its own row -->
+    <div id="engineNote"></div>
+    <!-- the demo in a narrow window: one soft line, and it still runs -->
+    <div id="sizeNote"></div>
+  </div>
+
+  <!-- ---------------- left: the brain's numbers and the body -->
+  <div id="left">
+    <div class="plate enter grow" id="pNeural">
+      <div class="cap"><span>NEURONS <b>// HOW FAST THEY FIRE</b></span><span class="r" id="neuralRange">HZ</span></div>
+      <div class="rows" id="neural"></div>
+      <div class="empty" id="neuralEmpty">waiting for the brain&rsquo;s first thought&hellip;</div>
+      <div id="rasterWrap"><canvas id="raster"></canvas><span class="rcap">LAST 30 S</span></div>
+    </div>
+    <div class="plate enter" id="pBody">
+      <div class="cap"><span>BODY <b>// WHAT THE FLY IS DOING</b></span><span class="r" id="bodyName">&mdash;</span></div>
+      <div class="stats">
+        <div class="st wide"><div class="k">action</div><div class="v g big" id="bAction">&mdash;</div></div>
+        <div class="st"><div class="k">state</div><div class="v" id="bState">&mdash;</div></div>
+        <div class="st"><div class="k">speed</div><div class="v" id="bSpeed">&mdash;</div></div>
+        <div class="st wide"><div class="k">energy</div><div class="v" id="bEnergy">&mdash;</div>
+          <div class="row bar"><div class="trk"></div><div class="fil" id="bEnergyBar"></div></div></div>
+        <div class="st"><div class="k">wing drive</div><div class="v" id="bWing">&mdash;</div></div>
+        <div class="st"><div class="k">fly time</div><div class="v" id="bSim">&mdash;</div></div>
+      </div>
+    </div>
+    <div class="plate enter" id="pMem">
+      <div class="cap"><span>MEMORY <b>// WHAT IT HAS LEARNED</b></span><span class="r" id="memSync">&mdash;</span></div>
+      <div id="memWho">&mdash;</div>
+      <div class="stats" style="margin-top:7px">
+        <div class="st"><div class="k">size</div><div class="v" id="memBytes">&mdash;</div></div>
+        <div class="st"><div class="k">last save</div><div class="v" id="memSaved">&mdash;</div></div>
+        <div class="st"><div class="k">synapses changed</div><div class="v" id="memChanged">&mdash;</div></div>
+        <div class="st"><div class="k">average strength</div><div class="v" id="memEff">&mdash;</div></div>
+      </div>
+      <div id="memHist"><div class="tk">PAST SESSIONS</div><canvas id="memHistCanvas"></canvas></div>
+    </div>
+    <div class="plate enter" id="pLearn">
+      <div class="cap"><span>LINK <b id="linkTitle">// PAGE &harr; GLASSES</b></span><span class="r" id="learnState">&mdash;</span></div>
+      <div class="stats">
+        <div class="st"><div class="k">decisions sent</div><div class="v" id="ioOut">&mdash;</div></div>
+        <div class="st"><div class="k">senses received</div><div class="v" id="ioIn">&mdash;</div></div>
+        <div class="st" title="the glasses' own frame rate and worst frame in the last 2 s, and how many milliseconds of each frame its scripts took (from the lens's telemetry row)"><div class="k">glasses frame</div><div class="v" id="ioPerf">&mdash;</div></div>
+        <div class="st"><div class="k">spikes / step</div><div class="v" id="spikes">&mdash;</div></div>
+        <div class="st"><div class="k">room packet</div><div class="v" id="sceneRate">&mdash;</div></div>
+      </div>
+    </div>
+    <div class="more" aria-hidden="true">more below</div>
+  </div>
+
+  <!-- ---------------- centre: the brain itself -->
+  <div id="stage" class="enter">
+    <canvas id="brainCanvas" tabindex="0" role="img" aria-label="The whole fruit-fly brain: 166,700 neurons lit by their own spikes, and the connections they fire along. Arrow keys turn it, plus and minus zoom."></canvas>
+    <!-- 21.09 Pavlo: BOOST BRAIN on = nothing drawn, and the stage says why (app.js sets body.boost) -->
+    <div class="paused" id="paused"><b>PREVIEW PAUSED</b><span>the whole graphics card is thinking for the fly</span><span>tap BOOST BRAIN again to draw</span></div>
+    <!-- ONE row across the top of the stage: title, then whatever banner is live, then the tools. -->
+    <div id="stageTop">
+      <div id="stageCap">BRAIN <b>// 166,700 NEURONS, EACH LIT BY ITS OWN SPIKE</b></div>
+      <div id="stageBanners">
+        <button id="sessionBanner" type="button"></button>
+      </div>
+      <div id="stageTools">
+        <div class="seg" id="views" role="group" aria-label="camera presets">
+          <button class="vw on" data-v="default">FREE</button><button class="vw" data-v="top">TOP</button><button class="vw" data-v="side">SIDE</button><button class="vw" data-v="front">FRONT</button>
+        </div>
+        <button class="vw" id="cine" aria-pressed="false">CINEMA</button>
+        <button id="stageHint" type="button" aria-haspopup="dialog" title="what every number on this page means (or press ?)"><b>?</b><span class="wd"> what am I looking at</span></button>
+      </div>
+    </div>
+    <div id="chainPanel">
+      <div class="cap"><span>SIGNAL PATH <b id="chainName">&mdash;</b></span><span class="r" id="chainSeeds"></span></div>
+      <div id="chainWhy"></div>
+      <div id="chainHops"></div>
+      <div id="chainNote">every hop is a real connection. The timing is slowed down for the eye: the model itself passes a spike on in 1.8 ms</div>
+    </div>
+    <div id="regionLabels"></div>
+    <div id="stageBottom">
+    <div id="stageFoot">
+      <div id="brainPlaced"></div>
+      <div id="brainExp"></div>
+      <div id="brainStat"></div>
+    </div>
+    </div>
+  </div>
+
+  <!-- ---------------- right: what it sees, where it is, what it thinks -->
+  <div id="right">
+    <div class="plate enter" id="pEyes">
+      <div class="cap"><span>EYES <b>// WHAT THE FLY SEES</b></span><span class="r" id="eyeCols">&mdash;</span></div>
+      <div id="eyeWrap">
+        <canvas id="eyeCanvas"></canvas>
+        <div id="eyeBars"></div>
+        <div class="paused"><b>PREVIEW PAUSED</b></div>
+      </div>
+    </div>
+    <div class="plate enter grow" id="pRoom">
+      <div class="cap"><span>ROOM <b>// WHERE IT FLIES</b></span><span class="r" id="roomStat">&mdash;</span></div>
+      <div id="roomWrap">
+        <canvas id="roomCanvas" tabindex="0" role="img" aria-label="The room, the flies in it and where you are standing."></canvas>
+        <div id="roomLabels"></div>
+        <div id="minimapFrame"></div>
+        <div id="minimapCap">FLY&rsquo;S VIEW</div>
+        <div id="trailNote"></div>
+        <div class="paused"><b>PREVIEW PAUSED</b></div>
+      </div>
+    </div>
+    <div class="plate enter" id="pGem">
+      <div class="cap"><span>IN WORDS <b>// WHAT IT IS UP TO</b></span><span class="r" id="gemCount">&mdash;</span></div>
+      <div id="thought">&mdash;</div>
+      <div id="inv"></div>
+    </div>
+    <div class="more" aria-hidden="true">more below</div>
+  </div>
+
+  <!-- ---------------- TRAINING: a hidden experiment tool (?tab=training). The fly learns by itself,
+       all the time; this tab reads a session's DATA when the glasses run one. It is never offered in
+       the default tab strip (21.09). -->
+  <div id="trainTab">
+    <div class="tgrid">
+      <!-- ?demo=1: the whole tab is replaced by this one plate. Learning needs a real room to point at
+           and the lens's own plasticity switch; the demo has neither. -->
+      <div class="plate" id="trainDemo">
+        <div class="cap"><span>LEARNING <b>// NOT IN THE DEMO</b></span><span class="r">NO GLASSES</span></div>
+        <div id="trainDemoWhy"></div>
+        <p>Learning rewrites the 7,835 memory synapses of the fly you are looking at, from what happens
+          to it in your room: a thing smells because you pointed at it, and real food pays the fly
+          through taste. Both halves of that need the glasses, and the demo runs with learning off.</p>
+        <a class="mdlink" href="index.html#teaching">HOW IT LEARNS &rarr;</a>
+      </div>
+
+      <div class="plate" id="pDesign">
+        <div class="cap"><span>SESSION <b>// DESIGNER</b></span><span class="r" id="designState">&mdash;</span></div>
+        <div id="howStart">
+          <b>1</b> let the glasses name a few things in your room &nbsp; <b>2</b> pick a kind of session, a CS+ and a CS&minus;
+          &nbsp; <b>3</b> press START and stand still for the two measurements
+        </div>
+        <div class="tk">WHAT KIND OF SESSION</div>
+        <div id="modes" class="seg2"></div>
+        <div id="modeWhy"></div>
+        <div class="fields">
+          <label>CS+ <span>the smell that gets paid</span><select id="csPlus"></select></label>
+          <label>CS&minus; <span>smelled as often, never paid</span><select id="csMinus"></select></label>
+          <label>BOUTS <span>pairings</span><input id="bouts" type="number" min="1" max="24" value="6"></label>
+        </div>
+        <div class="acts">
+          <button id="trStart" class="pri">START SESSION</button>
+          <button id="trStop">STOP</button>
+          <button id="trReset" class="danger">RESET MEMORY</button>
+        </div>
+        <div id="designGate"></div>
+      </div>
+
+      <!-- the verdict plate exists only once there is a verdict (style.css hides it while .none) -->
+      <div class="plate none" id="pVerdict">
+        <div class="cap"><span>CONCLUSIONS <b>// DID IT LEARN</b></span><span class="r" id="verdictConf">&mdash;</span></div>
+        <div id="verdictHead"><b id="verdictWord"></b><span id="verdictWhat"></span></div>
+        <div id="verdictEvidence"></div>
+        <div id="verdictText"></div>
+        <div id="verdictCaveats"></div>
+        <div id="verdictNext"></div>
+      </div>
+
+      <!-- saved brains: shown only when a backend is configured (app.js hides it otherwise) -->
+      <div class="plate" id="pVersions">
+        <div class="cap"><span>SAVED BRAINS <b>// THIS FLY&rsquo;S EARLIER SELVES</b></span><span class="r" id="verState">&mdash;</span></div>
+        <div class="acts">
+          <input id="verName" placeholder="name this version" maxlength="40">
+          <button id="verSave">SAVE</button>
+          <button id="verFile">DOWNLOAD</button>
+          <label class="up">UPLOAD<input id="verUp" type="file" accept=".flymem,.bin,application/octet-stream"></label>
+        </div>
+        <div id="verList"></div>
+        <div id="verDiff"></div>
+        <div id="verHelp"></div>
+      </div>
+    </div>
+    <div class="more" aria-hidden="true">more below</div>
+  </div>
+
+  <!-- ---------------- a training session, a strip that opens only when the glasses run one -->
+  <div id="train" class="plate">
+    <div class="cap"><span>TRAINING <b id="trainMode">// SESSION</b></span><span class="r" id="trainPhase">&mdash;</span></div>
+    <div id="trainGrid">
+      <div class="tcol tline">
+        <div class="tk">SESSION</div>
+        <canvas id="trainTimeline"></canvas>
+        <div class="tcs"><span class="csp" id="trainCsPlus">CS+ &mdash;</span><span class="csm" id="trainCsMinus">CS&minus; &mdash;</span></div>
+      </div>
+      <div class="tcol tbias">
+        <div class="tk">BIAS TOWARD CS+ <i id="trainBiasD"></i></div>
+        <div class="bb"><span class="bl">BEFORE</span><div class="bt"><i class="bz"></i><b id="trainBiasBefore"></b></div><span class="bv" id="trainBiasBeforeV">&mdash;</span></div>
+        <div class="bb"><span class="bl">AFTER</span><div class="bt"><i class="bz"></i><b id="trainBiasAfter"></b></div><span class="bv" id="trainBiasAfterV">&mdash;</span></div>
+      </div>
+      <div class="tcol teff">
+        <div class="tk">MEMORY SYNAPSES <i id="trainEffV"></i></div>
+        <canvas id="trainEff"></canvas>
+        <div class="tmb" id="trainMbon"></div>
+      </div>
+    </div>
+    <div id="trainResult">&mdash;</div>
+    <div id="trainIdle">No session running. When the glasses run one, these fill in live: every cue and
+      every dose of dopamine on a timeline, the fly&rsquo;s pull toward the cue before and after, and how
+      far its memory synapses moved.</div>
+  </div>
+
+  <div id="foot">
+    <span id="logline">idle</span>
+    <span class="sp"></span>
+    <span id="credit">MaleCNS v1.0 connectome: HHMI Janelia FlyEM, Google Research, University of Cambridge / MRC LMB (CC BY 4.0) &middot; model: fly-wirehead &middot; rule: Huang, Luo et al. 2024</span>
+    <a href="https://male-cns.janelia.org" target="_blank" rel="noopener">male-cns.janelia.org</a>
+    <a href="https://doi.org/10.1038/s41586-024-07819-w" target="_blank" rel="noopener">doi</a>
+    <a href="https://github.com/PtPavloTkachenko/fly-brain-spectacles" target="_blank" rel="noopener">source</a>
+  </div>
+</div>
+
+<!-- ------------------------------------------------------------------ what every number means -->
+<div id="help" role="dialog" aria-modal="true" aria-label="What am I looking at">
+  <div class="card" tabindex="-1">
+    <button id="helpClose" type="button" aria-label="close">&times;</button>
+    <h2>WHAT AM I LOOKING AT <span>&middot; press ? or ESC to close</span></h2>
+    <p class="intro">This is the complete brain of a fruit fly &mdash; every one of its 166,700 neurons and 25.6 million
+      connections, mapped by scientists from a real fly &mdash; running live on your graphics card. Nothing here is
+      an animation: each dot lights up when that neuron actually fires. The glasses (or the demo) tell it what the
+      fly sees and smells, and the brain decides what the fly does next.</p>
+    <dl>
+      <dt>THE BRAIN</dt><dd>All 166,700 neurons, each lit by its own spike. Drag to turn it; arrow keys and + / &minus; work too. The streaks are signals travelling along real connections: warm ones excite, cool ones inhibit.</dd>
+      <dt>NEURONS</dt><dd>How fast each part of the brain is firing, in spikes per second. Six regions, then the handful of &ldquo;command&rdquo; neurons the body listens to. Hover a row to light up just those cells in the brain.</dd>
+      <dt>BODY</dt><dd>What the brain&rsquo;s decision came out as: cruise, turn, land, feed, escape. Energy is simulated; it drains in the air and refills when the fly eats.</dd>
+      <dt>EYES</dt><dd>The two compound eyes, facet by facet: amber where it just got brighter, cyan where darker. The bars are the brain&rsquo;s own detectors for something looming or moving.</dd>
+      <dt>ROOM</dt><dd>Where the fly is flying: the room the glasses scanned (or the demo&rsquo;s made-up one), the things named in it, and you. The inset is the room from the fly&rsquo;s own head.</dd>
+      <dt>MEMORY</dt><dd>The only part of the brain that changes and lasts: 7,835 synapses in its memory centre move as the fly lives. Nobody trains it; it learns from what happens to it.</dd>
+      <dt>IN WORDS</dt><dd>On the glasses, an AI reads the numbers and writes one line about what the fly is up to.</dd>
+      <dt>BRAIN CHIP</dt><dd>The heartbeat: one step is the brain thinking through 50 ms of the fly&rsquo;s life. About eight steps a second on a laptop GPU.</dd>
+      <dt>ADVANCED</dt><dd>The tuning knobs. DETAIL: how much of the brain is drawn (lower it if it stutters). PRIORITY: whether your graphics card serves the picture or the brain. THINK TIME: how long one step takes. None of them change what the brain computes.</dd>
+      <dt>SMALL PRINT</dt><dd>Region and cell names (DNa02, MN9, PPL101&hellip;) are the atlas&rsquo;s own. Dimmer neurons are ones whose exact position was not imaged and is inferred. &ldquo;Exposure&rdquo; is a display gain and changes nothing in the spikes.</dd>
+    </dl>
+    <div class="tk tk-gap">THE COLOURS IN THE BRAIN</div>
+    <div id="helpKey"></div>
+    <div class="foot">MaleCNS v1.0 connectome: HHMI Janelia FlyEM, Google Research, University of Cambridge / MRC LMB (CC BY 4.0) &middot; model: fly-wirehead &middot; rule: Huang, Luo et al. 2024 &middot; <a href="https://male-cns.janelia.org" target="_blank" rel="noopener">male-cns.janelia.org</a> &middot; <a href="https://doi.org/10.1038/s41586-024-07819-w" target="_blank" rel="noopener">10.1038/s41586-024-07819-w</a> &middot; <a href="https://github.com/mattyhempstead/fly-wirehead" target="_blank" rel="noopener">fly-wirehead (Matty Hempstead)</a> &middot; nothing on this page is scripted</div>
+  </div>
+</div>
+
+<!-- ------------------------------------------------------------------ the PIN gate (glasses path only) -->
+<div id="gate">
+  <div class="card">
+    <h1>CYBERFLY <b>// CONNECT YOUR GLASSES</b></h1>
+    <div class="sub">
+      A real fruit-fly brain &mdash; 166,700 neurons &mdash; is about to run on <b>your</b> graphics card. Type the
+      four-digit PIN shown on the glasses and this page becomes the fly&rsquo;s brain.
+    </div>
+    <div class="frow">
+      <div class="f"><label for="pin">pin</label><input id="pin" maxlength="4" inputmode="numeric" placeholder="0000" autocomplete="off"></div>
+      <div class="f f-go"><button id="go">Connect</button></div>
+    </div>
+    <div class="pinwhere">the glasses show it at the top of their board &mdash; <b>PIN 0000</b></div>
+    <div class="gpu" id="gpuinfo">checking your graphics card&hellip;</div>
+    <div class="note" id="note"></div>
+    <div class="nogl">No glasses? <a href="app.html?demo=1">Watch the demo instead</a> &mdash; the same brain, in a made-up room.</div>
+    <!-- the relay is a deployment detail the built page already knows; this fold only exists on a
+         local build with nothing baked in, or when the address names another relay -->
+    <details id="adv">
+      <summary>advanced</summary>
+      <div class="f">
+        <label for="relay">relay</label>
+        <input id="relay" placeholder="relay URL (only if you run your own)">
+        <span class="hint">Leave this alone unless you run your own relay. A <b>?relay=</b> in the address always wins.</span>
+      </div>
+    </details>
+    <ol class="steps">
+      <li>The brain downloads once (75 MB) and warms up.</li>
+      <li>The PIN links this page to your glasses.</li>
+      <li>The glasses send what the fly senses; the brain here decides what it does &mdash; about eight times a second.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- The chip menus live at the END OF THE BODY, not inside #top: they are position:fixed and placed
+     from a getBoundingClientRect() of their chip, and a `transform` on any ancestor (the popin
+     animation on #top leaves one behind) would break both the placement and the stacking. -->
+<div id="legend" role="tooltip" aria-hidden="true"><b id="legendName"></b><span id="legendWhy"></span></div>
+<div id="detailMenu" role="menu" aria-label="how much of the brain to draw"></div>
+<div id="perfMenu" role="menu" aria-label="what to spend the GPU on"></div>
+<div id="meshMenu" role="menu" aria-label="how the scanned room is drawn"></div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

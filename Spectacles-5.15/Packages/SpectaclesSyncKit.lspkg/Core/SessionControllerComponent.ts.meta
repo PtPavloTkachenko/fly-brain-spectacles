@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/16afb9d7-be6f-c342-e412-8f2125a1eb2d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2501a5d7-fa1f-4229-823e-80609b4ce198
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2501a5d7-fa1f-4229-823e-80609b4ce198
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> a0fc29ef-2c94-4839-83c1-ae2e0a5e1993
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/a0fc29ef-2c94-4839-83c1-ae2e0a5e1993>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: db9ce6d8-ea8c-4c87-9866-a21689888e71
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    connectedLensModule: false
+    isColocated: false
+    locatedAtComponent: false
+    locationCloudStorageModule: false
+    skipCustomLandmarkInLensStudio: false
+    startMode: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - connectedLensModule: !<reference.ConnectedLensModule> 00000000-0000-0000-0000-000000000000
+      locationCloudStorageModule: !<reference.LocationCloudStorageModule> 00000000-0000-0000-0000-000000000000
+      isColocated: false
+      locatedAtComponent: !<reference.LocatedAtComponent> 00000000-0000-0000-0000-000000000000
+      startMode: START_MENU
+      skipCustomLandmarkInLensStudio: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Asset.ConnectedLensModule connectedLensModule
+    - // @input Asset.LocationCloudStorageModule locationCloudStorageModule
+    - '// @input boolean isColocated = "true"'
+    - '// @ui {"widget":"group_start", "label":"Colocation", "showIf":"isColocated"}'
+    - // @input Component.LocatedAtComponent locatedAtComponent
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Start Mode Configuration"}'
+    - '// @input string startMode = "START_MENU" {"widget":"combobox", "values":[{"label":"Start Menu", "value":"START_MENU"}, {"label":"Multiplayer", "value":"MULTIPLAYER"}, {"label":"Off", "value":"OFF"}]}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Location Based Experiences"}'
+    - '// @input boolean skipCustomLandmarkInLensStudio = "true"'
+    - '// @ui {"widget":"group_end"}'

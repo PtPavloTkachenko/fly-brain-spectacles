@@ -1,0 +1,63 @@
+- !<AssetImportMetadata/b44378cc-724c-a9f9-a054-2f57965bd163>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e1a4dfe4-df8d-430c-b492-903453b4adfe
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e1a4dfe4-df8d-430c-b492-903453b4adfe
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9e919325-b09c-4033-90e1-8006ac05d14e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9e919325-b09c-4033-90e1-8006ac05d14e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 08766839-63fc-496d-acac-057f2fb45453
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    altText: false
+    formatString: false
+    propertyKey: false
+    syncEntityScript: false
+    text: false
+    useFormat: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - syncEntityScript: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      propertyKey: ""
+      text: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      useFormat: false
+      formatString: ""
+      altText: ""
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"group_start", "label":"Entity Target"}'
+    - // @input Component.ScriptComponent syncEntityScript
+    - '// @ui {"widget":"group_end"}'
+    - // @input string propertyKey
+    - // @input Component.Text text
+    - '// @input boolean useFormat = "false"'
+    - '// @ui {"widget":"label", "label":"String will be formatted using:<br>{value} - current value (or blank)<br>{prevValue} - previous value (or blank)", "showIf":"useFormat"}'
+    - // @input string formatString
+    - '// @ui {"widget":"label", "label":"Text to display if value is undefined"}'
+    - // @input string altText

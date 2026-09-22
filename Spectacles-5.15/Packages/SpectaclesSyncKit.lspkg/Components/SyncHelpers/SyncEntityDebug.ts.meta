@@ -1,0 +1,71 @@
+- !<AssetImportMetadata/abb87280-85f3-9a41-2efa-d18f1596e00e>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> fe8f885c-ff46-4786-92b6-6f5add0efe5f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> fe8f885c-ff46-4786-92b6-6f5add0efe5f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 69c8f8df-8aca-4bf7-9560-5e560a981b56
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/69c8f8df-8aca-4bf7-9560-5e560a981b56>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: c7e0adc7-dbb2-4043-b8e3-07431fdf541b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    networkIdText: false
+    ownerDisplayNameText: false
+    ownerIdText: false
+    ownershipButton: false
+    ownershipButtonText: false
+    storagePropertyText: false
+    syncEntityScript: false
+    targetTypeString: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - targetTypeString: SyncEntity
+      syncEntityScript: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      networkIdText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      ownerDisplayNameText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      ownershipButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      ownershipButtonText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      ownerIdText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      storagePropertyText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"group_start", "label":"Entity Target"}'
+    - '// @input string targetTypeString = "SyncEntity" {"label":"Target Type", "widget":"combobox", "values":[{"label":"Sync Entity", "value":"SyncEntity"}, {"label":"Network Root", "value":"NetworkRoot"}]}'
+    - '// @input Component.ScriptComponent syncEntityScript {"showIf":"targetTypeString", "showIfValue":"SyncEntity"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Text Labels"}'
+    - // @input Component.Text networkIdText
+    - '// @ui {"widget":"label", "label":"Owner Info"}'
+    - // @input Component.Text ownerDisplayNameText
+    - // @input AssignableType ownershipButton
+    - // @input Component.Text ownershipButtonText
+    - // @input Component.Text ownerIdText
+    - '// @ui {"widget":"label", "label":"Store Info"}'
+    - // @input Component.Text storagePropertyText
+    - '// @ui {"widget":"group_end"}'

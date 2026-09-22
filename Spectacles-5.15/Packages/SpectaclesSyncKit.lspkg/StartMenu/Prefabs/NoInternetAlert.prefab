@@ -1,0 +1,135 @@
+- !<ObjectPrefab/31accd9f-4c64-4a22-b147-780df7080aac>
+  PackagePath: ""
+  objects:
+    - !<own> f638f1c0-43dc-4414-863b-56ee5edd6597
+  LazyLoading: false
+  RetainAssets: true
+- !<ScriptComponent/03458b09-752a-4266-b934-e7501e7d3429>
+  PrefabRemaps:
+    []
+  Name: Interactable
+  Enabled: true
+  ScriptAsset: !<reference> 652e631a-22d0-4941-9f74-2943df59f34c
+  ScriptInputsDefault:
+    targetingMode: true
+    targetingVisual: true
+    ignoreInteractionPlane: true
+    keepHoverOnTrigger: true
+    enableInstantDrag: true
+    isScrollable: true
+    allowMultipleInteractors: true
+    enablePokeDirectionality: true
+    acceptableXDirections: true
+    acceptableYDirections: true
+    acceptableZDirections: true
+    useFilteredPinch: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      targetingMode: !<float> 3.000000
+      targetingVisual: !<float> 1.000000
+      ignoreInteractionPlane: false
+      keepHoverOnTrigger: false
+      enableInstantDrag: false
+      isScrollable: false
+      allowMultipleInteractors: true
+      enablePokeDirectionality: false
+      acceptableXDirections: !<float> 0.000000
+      acceptableYDirections: !<float> 0.000000
+      acceptableZDirections: !<float> 1.000000
+      useFilteredPinch: false
+  ScriptTypes:
+    "":
+      {}
+- !<Image/8fd2b28e-5727-4812-a3e5-52796b668e89>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 1
+  StretchMode: Fit
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 23fc0e4b-f600-4dd4-8328-c0a6b248f7a0
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<ColliderComponent/bbc9017b-15fa-432b-99c0-eb5787ed0c7b>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: true
+  Shape: !<Box>
+    FitVisual: false
+    Size: {x: 0.800000, y: 0.700000, z: 0.100000}
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+- !<SceneObject/c2742701-b45b-4bc7-9e84-14eb6cab8aa3>
+  PrefabRemaps:
+    []
+  Name: AlertUI
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 32.000000, y: 32.000000, z: 32.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 8fd2b28e-5727-4812-a3e5-52796b668e89
+    - !<own> bbc9017b-15fa-432b-99c0-eb5787ed0c7b
+    - !<own> 03458b09-752a-4266-b934-e7501e7d3429
+- !<ScriptComponent/d03f3ede-6245-4735-abf9-84867dbb11c6>
+  PrefabRemaps:
+    []
+  Name: NoInternetAlert
+  Enabled: true
+  ScriptAsset: !<reference> 8d526723-32f3-4bae-a05a-b801883e0b29
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      alert: !<reference.SceneObject> c2742701-b45b-4bc7-9e84-14eb6cab8aa3
+      multiplayerButton: !<MappingBased.AssignableType> 424963cf-b087-4f0b-9526-e1abfdaad4b3
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/f638f1c0-43dc-4414-863b-56ee5edd6597>
+  PrefabRemaps:
+    - 03458b09-752a-4266-b934-e7501e7d3429: 03458b09-752a-4266-46cb-18afe182cbd6
+    - 8fd2b28e-5727-4812-a3e5-52796b668e89: 8fd2b28e-5727-4812-5c1a-ad8694997176
+    - bbc9017b-15fa-432b-99c0-eb5787ed0c7b: bbc9017b-15fa-432b-663f-14a87812f384
+    - c2742701-b45b-4bc7-9e84-14eb6cab8aa3: c2742701-b45b-4bc7-617b-eb149354755c
+    - d03f3ede-6245-4735-abf9-84867dbb11c6: d03f3ede-6245-4735-5406-7b798244ee39
+    - f638f1c0-43dc-4414-863b-56ee5edd6597: f638f1c0-43dc-4414-79c4-a911a1229a68
+  Name: NoInternetAlert
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -2.000000, z: -110.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> c2742701-b45b-4bc7-9e84-14eb6cab8aa3
+  Components:
+    - !<own> d03f3ede-6245-4735-abf9-84867dbb11c6

@@ -1,0 +1,234 @@
+- !<Material/01cff0aa-ac10-41c1-aa3f-8825d2c6cfe1>
+  PackagePath: ""
+  PassesInfo:
+    - !<own> 9a256b10-5b7c-4fa8-8795-63895df9df7c
+- !<PassInfo/9a256b10-5b7c-4fa8-8795-63895df9df7c>
+  CachedProperties:
+    - Port_Center_N088:
+        typeIdx: 3
+        value: {x: 0.400000, y: 0.000000}
+    - Port_Center_N093:
+        typeIdx: 3
+        value: {x: 0.450000, y: 0.500000}
+    - Port_Center_N110:
+        typeIdx: 3
+        value: {x: 0.000000, y: 0.000000}
+    - Port_Column3_N016:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_Column3_N051:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_Depth_N004:
+        typeIdx: 1
+        value: 1.000000
+    - Port_FinalColor1_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor2_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor3_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_GSplatPointSize_N004:
+        typeIdx: 1
+        value: 0.000000
+    - Port_GSplatRotation_N004:
+        typeIdx: 5
+        value: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+    - Port_GSplatScale_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_Import_N010:
+        typeIdx: 1
+        value: 1.000000
+    - Port_Import_N018:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 1.000000}
+    - Port_Import_N040:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Import_N042:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Import_N052:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 1.000000}
+    - Port_Import_N059:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Import_N060:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Import_N101:
+        typeIdx: 5
+        value: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+    - Port_Import_N102:
+        typeIdx: 5
+        value: {x: 0.996078, y: 0.996078, z: 0.996078, w: 1.000000}
+    - Port_Import_N108:
+        typeIdx: 3
+        value: {x: 1.000000, y: 1.000000}
+    - Port_Import_N111:
+        typeIdx: 3
+        value: {x: -0.200000, y: -0.700000}
+    - Port_Import_N113:
+        typeIdx: 1
+        value: 0.100000
+    - Port_Import_N115:
+        typeIdx: 1
+        value: 0.700000
+    - Port_Input1_N024:
+        typeIdx: 4
+        value: {x: 1.000000, y: 1.000000, z: -1.000000}
+    - Port_Input1_N031:
+        typeIdx: 1
+        value: 1.000000
+    - Port_Input1_N035:
+        typeIdx: 1
+        value: 2.000000
+    - Port_Input1_N037:
+        typeIdx: 3
+        value: {x: 0.500000, y: 0.500000}
+    - Port_Input1_N058:
+        typeIdx: 4
+        value: {x: 1.000000, y: 1.000000, z: -1.000000}
+    - Port_Input1_N070:
+        typeIdx: 1
+        value: 1.000000
+    - Port_Input1_N075:
+        typeIdx: 1
+        value: 2.000000
+    - Port_Input1_N083:
+        typeIdx: 3
+        value: {x: 0.500000, y: 0.500000}
+    - Port_LODValue_N000:
+        typeIdx: 1
+        value: 0.000000
+    - Port_LODValue_N045:
+        typeIdx: 1
+        value: 0.000000
+    - Port_LODValue_N098:
+        typeIdx: 1
+        value: 0.000000
+    - Port_RangeMaxA_N104:
+        typeIdx: 1
+        value: 1.000000
+    - Port_RangeMaxB_N104:
+        typeIdx: 1
+        value: 1.000000
+    - Port_RangeMinA_N104:
+        typeIdx: 1
+        value: 0.000000
+    - Port_RangeMinB_N104:
+        typeIdx: 1
+        value: -1.000000
+    - Port_RayDirection_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_RayOrigin_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_RotationAngle_N016:
+        typeIdx: 1
+        value: 0.000000
+    - Port_RotationAngle_N051:
+        typeIdx: 1
+        value: 0.000000
+    - Port_RotationAxis_N016:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_RotationAxis_N051:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_RotationXYZ_N016:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_RotationXYZ_N051:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_Scale_N088:
+        typeIdx: 3
+        value: {x: 0.015000, y: 1.000000}
+    - Port_Scale_N093:
+        typeIdx: 3
+        value: {x: 0.150000, y: 1.000000}
+    - Port_Value2_N006:
+        typeIdx: 1
+        value: 1.000000
+    - Port_Value3_N006:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Value3_N020:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Value3_N043:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Value3_N061:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Value3_N127:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Value4_N006:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Value4_N020:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Value4_N043:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Value4_N061:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Value4_N127:
+        typeIdx: 1
+        value: 0.000000
+    - Port_Value_N096:
+        typeIdx: 5
+        value: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+    - Port_WorldNormal_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_WorldPosition_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldTangent_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 1.000000}
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: false
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    []
+  BlendMode: PremultipliedAlphaAuto
+  Properties:
+    Port_Normal_N041:
+      typeIdx: 4
+      value: {x: 0.000000, y: 0.000000, z: 1.000000}
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    Tweak_N1:
+      typeIdx: 1
+      value: 0.200000
+    Tweak_N119:
+      typeIdx: 5
+      value: {x: 0.035294, y: 0.325490, z: 0.035294, w: 1.000000}
+    Tweak_N8:
+      typeIdx: 1
+      value: 1.000000
+    alpha:
+      typeIdx: 1
+      value: 1.000000
+  Pass: !<reference> 86a0fbff-1bf1-4c4d-94a5-24310cb9e2d6

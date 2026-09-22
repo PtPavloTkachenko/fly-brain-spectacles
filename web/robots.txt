@@ -1,0 +1,6 @@
+# CyberFly — a static page. Everything here is public; nothing is stored.
+User-agent: *
+Allow: /
+# The brain file is 75 MB and means nothing to a crawler.
+Disallow: /brain_c0.flyb.z
+Disallow: /assets/

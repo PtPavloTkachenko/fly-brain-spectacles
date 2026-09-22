@@ -1,0 +1,57 @@
+<!doctype html>
+<!-- Headless self-test of the web brain (no relay): boots the worker, times steps, runs gpu_check.
+     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --enable-unsafe-webgpu
+       --enable-logging=stderr --v=0 --no-first-run "http://localhost:8796/test.html?steps=40" 2>&1 | grep CONSOLE -->
+<meta charset="utf-8">
+<pre id="out"></pre>
+<script>
+const params = new URLSearchParams(location.search);
+const N = +(params.get("steps") || 40);
+const gpu = params.get("gpu") !== "0";
+const say = (s) => { console.log("FLYTEST " + s); document.getElementById("out").textContent += s + "\n"; };
+const worker = new Worker("brain_worker.js");
+let steps = 0, t0 = 0, asked = false, walls = [], memBlob = "", memSpikes = {};
+worker.onmessage = (e) => {
+  const m = e.data;
+  if (m.t === "status") say("status: " + m.text);
+  else if (m.t === "error") { say("ERROR " + m.text); setTimeout(() => window.close(), 100); }
+  else if (m.t === "ready") { say("ready gpu=" + m.msg.gpu + " baseline DNa02_L=" + (m.msg.baseline && m.msg.baseline.DNa02_L)); t0 = performance.now(); }
+  else if (m.t === "memory") {
+    const mm = JSON.parse(m.text);
+    say("memory " + mm.op + " ok=" + mm.ok + (mm.err ? " err=" + mm.err : "") + " changed=" + mm.changed +
+        " eff=" + mm.mean_efficacy + (mm.bytes ? " bytes=" + mm.bytes : ""));
+    if (mm.op === "get" && mm.data) memBlob = mm.data;
+  }
+  else if (m.t === "brain") {
+    const b = JSON.parse(m.text);
+    steps++;
+    walls.push(b.wall_ms);
+    if (b.gpu_check) say("gpu_check " + JSON.stringify(b.gpu_check));
+    if (b.gpu_err) say("gpu_err " + b.gpu_err);
+    if (steps === 5 && gpu && !asked) { asked = true; worker.postMessage({ cmd: "post", json: JSON.stringify({ gpu_check: +(params.get("chunks") || 3) }) }); }
+    if (steps === 12) worker.postMessage({ cmd: "post", json: JSON.stringify({ senses: { light: 0.627, loom: { L: 1.0 } } }) });
+    // the memory of ADR 63, on WASM: learn a little, prove the blob round-trips in one instant
+    // (`echo`), then read it out and load it back.
+    if (steps === 14) { worker.postMessage({ cmd: "post", json: JSON.stringify({ learning: true }) });
+                        worker.postMessage({ cmd: "post", json: JSON.stringify({ senses: { sweet: 1.0, odor: { L: 0.8, R: 0.8 } } }) }); }
+    if (steps === 16 || steps === 18) worker.postMessage({ cmd: "post", json: JSON.stringify({ pulse: "reward" }) });
+    if (steps >= 22 && steps <= 27) memSpikes[steps] = b.neural.spikes;
+    if (steps === 24) worker.postMessage({ cmd: "post", json: JSON.stringify({ memory: "echo" }) });
+    if (steps === 28) worker.postMessage({ cmd: "post", json: JSON.stringify({ memory: "get", compact: true }) });
+    if (steps === 30 && memBlob) worker.postMessage({ cmd: "post", json: JSON.stringify({ memory: "set", data: memBlob, elapsed_s: 1800 }) });
+    if (steps === 32) worker.postMessage({ cmd: "post", json: JSON.stringify({ memory: "clear" }) });
+    if (steps === N) {
+      const ms = (performance.now() - t0) / N;
+      walls.sort((a, b) => a - b);
+      say("done " + N + " steps: " + ms.toFixed(0) + " ms/step wall (core median " + walls[walls.length >> 1] + " ms), spikes/step=" + (b.neural && b.neural.spikes) + " act.escape_L=" + b.act.escape_L + " engine=" + b.engine + " gpu=" + b.gpu + " gpu_on=" + b.gpu_on + " gpu_ms=" + b.gpu_ms);
+      say("phases " + JSON.stringify(b.phases));
+      worker.postMessage({ cmd: "stop" });
+      setTimeout(() => window.close(), 200);
+    }
+  }
+};
+worker.postMessage({ cmd: "init", brainUrl: location.origin + "/brain_c0.flyb.z", gpu, threads: +(params.get("threads") || 1) });
+say("isolated=" + self.crossOriginIsolated + " sab=" + (typeof SharedArrayBuffer !== "undefined"));
+// DETERMINISM.md: ?acc=plain|fma picks which evolve both kernels run (default plain)
+if (params.get("acc")) worker.postMessage({ cmd: "post", json: JSON.stringify({ acc: params.get("acc") }) });
+</script>

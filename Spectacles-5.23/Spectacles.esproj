@@ -1,0 +1,54 @@
+studioVersion:
+  major: 5
+  minor: 23
+  patch: 2
+  build: 26081320
+  type: Public
+coreVersion: 372
+clientVersion: 14.16
+updateCheckpoint: 102
+sceneId: 0a1ccb1a-fe88-4fbb-9883-e3af3c75fd99
+metaInfo:
+  hints:
+    []
+  tags:
+    []
+  lensName: CyberFly
+  lensDescriptors:
+    - AI_MUTATED
+    - GEN_AI_ICON
+  lensApplicableContext:
+    - live_camera
+    - reply_camera
+    - video_chat
+  lensApplicability:
+    - Front
+    - Back
+  lensClientCompatibilities:
+    - Spectacles
+  platformBundlesEnabled: false
+  iconHash: 3a670c4997c5805d2638655203a6f7b6
+  videoPreviewHash: ""
+  fromTemplateName: Spectacles
+  fromTemplateUrl: Lens Studio 5.15.4.26022322
+  activationCamera: Front
+  sourceMapEnabled: false
+  shaderCacheInvalidationEnabled: false
+  usingMinClientVersions: false
+  androidMinClientVersion:
+    major: 0
+    minor: 0
+    patch: 0
+    build: 0
+  iOSMinClientVersion:
+    major: 0
+    minor: 0
+    patch: 0
+    build: 0
+  documentId: 54b23af5-1d19-4342-9f04-b0fb301f5644
+  originalDocumentId: 54b23af5-1d19-4342-9f04-b0fb301f5644
+  packageId: ""
+  packageVersion: ""
+  spkPrivilegeLevel: Generic
+  gluboEnabled: false
+targetPlatform: Spectacles

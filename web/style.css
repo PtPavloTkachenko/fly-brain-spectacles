@@ -1,0 +1,1281 @@
+/* CyberFly web twin (ADR 61) — the lens's board language at laptop resolution:
+   electric blue solid plates, cyan frame lines, the fly colours as the only accents.
+
+   Tokens, and the rules that keep them honest:
+   - SPACING is a 4-pt base on an 8-pt rhythm (--s0..--s6 = 2/4/6/8/12/16/24/32). Nothing uses a
+     raw pixel gap; the two sub-4 steps exist because a 10 px chip cannot carry a 4 px inset.
+   - TYPE is five roles and nothing else: display (the one big number), title (panel captions),
+     label (keys and chips), data (every measured value) and prose (a paragraph inside a panel).
+     Tracking goes with the role. A role is never overridden with a bare font-size.
+   - COLOUR: every text token below is >= 4.5:1 on --plate-bg (WCAG AA for body text); the three
+     that are not — --line, --line-2 and --line-hot — are never used for text, only for rules,
+     borders and the empty half of a bar. */
+:root {
+  --bg: #04070a;
+  --plate-bg: #0b1b25;
+  --plate-2: #06141b;
+  --line: #12414f;
+  --line-hot: #2d8aa5;
+  --cyan: #5fd8f5;          /* 9.4:1 */
+  --cyan-dim: #4e8ea1;      /* 4.7:1 — captions */
+  --text: #cfeaf3;          /* 13.6:1 */
+  --dim: #6a909d;           /* 5.1:1 — labels */
+  --dimmer: #5c96a6;        /* 5.2:1 — footnotes on the stage */
+  --gold: #ffcf5a;          /* 12.1:1 */
+  --warn: #ff8a5c;          /* 7.5:1 */
+  /* the five flies, all of them: app.js FLY_CSS has five and :root used to declare three */
+  --fly0: #33ff73;
+  --fly1: #ff4dd9;
+  --fly2: #33d9ff;
+  --fly3: #ffb833;
+  --fly4: #9e6bff;
+  --accent: var(--fly0);
+  /* the ink printed ON an accent fill. #05161c measured 6.4:1 on fly1 and 5.3:1 on fly4 — thin for
+     10 px tracked uppercase — so every filled state uses this instead. */
+  --accent-ink: #02090c;
+  --focus: #8fe8ff;
+  /* the INNER hairline: stat cells, cards and list rows sit a step quieter than a panel edge.
+     This was five different literals (var(--line-2), var(--line-2), var(--line-2), var(--line-2)); it is one token. */
+  --line-2: #0f313d;
+  /* the empty half of a bar. #0d2630 measured 1.12:1 on --plate-bg — invisible, so a row at 0.0
+     read as "no bar" instead of "empty bar". ~1.7:1: still quiet, always there. */
+  --track: #16323d;
+
+  --s0: 2px; --s1: 4px; --s1h: 6px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px;
+
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --t-display: 600 19px/1.1 var(--mono);
+  --t-title: 600 11px/1.2 var(--mono);
+  --t-label: 400 10px/1.3 var(--mono);
+  --t-label-sm: 400 9px/1.3 var(--mono);
+  --t-data: 400 13px/1.2 var(--mono);
+  --t-prose: 400 12px/1.5 var(--mono);
+  --t-brand: 600 13px/1.2 var(--mono);   /* the page's own name, in the header and on the gate */
+  --t-pin: 400 26px/1 var(--mono);       /* the four digits, the one thing anyone types */
+  --tr-title: .20em; --tr-label: .16em; --tr-data: .04em; --tr-prose: 0; --tr-brand: .26em; --tr-pin: .38em;
+
+  /* ONE motion vocabulary, as tokens, so no surface can invent its own curve or duration */
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --dur-hover: .2s;
+  --dur-panel: .28s;
+  --dur-enter: .42s;
+
+  --bar-h: 3px;
+  --row-h: 18px;        /* text lane 0..12, bar lane 15..18: a bar never crosses a label */
+  --row-h-dense: 17px;
+  --field-h: 44px;      /* every control in a form row is exactly this tall, so labels align */
+  --chip-pad: var(--s0) var(--s2);
+  --gap: var(--s2);
+
+  /* THE LEFT COLUMN'S FLOOR (see #pNeural). The caption (26) + twelve rows at --row-h and the
+     --s1 gap (260) + the raster's own floor and its rule (70) + the plate's padding (24). The
+     lean one is the same panel while a session has taken the raster away. */
+  --raster-min: 62px;
+  --neural-min: 380px;
+  --neural-min-lean: 268px;
+}
+
+* { box-sizing: border-box; }
+.plate, #top, #foot, .cap, .tk, .lg, .chip, .vw, .tb, .md, #stageBottom, #stageTools { user-select: none; -webkit-user-select: none; }
+.st .v, .row .val, #thought, #verdictText, #help dd, #memWho { user-select: text; -webkit-user-select: text; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 13px/1.4 var(--mono);
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+/* the room's own light: a slow breathing floor glow, so nothing on screen is ever fully static */
+body:before {
+  content: "";
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(120% 80% at 50% 120%, #0b3a4a2e, transparent 60%),
+    radial-gradient(90% 60% at 10% -10%, #10304022, transparent 70%);
+  animation: floorbreath 11s ease-in-out infinite;
+}
+@keyframes floorbreath { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
+/* the additive-display convention, on a screen: scan lines at 3 % so plates read as emitters */
+body:after {
+  content: "";
+  position: fixed; inset: 0; pointer-events: none; z-index: 900;
+  background: repeating-linear-gradient(0deg, #ffffff06 0 1px, transparent 1px 3px);
+  mix-blend-mode: overlay;
+}
+
+/* ---------------------------------------------------------------- layout */
+#app {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr) 372px;
+  grid-template-rows: minmax(46px, auto) minmax(0, 1fr) 0fr 26px;
+  grid-template-areas: "top top top" "left stage right" "train train train" "foot foot foot";
+  gap: var(--gap);
+  height: 100vh;
+  padding: var(--gap);
+  /* the training strip opens the whole layout instead of covering it: nothing is ever hidden by it */
+  transition: grid-template-rows .55s var(--ease);
+}
+#app.training { grid-template-rows: minmax(46px, auto) minmax(0, 1fr) 158px 26px; }
+/* on the TRAINING tab the session strip lives inside the tab, so the bottom row must not open too */
+#app.tab-training.training { grid-template-rows: minmax(46px, auto) minmax(0, 1fr) 0fr 26px; }
+/* A NARROW WINDOW KEEPS THE BRAIN AND THE ROOM (21.09). Below 1180 the page used to name a two-column
+   grid and hide #right — except the `#left, #right { display: flex }` rule further down has the same
+   specificity and comes later, so #right was never hidden: it fell into an implicit column, squeezed
+   the explicit ones, and the stage vanished (measured at 1000x800: no brain on screen at all). Now the
+   numbers column gives way instead — the brain and the room are what a stranger came to see, the
+   twelve firing rates are what an engineer reads — and the rule is specific enough to win. */
+@media (max-width: 1180px) {
+  #app { grid-template-columns: minmax(0, 1fr) 300px; grid-template-areas: "top top" "stage right" "train train" "foot foot"; }
+  #app #left { display: none; }
+}
+#top { grid-area: top; }
+#left { grid-area: left; }
+#stage { grid-area: stage; }
+#right { grid-area: right; }
+#foot { grid-area: foot; }
+#train { grid-area: train; overflow: hidden; opacity: 0; transition: opacity .45s .12s var(--ease); min-height: 0; padding-bottom: var(--s2); }
+#app.training #train { opacity: 1; }
+#left, #right { position: relative; display: flex; flex-direction: column; gap: var(--gap); min-height: 0; overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: #1d5464 transparent; }
+#left::-webkit-scrollbar, #right::-webkit-scrollbar { width: 6px; }
+#left::-webkit-scrollbar-thumb, #right::-webkit-scrollbar-thumb { background: #1d5464; }
+/* A COLUMN THAT HAS MORE BELOW SAYS SO. It always scrolled (DESIGN §7) but said nothing, and macOS
+   hides its overlay scrollbar at rest — so at 1440x900 the whole LINK // PROTOCOL panel was simply
+   not there, 134 px past the fold, with no cue of any kind. */
+.more {
+  position: sticky; bottom: 0; z-index: 3; flex: 0 0 auto;
+  margin: calc(var(--gap) * -1) 0 0; height: 34px;
+  display: flex; align-items: flex-end; justify-content: flex-end; padding: 0 var(--s1) var(--s0) 0;
+  font: var(--t-label-sm); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dim);
+  background: linear-gradient(180deg, #04070a00, #04070ab0 45%, #04070af5);
+  pointer-events: none; opacity: 0; transition: opacity var(--dur-panel) var(--ease);
+}
+.more:after { content: " \25be"; color: var(--cyan-dim); }
+.scrollable .more { opacity: 1; }
+
+/* ---------------------------------------------------------------- plates */
+.plate {
+  position: relative;
+  background: linear-gradient(170deg, #0b1b25f0, #060f15f0);
+  border: 1px solid var(--line);
+  padding: var(--s3);
+  min-height: 0;
+  box-shadow: inset 0 0 0 1px #04101580, 0 0 26px #0a35461f;
+}
+.plate.grow { flex: 1 1 auto; display: flex; flex-direction: column; overflow: hidden; min-height: 0; }
+#left > .plate:not(.grow), #right > .plate:not(.grow) { flex: 0 0 auto; }
+/* THE LEFT COLUMN HAS A FLOOR, AND OVERFLOW LEAVES THE PANEL FOR THE COLUMN.
+   #pNeural is the column's only `grow` plate, so it was also the only place flexbox could take
+   space FROM: at 1280x800 it was squeezed to 123 px — five of its twelve rows and no raster at all
+   — and nothing said so, because the COLUMN had not overflowed, the PANEL had. A clipped row is a
+   measured number silently removed (DESIGN §7/§8), which is the one thing this page may not do.
+   The plate now refuses to shrink under its own content, so the overflow moves out to #left, which
+   scrolls and raises MORE BELOW. `min-height: auto` cannot say this — the automatic minimum is 0
+   whenever overflow is not visible, and .plate.grow clips — so the budget is a token: the caption,
+   twelve rows, the raster's own floor and the padding, at each of the two row pitches. */
+#pNeural { min-height: var(--neural-min); }
+#rasterWrap { min-height: var(--raster-min); }
+/* a session takes the raster (the strip tells its 30 s better), so the floor drops with it */
+#app.training #pNeural { min-height: var(--neural-min-lean); }
+/* the board's corner brackets */
+.plate:before, .plate:after {
+  content: ""; position: absolute; width: 13px; height: 13px; border: 1px solid var(--line-hot); pointer-events: none;
+}
+.plate:before { left: -1px; top: -1px; border-right: 0; border-bottom: 0; }
+.plate:after { right: -1px; bottom: -1px; border-left: 0; border-top: 0; }
+
+/* THE HEADER RULE: one line, one height, on every panel and at every width. The title takes the
+   space it needs and the status gives way; whichever has to give up characters says so with an
+   ellipsis, and neither is ever covered. If a title is still wider than the panel it marquees once
+   on hover, from the cut point to the end and back. */
+.cap {
+  font: var(--t-title); letter-spacing: var(--tr-title); color: var(--cyan-dim); text-transform: uppercase;
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
+  gap: 0 var(--s3); margin: 0 0 var(--s2); padding-bottom: var(--s1);
+  border-bottom: 1px solid var(--line);   /* one divider, under every header */
+}
+/* The title does NOT carry `min-width: 0`, on purpose: that is what makes it refuse to shrink below
+   its own text, so the status wraps to a second line only in the panels where the two genuinely do
+   not fit — instead of in every panel below 1700 px, which is what the old media query did. */
+.cap > span:first-child { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* the title outranks the status: both can shrink, the status gives way twenty times faster */
+/* ONE header height, at every width. The status used to drop to its own row below 1700 px, which
+   made the same `.cap` 33 px in the side columns and 18 px on #chainPanel and #train — two chromes
+   side by side (DESIGN §4) — and spent 105 px of the left column, which is most of what #pLearn
+   needed to be on screen at all. The status now shrinks from its own left edge and the title wins
+   the space it needs; both still truncate before either covers the other. */
+.cap .r {
+  font: var(--t-label); letter-spacing: var(--tr-label);
+  flex: 0 1 auto; min-width: 0; margin-left: auto;
+  color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.cap > span:first-child > span.m { display: inline-block; transition: transform .9s var(--ease); }
+.cap:hover > span:first-child > span.m { transform: translateX(var(--mx, 0)); }
+@media (prefers-reduced-motion: reduce) { .cap > span:first-child > span.m { transition: none; } }
+.cap b { color: var(--cyan); font-weight: 600; }
+
+/* ---------------------------------------------------------------- top bar */
+#top {
+  display: flex; align-items: center; flex-wrap: wrap; gap: var(--s1) var(--s3);
+  border: 1px solid var(--line); background: linear-gradient(90deg, #0b1e28f0, #060f15d0);
+  padding: var(--s1) var(--s3); position: relative;
+}
+#top:before, #top:after { content: ""; position: absolute; width: 13px; height: 13px; border: 1px solid var(--line-hot); }
+#top:before { left: -1px; top: -1px; border-right: 0; border-bottom: 0; }
+#top:after { right: -1px; bottom: -1px; border-left: 0; border-top: 0; }
+#title {
+  font: var(--t-brand); letter-spacing: var(--tr-brand); color: var(--cyan);
+  flex: 0 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#title b { color: var(--accent); font-weight: 600; transition: color .4s; }
+#top > .chip, #top > .seg, #top > .nav, #top > #pinFix { flex: 0 0 auto; }
+#top .sp { flex: 1 1 auto; }
+/* THE HEADER IS ONE ROW, AND IT TRADES CHARACTERS FOR IT. A second row is not free: it pushes the
+   whole dashboard down, and at 1280 that was most of what shrank the left column into a stub.
+   THE MECHANISM IS flex-basis 0 + max-content, not flex-shrink: a wrapping flex line breaks FIRST
+   and only shrinks what is already on the line, so shrink factors on this header were never
+   consulted — the row wrapped with the chips at full width. An item whose hypothetical size is
+   zero cannot cause a break, so the line is decided before any text is measured; every item then
+   GROWS back to exactly its own text and stops there (max-width: max-content), and what is left
+   over goes to the SPACER — which is why the spacer's own grow must stay at 1 against their 100,
+   or it takes an equal share of the free space and truncates a title that had room. When there is
+   not enough for everyone, the short labels freeze at their text and the deficit lands on the
+   longest, which gives up its last characters and keeps the row. #tabs and the nav stay rigid:
+   every character of them is a control. The labels themselves were cut first: app.js (the vendor's
+   name for the GPU and the word AUTO), app.html (PAGE in front of the fps), and the narrow end. */
+#top > .chip, #demoChip, #title {
+  flex: 100 1 0; max-width: max-content; min-width: 0; overflow: hidden; text-overflow: ellipsis;
+}
+/* ?demo=1: ROOM and LENS would say "demo" and "simulated" — the gold badge two chips to the left
+   already says both, and in this mode they can say nothing else. Three copies of one fact is what
+   the header cannot afford at 1280. */
+#app.demo #chipRoom, #app.demo #chipLens { display: none; }
+/* A REFUSAL GETS ITS OWN ROW. It used to be the flexible gap between the chips, which meant the one
+   line that must always be readable got whatever width was left — measured 284 px at 1280 against
+   the ~380 px a normal refusal needs, so it rendered as "L". Empty, it is still just the spacer;
+   the moment it has something to say it takes the full width and the header grows a row. */
+#fault {
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--warn);
+  min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  opacity: 0; transition: opacity .35s var(--ease);
+}
+#fault:not(:empty) { flex: 1 1 100%; order: 9; padding-top: var(--s1); border-top: 1px solid var(--line); }
+#fault.on { opacity: 1; }
+#fault.wait { color: var(--cyan-dim); }
+#fault b { color: var(--warn); font-weight: 600; }
+#fault.wait b { color: var(--cyan); font-weight: 600; }
+.chip.bad { color: var(--warn); border-color: #5a3324; }
+.chip.bad i { color: var(--warn); }
+.chip {
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dim);
+  border: 1px solid var(--line); padding: var(--chip-pad); white-space: nowrap;
+  height: auto; background: none;   /* a chip that is a <button> is still a chip */
+}
+.chip i { font-style: normal; color: var(--cyan); }
+.chip.on { color: var(--text); border-color: var(--line-hot); }
+.chip.live i { color: var(--fly0); }
+.chip.bad i, .chip.bad { color: var(--warn); border-color: #5a3324; }
+
+/* ---------------------------------------------------------------- stage */
+#stage { position: relative; border: 1px solid var(--line); overflow: hidden; background: #03060900; }
+#stage:before, #stage:after { content: ""; position: absolute; width: 13px; height: 13px; border: 1px solid var(--line-hot); z-index: 4; pointer-events: none; }
+#stage:before { left: -1px; top: -1px; border-right: 0; border-bottom: 0; }
+#stage:after { right: -1px; bottom: -1px; border-left: 0; border-top: 0; }
+#brainCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+/* THE STAGE'S TOP ROW — title, banner, tools, in one flex line that cannot overlap itself.
+   All three used to be absolutely positioned and the banner sat ON the other two. Anything that
+   has to give up room gives up its own characters; nothing is ever covered (DESIGN §4). */
+#stageTop {
+  position: absolute; left: var(--s3); right: var(--s3); top: var(--s2); z-index: 5;
+  display: flex; align-items: center; flex-wrap: wrap; gap: var(--s1) var(--s3); pointer-events: none;
+}
+#stageCap {
+  flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font: var(--t-title); letter-spacing: var(--tr-title); color: var(--cyan-dim); text-transform: uppercase;
+}
+#stageCap b { color: var(--cyan); font-weight: 600; }
+/* the banner gets a ROW OF ITS OWN under the title and the presets. Sharing the line only moved the
+   collision around: a banner wide enough to say something is wide enough to eat the title. */
+#stageBanners { order: 3; flex: 1 0 100%; min-width: 0; display: flex; justify-content: center; gap: var(--s2); }
+#stageTools { order: 2; flex: 0 0 auto; display: flex; align-items: center; gap: var(--s3); pointer-events: auto; }
+#views { gap: 0; }
+#cine[aria-pressed="true"]:before { content: "\25cf  "; }   /* a toggle says whether it is on */
+/* the stage banner: one box that announces a live session and goes to it. It is a real <button>,
+   so Enter and Space work without a keydown handler. */
+#sessionBanner {
+  flex: 0 1 auto; min-width: 0; height: auto;
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; font-weight: 400;
+  color: var(--accent-ink); background: var(--accent); border: 1px solid var(--accent);
+  padding: var(--s1) var(--s3); cursor: pointer;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  opacity: 0; transform: translateY(-6px); pointer-events: none; visibility: hidden;
+  /* visibility is IN the transition list so the exit fade is seen; without it a banner would snap
+     away the moment the class came off, which is the hard cut this row exists to remove */
+  transition: opacity var(--dur-panel) var(--ease), transform var(--dur-panel) var(--ease),
+              visibility var(--dur-panel), filter var(--dur-hover), box-shadow var(--dur-hover);
+}
+/* an idle banner holds no room: no text, no padding, no border */
+#sessionBanner:not(.on) { padding: 0; border-width: 0; }
+#sessionBanner.on { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
+#sessionBanner:hover { filter: brightness(1.12); box-shadow: 0 0 18px -4px var(--accent); }
+#sessionBanner:active { transform: translateY(1px); filter: brightness(1.22); }
+#sessionBanner b { font-weight: 600; }
+/* a <button> since 21.09 (a phone has no ? key), wearing the hint's own look, not the gate button's */
+#stageHint {
+  font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); text-transform: uppercase; white-space: nowrap;
+  height: auto; padding: 0; background: none; border: 0; cursor: pointer;
+}
+#stageHint:hover { color: var(--cyan); background: none; box-shadow: none; }
+#stageHint b { color: var(--cyan); }
+/* the ADVANCED toggle carries a glyph for the phone; the word is the desktop's */
+#chipAdv .ph { display: none; }
+.seg { display: flex; }
+.vw {
+  font: var(--t-label-sm); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dim);
+  background: #06141bcc; border: 1px solid var(--line); padding: var(--chip-pad); height: auto; cursor: pointer;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.seg .vw + .vw { border-left: 0; }
+.vw:hover { color: var(--cyan); border-color: var(--line-hot); background: #0d2c37cc; }
+.vw.on { color: var(--accent-ink); background: var(--cyan); border-color: var(--cyan); }
+/* clear of the stage's top row (8 px + a ~20 px line), so it can never sit on the title */
+#chainPanel {
+  position: absolute; left: var(--s3); top: 58px; z-index: 4; width: 310px; padding: var(--s3);
+  border: 1px solid var(--line-hot); background: linear-gradient(170deg, #0b1e28f2, #050d12f2);
+  opacity: 0; transform: translateX(-8px); pointer-events: none;
+  transition: opacity var(--dur-panel) var(--ease), transform var(--dur-panel) var(--ease);
+}
+#chainPanel.on { opacity: 1; transform: none; }
+#chainWhy { font: var(--t-prose); color: var(--text); margin-bottom: var(--s2); }
+.hop { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s2); align-items: baseline; margin-top: var(--s1); }
+.hop .n { font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); text-transform: uppercase; min-width: 92px; }
+.hop i { font: var(--t-label-sm); font-style: normal; letter-spacing: var(--tr-label); text-transform: uppercase; }
+#chainNote { font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); margin-top: var(--s2); border-top: 1px solid var(--line); padding-top: var(--s2); }
+.lg u { text-decoration: none; opacity: .62; margin-left: 5px; }
+/* the stage's floor: the class legend, then one honesty strip under it. They are stacked in one
+   flow, so neither can ever land on the other however either grows. */
+#stageBottom {
+  position: absolute; left: var(--s3); right: var(--s3); bottom: var(--s3); z-index: 3;
+  display: flex; flex-direction: column; gap: var(--s1); pointer-events: none;
+}
+
+#helpKey { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 2px var(--s3); margin-top: var(--s2); }
+.keyrow { font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; display: flex; align-items: baseline; gap: var(--s2); }
+.keyrow i { width: 4px; height: 4px; background: currentColor; }
+.keyrow b { color: var(--text); font-weight: 400; flex: 1 1 auto; }
+.keyrow u { text-decoration: none; color: var(--dim); font-variant-numeric: tabular-nums; }
+#stageFoot {
+  display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0 var(--s2);
+  border-top: 1px solid var(--line); padding-top: var(--s1);
+}
+#stageFoot > div { white-space: nowrap; }
+/* the strings are separate elements and ran together into one sentence
+   ("26,062 INFERRED, DIMMER 14.7 % FIRING"). The middot is the page's own separator — and it is
+   only correct where all three share a line, which is where #brainPlaced is also on screen. */
+@media (min-width: 1900px) {
+  #stageFoot > div + div:before { content: "\00b7"; color: var(--line-hot); margin-right: var(--s2); }
+}
+.lg {
+  font: var(--t-label-sm); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dim);
+  border: 1px solid var(--line-2); padding: 2px 6px; cursor: pointer; user-select: none;
+  transition: color .25s, border-color .25s, background .25s;
+}
+.lg:hover, .lg.on { color: var(--accent-ink); background: currentColor; border-color: transparent; }
+.lg:hover span, .lg.on span { color: var(--accent-ink); }
+.lg i { display: inline-block; width: 4px; height: 4px; margin-right: var(--s1h); background: currentColor; vertical-align: 1px; }
+#regionLabels { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+.rl {
+  position: absolute; transform: translate(-50%, -50%); white-space: nowrap;
+  font: var(--t-label-sm); letter-spacing: var(--tr-label); text-transform: uppercase; color: #a8dcec;
+  background: #04101699; padding: 2px 6px; border: 1px solid var(--line-2); transition: opacity .3s;
+}
+.rl:before { content: ""; display: inline-block; width: 4px; height: 4px; margin-right: 6px; background: currentColor; vertical-align: 1px; }
+#brainStat {
+  font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); text-transform: uppercase; pointer-events: none;
+}
+#brainStat b { color: var(--gold); font-weight: 600; }
+#brainExp, #brainPlaced {
+  font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dimmer); text-transform: uppercase; pointer-events: none;
+}
+
+/* ---------------------------------------------------------------- rows (neural / body) */
+.rows { display: flex; flex-direction: column; gap: var(--s1); min-height: 0; overflow: hidden; flex: 0 0 auto; }
+#rasterWrap { position: relative; flex: 1 1 auto; min-height: 0; margin-top: var(--s2); border-top: 1px solid var(--line-2); padding-top: var(--s2); }
+/* A session takes the raster (its 30 s of history is the one thing the strip already tells better)
+   and MEMORY moves INTO the strip, beside the session that is writing it. Nothing is squeezed.
+   DENSITY: the old version of this block shrank type to fit — keys to 8 px, the one display value
+   to 17, speeds to 11 — which invented two type roles and still clipped five keys. Density is
+   spacing now, never size: the padding steps down a token and the key WRAPS (see .st .k). */
+#app.training #rasterWrap { display: none; }
+#app.training .plate, #app.memcol .plate { padding: var(--s2); }
+#train #pMem {
+  border: 0; background: none; box-shadow: none; padding: 0; margin: 0; display: block;
+  min-width: 0; overflow: hidden;
+}
+#train #pMem:before, #train #pMem:after { display: none; }
+/* inside the strip MEMORY gets two columns, not four: four 9 px keys in a 1.05fr column is what
+   clipped "synapses changed" at 1600 */
+#train #pMem .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s1); margin-top: var(--s1) !important; }
+#app.training .row, #app.memcol .row { height: var(--row-h-dense); }
+#app.training .rows, #app.memcol .rows { gap: var(--s0); }
+#app.training .st, #app.memcol .st { padding: var(--s1) var(--s1h); }
+#train #pMem #memHist { display: none; }
+#trainGrid.mem { grid-template-columns: minmax(0, 1.35fr) minmax(0, .92fr) minmax(0, 1fr) minmax(0, 1.15fr); }
+#app.training .stats { gap: var(--s1); }
+#raster { position: absolute; left: 0; top: var(--s2); right: 0; bottom: 0; width: 100%; height: calc(100% - var(--s2)); display: block; }
+.rcap { position: absolute; right: 0; top: calc(var(--s0) * -1); font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); background: var(--plate-bg); padding-left: var(--s1); }
+/* TWO LANES, never one. The label and the value own 0..12; the bar owns the last --bar-h pixels.
+   They used to share the descender band (label box 2..15, bar 12..15) and the fill's 7 px glow sat
+   on top of the glyphs, so every row read as struck through. The gap between the lanes is real. */
+.row { position: relative; height: var(--row-h); cursor: default; }
+
+.row .sw { position: absolute; left: 0; top: 4px; width: 4px; height: 4px; background: currentColor; }
+.row .lbl {
+  position: absolute; left: 10px; top: 0; line-height: 12px;
+  font: var(--t-label); line-height: 12px; letter-spacing: var(--tr-label); text-transform: uppercase;
+  color: var(--dim); z-index: 2; transition: color var(--dur-hover);
+}
+.row .val {
+  position: absolute; right: 0; top: 0;
+  font: var(--t-label); line-height: 12px; letter-spacing: var(--tr-data);
+  color: var(--text); z-index: 2; font-variant-numeric: tabular-nums;
+}
+.row .trk { position: absolute; left: 0; right: 0; bottom: 0; height: var(--bar-h); background: var(--track); }
+/* the fill is drawn full-width and scaled: a percentage WIDTH costs a layout on every one of the
+   twelve rows, every frame (measured: 210 style writes/s and ~1.5 layouts/frame). scaleX is paint. */
+.row .fil {
+  position: absolute; left: 0; bottom: 0; height: var(--bar-h); width: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: var(--accent); box-shadow: 0 0 4px currentColor;
+}
+.rows .row { transition: opacity var(--dur-hover); }   /* on the base, so it fades BOTH ways */
+.rows.hover .row { opacity: .3; }
+.rows.hover .row.hot { opacity: 1; }
+.row.hot .lbl { color: var(--accent); }
+/* a bare bar with no label lane of its own (the energy row) */
+.row.bar { height: var(--bar-h); margin-top: var(--s1); cursor: default; }
+
+/* ---------------------------------------------------------------- stat grid
+   TWO columns, in every panel, at every density. It used to flip between two and four depending on
+   whether MEMORY happened to exist, so BODY re-laid-out when memory arrived and the three panels in
+   one column right-aligned their values to four different edges (measured: pBody 80/150/290 against
+   pMem 80/150/220/290). Two columns means exactly two edges, shared by every panel (DESIGN §4). */
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s1); }
+.st { border: 1px solid var(--line-2); background: #06141bb0; padding: var(--s1) var(--s2); min-width: 0; }
+/* the key WRAPS. It used to ellipsis, which cost the reader the one thing that says what the
+   number is: "synapses changed" lost 36 px, "mean efficacy" and "spikes / step" 19 (DESIGN §7). */
+.st .k {
+  font: var(--t-label-sm); line-height: 1.15; letter-spacing: var(--tr-label);
+  color: var(--dim); text-transform: uppercase;
+  white-space: normal; overflow-wrap: anywhere;
+}
+.st .v { font: var(--t-data); letter-spacing: var(--tr-data); color: var(--cyan); margin-top: var(--s0); text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.st .v.g { color: var(--accent); }
+.st.wide { grid-column: 1 / -1; }
+.st .v.big { font: var(--t-display); letter-spacing: var(--tr-data); }
+
+/* ---------------------------------------------------------------- eyes */
+#eyeWrap { display: flex; gap: var(--s2); align-items: stretch; min-width: 0; }
+#eyeCanvas { flex: 1 1 auto; width: auto; min-width: 0; height: 146px; display: block; }
+#eyeBars { flex: 0 1 128px; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--s2); }
+.dbar { position: relative; height: 15px; }
+.dbar .n { position: absolute; left: 0; top: 0; font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); }
+.dbar .t { position: absolute; left: 0; right: 0; bottom: 0; height: var(--bar-h); background: var(--track); }
+.dbar .t:after { content: ""; position: absolute; left: 50%; top: calc(var(--s0) * -1); width: 1px; height: var(--s1h); background: var(--line-hot); }
+.dbar .l, .dbar .r { position: absolute; bottom: 0; height: var(--bar-h); width: 0; background: var(--accent); box-shadow: 0 0 6px currentColor; transition: width .12s linear; }
+.dbar .l { right: 50.5%; } .dbar .r { left: 50.5%; }
+
+/* ---------------------------------------------------------------- room */
+#roomWrap { position: relative; flex: 1 1 auto; min-height: 150px; }
+#roomCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+#roomLabels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.mk {
+  position: absolute; transform: translate(-50%, -50%); white-space: nowrap;
+  font: var(--t-label-sm); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--text);
+  padding: var(--s0) var(--s1h); border: 1px solid var(--line-2); background: #040d12e6;
+  will-change: transform, opacity;
+  transition: opacity var(--dur-hover);   /* a name that gives way fades; it never blinks out */
+}
+.mk.food { color: #7cff9a; border-color: #2e6b3c; }
+.mk.scent { color: #ff9ddc; border-color: #6b3358; }
+.mk.bad { color: #c08cff; border-color: #4e3570; }
+.mk.threat { color: #ff8a7c; border-color: #6b3630; }
+.mk.object { color: #bfe2ef; border-color: var(--line-2); }
+.mk.you { color: var(--gold); border-color: #6b5320; }
+.mk[data-cs="+"]:before { content: "CS+\A0"; color: var(--gold); }
+.mk[data-cs="-"]:before { content: "CS\2212\A0"; color: #9a86d8; }
+.mk[data-cs="+"] { border-color: #6b5320; }
+.mk[data-cs="-"] { border-color: #4e3570; }
+.mk.fly { color: var(--accent); border-color: currentColor; }
+#trailNote { position: absolute; left: var(--s2); bottom: var(--s1); font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); pointer-events: none; }
+#pRoom { transition: opacity .6s cubic-bezier(.16,1,.3,1); }
+#minimapFrame {
+  position: absolute; right: var(--s1h); bottom: var(--s1h); border: 1px solid var(--line-hot); pointer-events: none;
+  transition: opacity var(--dur-panel) var(--ease);
+}
+#minimapCap {
+  position: absolute; font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--cyan-dim);
+  text-transform: uppercase; pointer-events: none; padding: 0 var(--s1);
+  background: var(--plate-bg); border: 1px solid var(--line); border-bottom: 0;
+  transition: opacity var(--dur-panel) var(--ease);
+}
+
+/* ---------------------------------------------------------------- gemini */
+#thought { font: var(--t-data); line-height: 1.5; letter-spacing: var(--tr-data); color: var(--text); min-height: 2.6em; }
+#thought .cur { color: var(--accent); }
+#inv { margin-top: var(--s2); display: flex; flex-wrap: wrap; gap: var(--s1); max-height: 66px; overflow: hidden; }
+.iv { font: var(--t-label-sm); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dim); border: 1px solid var(--line-2); padding: var(--chip-pad); }
+.iv.food { color: #7cff9a; } .iv.scent { color: #ff9ddc; } .iv.bad { color: #c08cff; } .iv.threat { color: #ff8a7c; }
+
+/* ---------------------------------------------------------------- foot */
+#foot {
+  display: flex; align-items: center; gap: var(--s3); padding: 0;
+  font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); text-transform: uppercase; overflow: hidden;
+}
+#foot .sp { flex: 1; }
+#logline { color: var(--cyan-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 55%; }
+#foot a { color: var(--cyan-dim); text-decoration: none; border-bottom: 1px solid #14404d; }
+#foot a:hover { color: var(--cyan); }
+
+/* ---------------------------------------------------------------- entrance / motion vocabulary */
+/* one vocabulary: 0.42 s explosive ease-out, staggered 60 ms, nothing ever hard-cuts in */
+.enter { opacity: 0; transform: translateY(9px) scale(.992); }
+.in { animation: popin .42s cubic-bezier(.16, 1, .3, 1) forwards; }
+@keyframes popin { to { opacity: 1; transform: none; } }
+.pulse { animation: pulse .5s cubic-bezier(.16, 1, .3, 1); }
+@keyframes pulse { 0% { filter: brightness(2.1); } 100% { filter: none; } }
+
+/* ---------------------------------------------------------------- the PIN gate */
+#gate {
+  position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center;
+  /* translucent: the real brain is already turning behind the card, so connecting dissolves into
+     the dashboard instead of cutting to it */
+  background: radial-gradient(82% 70% at 50% 46%, #061119b3, #0205088c 52%, #020508ed 100%);
+  backdrop-filter: blur(2.5px) saturate(.75);
+  transition: opacity .7s cubic-bezier(.16, 1, .3, 1), visibility .7s, backdrop-filter .7s;
+}
+#gate.gone { backdrop-filter: blur(0); }
+#gate.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+/* the card breathes with the window like the columns do (DESIGN §7): it was a fixed 600 px, which
+   is 47 % of a 1280 screen and 23 % of a 2560 one */
+#gate .card {
+  width: clamp(520px, 46vw, 820px); max-width: 92vw; position: relative;
+  padding: var(--s6) var(--s6) var(--s5); border: 1px solid var(--line);
+  background: linear-gradient(170deg, #0b1e28ee, #050d12ee);
+  backdrop-filter: blur(9px) brightness(.75);
+}
+#gate .card:before, #gate .card:after { content: ""; position: absolute; width: 13px; height: 13px; border: 1px solid var(--line-hot); }
+#gate .card:before { left: -1px; top: -1px; border-right: 0; border-bottom: 0; }
+#gate .card:after { right: -1px; bottom: -1px; border-left: 0; border-top: 0; }
+#gate h1 { font: var(--t-brand); font-size: 15px; letter-spacing: var(--tr-brand); color: var(--cyan); margin: 0; }
+#gate h1 b { color: var(--accent); font-weight: 600; }
+#gate .sub { color: var(--dim); font: var(--t-prose); margin: var(--s3) 0 var(--s5); }
+#gate .sub b { color: var(--text); font-weight: 600; }
+#gate .sub a { color: var(--cyan-dim); }
+/* ONE control height, so the three labels sit on ONE baseline. They used to start at y 263 / 276 /
+   269 because flex-end bottom-aligned three boxes of three different heights (DESIGN §4). */
+#gate .frow { display: flex; gap: var(--s3); align-items: flex-end; flex-wrap: wrap; }
+#gate .f { display: flex; flex-direction: column; min-width: 0; }
+#gate .f-go { flex: 0 0 auto; }
+#gate label { font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); text-transform: uppercase; display: block; margin-bottom: var(--s1); }
+input {
+  background: #030a0e; border: 1px solid var(--line); color: var(--fly0);
+  font: var(--t-data); letter-spacing: var(--tr-data); padding: 0 var(--s3); height: var(--field-h);
+  transition: border-color var(--dur-hover), box-shadow var(--dur-hover);
+}
+input:hover { border-color: var(--line-hot); }
+input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-color: var(--line-hot); }
+input:focus { border-color: var(--line-hot); box-shadow: 0 0 0 1px #2d8aa540, 0 0 18px #2d8aa530; }
+input#pin { width: 5.4em; font: var(--t-pin); text-align: center; letter-spacing: var(--tr-pin); padding: 0 0 0 var(--tr-pin); }
+input#relay { width: 100%; color: var(--text); font: var(--t-prose); letter-spacing: var(--tr-data); padding: 0 var(--s2); }
+/* where the number comes from, said once, next to the field that wants it */
+#gate .pinwhere { font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dim); margin-top: var(--s2); }
+#gate .pinwhere b { color: var(--gold); font-weight: 600; }
+/* ADVANCED: closed on a built page, opened by app.js only when this browser is not on the relay
+   config.js baked in (or a ?relay= is in the URL) */
+#gate #adv { margin-top: var(--s4); border-top: 1px solid var(--line); padding-top: var(--s3); }
+#gate #adv > summary {
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dim);
+  cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: var(--s1);
+  transition: color var(--dur-hover);
+}
+#gate #adv > summary::-webkit-details-marker { display: none; }
+#gate #adv > summary:before { content: "\25b8"; transition: transform var(--dur-panel) var(--ease); display: inline-block; }
+#gate #adv[open] > summary:before { transform: rotate(90deg); }
+#gate #adv > summary:hover { color: var(--cyan); }
+#gate #adv > summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+#gate #adv .f { margin-top: var(--s3); }
+#gate #adv input { height: 34px; }
+#gate #adv .hint { font: var(--t-label); letter-spacing: var(--tr-data); text-transform: none; color: var(--dim); margin-top: var(--s1); }
+#gate #adv .hint b { color: var(--cyan); font-weight: 400; white-space: nowrap; }
+button {
+  height: 44px;
+  background: #0d2c37; border: 1px solid var(--cyan); color: var(--cyan); font: var(--t-title); letter-spacing: var(--tr-title);
+  padding: 11px 22px; cursor: pointer; text-transform: uppercase; transition: background .18s, box-shadow .18s, transform .12s;
+}
+button:hover { background: #164452; box-shadow: 0 0 20px #2d8aa545; }
+button:active { transform: translateY(1px); }
+button:disabled { opacity: .45; cursor: default; box-shadow: none; }
+/* the note holds NO room when it is empty: it used to reserve 1.4em and, with two margins, left a
+   measured 50 px hole in the middle of the card */
+#gate .note { font: var(--t-label); letter-spacing: var(--tr-label); color: var(--dim); margin-top: var(--s2); min-height: 0; }
+#gate .note:not(:empty) { margin-top: var(--s3); }
+#gate .note.warn { color: var(--warn); }
+#gate .gpu { font: var(--t-label); letter-spacing: var(--tr-label); color: var(--cyan-dim); margin-top: var(--s3); }
+#gate .steps { list-style: none; padding: 0; margin: var(--s5) 0 0; counter-reset: s; font: var(--t-label); letter-spacing: var(--tr-data); text-transform: none; color: var(--dim); }
+/* a hanging indent, so a wrapped step does not run back under its own number */
+#gate .steps li { counter-increment: s; margin: var(--s1) 0; padding-left: 2.4em; text-indent: -2.4em; }
+#gate .steps li:before { content: "0" counter(s); color: var(--cyan-dim); display: inline-block; width: 2.4em; text-indent: 0; }
+
+
+/* ---------------------------------------------------------------- training strip (ADR 61 follow-up) */
+#trainGrid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.05fr); gap: 20px; }
+.tcol { display: flex; flex-direction: column; min-width: 0; }
+.tk { font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); text-transform: uppercase; margin-bottom: var(--s1); }
+.tk i { font-style: normal; color: var(--accent); letter-spacing: var(--tr-data); }
+#trainTimeline { flex: 0 0 auto; width: 100%; height: 48px; display: block; }
+.tcs { display: flex; gap: var(--s4); margin-top: var(--s1); font: var(--t-label-sm); letter-spacing: var(--tr-label); text-transform: uppercase; }
+.tcs .csp { color: var(--gold); }
+.tcs .csm { color: #9a86d8; }
+.tbias .bb { display: flex; align-items: center; gap: var(--s2); margin-bottom: var(--s2); }
+.tbias .bl { font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); width: 48px; flex: 0 0 48px; }
+.tbias .bt { position: relative; flex: 1 1 auto; height: 12px; background: #0b1c24; border: 1px solid var(--line); }
+.tbias .bz { position: absolute; left: 50%; top: calc(var(--s1) * -1); bottom: calc(var(--s1) * -1); width: 1px; background: var(--line-hot); }
+.tbias .bt b { position: absolute; top: 1px; bottom: 1px; width: 0; background: var(--accent); box-shadow: 0 0 8px currentColor; transition: left .35s cubic-bezier(.16,1,.3,1), width .35s cubic-bezier(.16,1,.3,1); }
+.tbias .bv { font: var(--t-label); letter-spacing: var(--tr-data); color: var(--text); width: 48px; text-align: right; font-variant-numeric: tabular-nums; }
+#trainEff { flex: 0 0 auto; width: 100%; height: 44px; display: block; }
+.tmb { display: flex; gap: var(--s3); margin-top: var(--s1); font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); text-transform: uppercase; }
+.tmb b { color: var(--cyan); font-weight: 600; }
+#trainResult {
+  margin-top: var(--s2); font: var(--t-prose); letter-spacing: var(--tr-label); color: var(--dim); text-transform: uppercase;
+  border-top: 1px solid var(--line-2); padding-top: 7px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#trainResult b { color: var(--accent); font-weight: 600; }
+#trainResult.none b { color: var(--dim); }
+#trainResult.ctrl b { color: var(--cyan); }
+
+/* ---------------------------------------------------------------- memory panel */
+#pMem { display: none; flex: 0 0 auto; }
+#pMem.on { display: block; }
+#memWho { font: var(--t-prose); color: var(--text); }
+#memWho b { color: var(--accent); font-weight: 600; }
+#memWho i { font-style: normal; color: var(--dim); letter-spacing: var(--tr-label); }
+#memHist { margin-top: var(--s1); display: none; }
+#memHist.on { display: block; }
+#memHistCanvas { width: 100%; height: 22px; display: block; }
+
+
+/* ---------------------------------------------------------------- reach, focus, motion, size */
+/* every control the eye can use, the keyboard can use */
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* EVERY CONTROL PRESSES. DESIGN §5 lists four states and only the gate's CONNECT had them all:
+   there was no :active anywhere else on the page, so a click was silent between press and result.
+   One treatment, applied once, to everything that can be clicked (playbook law 2). */
+.tb, .vw, .md, .lg, .chip.ctl, .acts button, .acts .up, .ver button, .navitem, .btn, #pinFix,
+#sessionBanner, #gate #adv > summary, button {
+  transition: color var(--dur-hover), border-color var(--dur-hover), background var(--dur-hover),
+              box-shadow var(--dur-hover), transform .1s var(--ease), filter var(--dur-hover);
+}
+.tb:active, .vw:active, .md:active, .lg:active, .chip.ctl:active, .acts button:active,
+.acts .up:active, .ver button:active, .navitem:active, .btn:active, #pinFix:active,
+#gate #adv > summary:active, button:active {
+  transform: translateY(1px); filter: brightness(1.18);
+}
+/* a disabled control never answers, and says so the same way everywhere */
+.tb:disabled, .vw:disabled, .md:disabled, .acts button:disabled, .ver button:disabled, button:disabled {
+  opacity: .45; cursor: default; box-shadow: none; transform: none; filter: none;
+}
+/* the three that inherited nothing: they are declared AFTER `button:hover`, at equal specificity,
+   so they had been quietly cancelling the hover they looked like they kept */
+.acts button:hover:not(:disabled), .acts .up:hover, .ver button:hover:not(:disabled) {
+  background: #164452; border-color: var(--cyan); color: var(--cyan);
+}
+.acts button.pri:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.acts button.danger:hover:not(:disabled) { background: #2a1510; border-color: var(--warn); color: var(--warn); }
+.ver button.del:hover:not(:disabled) { background: #2a1510; border-color: var(--warn); color: var(--warn); }
+.row:focus-visible, .lg:focus-visible { outline-offset: 1px; }
+.row { cursor: pointer; }
+.row:hover .lbl, .row:focus-visible .lbl { color: var(--accent); }
+canvas:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* an empty panel says what it is waiting for, never nothing */
+.empty { font: var(--t-label); letter-spacing: var(--tr-label); color: var(--dim); text-transform: uppercase; padding: var(--s3) 0; }
+
+/* the help card: one line per number on the screen */
+#help {
+  position: fixed; inset: 0; z-index: 1200; display: flex; align-items: center; justify-content: center;
+  background: #02050ae6; opacity: 0; visibility: hidden;
+  transition: opacity var(--dur-panel) var(--ease), visibility var(--dur-panel);
+}
+#help.on { opacity: 1; visibility: visible; }
+/* it arrives with the same entrance as everything else; it used to be the one surface on the page
+   that only cross-faded, with no motion at all (DESIGN §6) */
+#help .card {
+  position: relative; width: min(900px, 92vw); max-height: 86vh; overflow: auto;
+  border: 1px solid var(--line); background: linear-gradient(170deg, #0b1e28f8, #050d12f8);
+  padding: var(--s5) var(--s5) var(--s4);
+  transform: translateY(9px) scale(.992); transition: transform var(--dur-enter) var(--ease);
+  /* the card was cut dead at 86vh, exactly across the colour key, with no cue that it scrolls */
+  -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 28px), transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 28px), transparent 100%);
+}
+#help.on .card { transform: none; }
+#help h2 { font: var(--t-title); letter-spacing: var(--tr-title); color: var(--cyan); margin: 0 0 var(--s4); padding-right: var(--s5); }
+#help h2 span { color: var(--dim); }
+#helpClose {
+  position: absolute; right: var(--s3); top: var(--s3); z-index: 2;
+  width: 28px; height: 28px; padding: 0; line-height: 1;
+  font: 400 18px/1 var(--mono); letter-spacing: 0; text-transform: none;
+  background: none; border: 1px solid var(--line); color: var(--dim); cursor: pointer;
+}
+#helpClose:hover { color: var(--cyan); border-color: var(--line-hot); background: #0d2c37aa; }
+#help dl { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: var(--s2) var(--s4); margin: 0 0 var(--s4); }
+/* a glossary term is not a live value: the accent is reserved for measured things (DESIGN §3) */
+#help dt { font: var(--t-label); letter-spacing: var(--tr-label); color: var(--cyan); text-transform: uppercase; }
+#help dd { margin: 0; font: var(--t-prose); color: var(--text); max-width: 72ch; }
+#help .tk-gap { margin-top: var(--s4); }
+#help .foot { font: var(--t-label); letter-spacing: var(--tr-label); color: var(--dim); text-transform: uppercase; border-top: 1px solid var(--line); padding-top: var(--s3); margin-top: var(--s4); }
+
+/* 1280 -> 2560: the columns breathe, the stage keeps the middle */
+@media (min-width: 1900px) {
+  #app { grid-template-columns: 360px minmax(0, 1fr) 440px; }
+  :root { --cap: 11px; --t-data: 400 14px/1.2 var(--mono); }
+  #eyeCanvas { height: 178px; }
+}
+@media (min-width: 2300px) {
+  #app { grid-template-columns: 420px minmax(0, 1fr) 520px; }
+  #title { font-size: 15px; }   /* the brand grows with the screen, the roles do not */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:before, .pulse, .in { animation: none !important; }
+  .enter { opacity: 1; transform: none; }
+  * { transition-duration: .01ms !important; }
+}
+
+
+/* ---------------------------------------------------------------- the narrow and the short end */
+/* 1280 wide: the stage loses its two hints before it loses a number, and the footnotes move out
+   from under the legend instead of over it. */
+@media (max-width: 1440px) {
+
+  #stageHint .wide { display: none; }
+  #brainPlaced { display: none; } /* it is in the help card too */
+  /* the header's last two words, given up so the row does not become two (see THE HEADER IS ONE
+     ROW above): the fly's name is the BODY panel's status, and the DEMO badge keeps the half that
+     says the room is not a room — the other half is its hover and the landing's first paragraph */
+  #top { gap: var(--s1) var(--s2); padding: var(--s1) var(--s2); }
+  #titleFly { display: none; }
+  #demoChip u { display: none; }
+}
+/* 800 tall: the row pitch and the session history give way, every number stays.
+   The padding stays EQUAL on every side (DESIGN §1) — it just steps down a token. */
+@media (max-height: 880px) {
+  /* the same budget at the dense pitch: 26 + (12 x 17 + 11 x 2) + 70 + 16 */
+  :root { --neural-min: 338px; }
+  .row { height: var(--row-h-dense); }
+  .rows { gap: var(--s0); }
+  #memHist { display: none !important; }
+  .plate { padding: var(--s2); }
+  .st { padding: var(--s1) var(--s1h); }
+  #eyeCanvas { height: 116px; }
+}
+
+/* ---------------------------------------------------------------- tabs and the TRAINING tab */
+/* height: auto — .vw, .md and every .acts button already escape the gate button's global 44 px;
+   .tb did not, so a tab was a 44 px box in a 46 px header and "1 BRAIN" wrapped to three lines */
+.tb {
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dim);
+  background: #06141bcc; border: 1px solid var(--line); padding: var(--chip-pad); cursor: pointer;
+  height: auto; white-space: nowrap;
+  transition: color var(--dur-hover), border-color var(--dur-hover), background var(--dur-hover);
+}
+.seg .tb + .tb { border-left: 0; }
+.tb:hover { color: var(--cyan); border-color: var(--line-hot); }
+.tb.on { color: var(--accent-ink); background: var(--cyan); border-color: var(--cyan); }
+
+/* THE TWO TABS CROSS-FADE. They used to be display:none <-> display:block, which made the page's
+   primary navigation the one thing on it that hard-cut (DESIGN §6). They share the grid cell, so
+   the one leaving is still on screen while the one arriving rises into place. */
+#stage, #trainTab {
+  grid-area: stage; min-height: 0;
+  transition: opacity var(--dur-panel) var(--ease), transform var(--dur-panel) var(--ease), visibility var(--dur-panel);
+}
+#trainTab { overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: #1d5464 transparent; }
+#app.tab-brain #trainTab, #app.tab-training #stage { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(6px); }
+#app.tab-brain #stage, #app.tab-training #trainTab { opacity: 1; visibility: visible; transform: none; }
+.tgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gap); align-content: start; }
+/* Pavlo, 15.09: the site shows the training DATA, not the training setup. The designer's controls
+   (mode chips, CS+/CS-, bouts, START/STOP/RESET) are driven from the glasses, so the plate is not
+   on this page at all. The markup and its script stay, unrendered, until it is decided whether the
+   page should still be able to command a session now that training runs by itself. */
+#pDesign { display: none; }
+/* the live session strip keeps its `grid-area: train` for the dashboard; inside the tab that named
+   area does not exist and would invent two empty columns, so it is cleared here. With no session it
+   collapses to nothing rather than showing seven em-dashes — and it collapses, it does not cut. */
+.tgrid > #train {
+  grid-area: auto; grid-column: 1 / -1; position: relative; opacity: 1; max-height: 70vh; overflow: hidden;
+  transition: opacity var(--dur-panel) var(--ease), max-height .45s var(--ease),
+              padding .45s var(--ease), border-width .45s var(--ease), margin .45s var(--ease);
+}
+.tgrid > #train:not(.live) {
+  opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; border-width: 0; margin: calc(var(--gap) * -.5) 0;
+}
+.tgrid > #train:not(.live):before, .tgrid > #train:not(.live):after { opacity: 0; }
+#app.tab-training #train { opacity: 1; }
+
+/* ?demo=1 — TEACHING IS NOT OFFERED, AND SAYS SO WHERE IT WOULD HAVE BEEN.
+   The demo has a room, things named in it and a genuinely real brain, and still cannot run a
+   session: a bout is a hand holding a thing in front of a real fly, and then that fly landing on
+   it. So the tab keeps its place in the strip (it is still the way to the explanation, and
+   ?tab=training still opens it) and stops looking like an offer — dim, `help` under the pointer,
+   and one line on hover and to a screen reader, written once in gfx/demo.js. Inside, the designer,
+   the verdict, the saved brains and the seven sessions are replaced by the single plate that says
+   why and points at the landing, rather than a form whose START cannot work. */
+#app.demo #tabs .tb[data-t="training"] { cursor: help; }
+#app.demo #tabs .tb[data-t="training"]:not(.on) { opacity: .45; }
+#trainDemo { display: none; grid-column: 1 / -1; }
+#app.demo #trainDemo { display: block; }
+#app.demo #trainTab .tgrid > :not(#trainDemo) { display: none; }
+#trainDemoWhy {
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase;
+  color: var(--warn); margin: var(--s3) 0 var(--s2);
+}
+#trainDemo p { font: var(--t-prose); color: var(--text); max-width: 74ch; margin: 0 0 var(--s4); }
+.mdlink {
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase;
+  color: var(--cyan); text-decoration: none; border-bottom: 1px solid #14404d;
+}
+.mdlink:hover { color: var(--text); border-color: var(--line-hot); }
+
+.seg2 { display: flex; flex-wrap: wrap; gap: var(--s1); margin-bottom: var(--s2); }
+.md {
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dim);
+  background: #06141bcc; border: 1px solid var(--line); padding: var(--s1) var(--s2); cursor: pointer;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.md:hover { color: var(--cyan); border-color: var(--line-hot); }
+.md.on { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+#modeWhy { font: var(--t-prose); color: var(--text); min-height: 2.4em; margin-bottom: var(--s3); }
+.fields { display: grid; grid-template-columns: 1fr 1fr 96px; gap: var(--s2); margin-bottom: var(--s3); }
+.fields label { font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dim); display: flex; flex-direction: column; gap: 2px; }
+.fields label span { font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dimmer); text-transform: none; }
+select, .fields input {
+  background: #030a0e; border: 1px solid var(--line); color: var(--text); font: var(--t-data);
+  padding: var(--s1) var(--s2); margin-top: var(--s1);
+}
+select:hover, .fields input:hover, .acts input:hover { border-color: var(--line-hot); }
+select:focus, .fields input:focus { border-color: var(--line-hot); }
+/* `outline: none` on :focus used to beat the page's own :focus-visible rule on specificity, so a
+   select and every training input had NO focus ring at all — only a 4.4:1 border (DESIGN §5) */
+select:focus-visible, .fields input:focus-visible, .acts input:focus-visible {
+  outline: 2px solid var(--focus); outline-offset: 2px; border-color: var(--line-hot);
+}
+.acts { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; }
+.acts button {
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; padding: var(--s2) var(--s3);
+  height: auto; background: #0d2c37; border: 1px solid var(--line-hot); color: var(--cyan); cursor: pointer;
+}
+.acts button.pri { border-color: var(--accent); color: var(--accent); }
+.acts button.danger { border-color: #6b3630; color: var(--warn); }
+.acts button:disabled { opacity: .45; cursor: default; }
+/* the name takes its own row so the three buttons stay one group; it used to eat the row and push
+   UPLOAD onto a second line, which made three equal actions look like two plus an afterthought */
+.acts input {
+  background: #030a0e; border: 1px solid var(--line); color: var(--text);
+  font: var(--t-data); letter-spacing: var(--tr-data); padding: var(--s1) var(--s2);
+  flex: 1 1 100%; min-width: 0; height: auto;
+}
+.acts .up { position: relative; overflow: hidden; font: var(--t-label); letter-spacing: var(--tr-label); color: var(--cyan); border: 1px solid var(--line-hot); padding: var(--s2) var(--s3); cursor: pointer; }
+.acts .up input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+#designGate { font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--warn); margin-top: var(--s3); min-height: 1.3em; }
+
+/* an empty panel says what it is waiting for, and what starts it (DESIGN §8) */
+#verdictIdle, #trainIdle { font: var(--t-prose); color: var(--dim); max-width: 74ch; margin-top: var(--s3); }
+#verdictIdle b, #trainIdle b { color: var(--cyan); font-weight: 600; }
+#pVerdict:not(.none) #verdictIdle { display: none; }
+.tgrid > #train.live #trainIdle { display: none; }
+#verdictHead { display: flex; align-items: baseline; gap: var(--s3); flex-wrap: wrap; }
+#verdictWord { font: var(--t-display); color: var(--accent); }
+#verdictWord.no { color: var(--dim); } #verdictWord.unclear { color: var(--warn); }
+#verdictWhat { font: var(--t-prose); color: var(--text); }
+#verdictEvidence { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s2); margin: var(--s3) 0; }
+#verdictEvidence i { font: var(--t-label-sm); font-style: normal; letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dim); border: 1px solid var(--line-2); padding: var(--chip-pad); }
+#verdictEvidence i b { color: var(--text); font-weight: 400; }
+#verdictText { font: var(--t-prose); color: var(--text); max-width: 74ch; }
+#verdictCaveats, #verdictNext { font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); margin-top: var(--s2); text-transform: uppercase; }
+
+#verList { display: flex; flex-direction: column; gap: var(--s1); margin-top: var(--s3); max-height: 190px; overflow-y: auto; }
+.ver { display: flex; align-items: baseline; gap: var(--s2); border: 1px solid var(--line-2); background: #06141bb0; padding: var(--s1) var(--s2); }
+.ver b { font: var(--t-data); color: var(--text); font-weight: 400; flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ver span { font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); text-transform: uppercase; }
+.ver button { font: var(--t-label-sm); letter-spacing: var(--tr-label); text-transform: uppercase; background: none; border: 1px solid var(--line); color: var(--cyan); padding: 1px var(--s1); height: auto; cursor: pointer; }
+.ver button.del { color: var(--warn); border-color: #5a3324; }
+/* the empty state of BRAIN VERSIONS is what most people see, and it was a paragraph of 9 px
+   tracked uppercase. A paragraph is prose (DESIGN §2). */
+#verDiff { font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); margin-top: var(--s2); text-transform: uppercase; }
+#verHelp { font: var(--t-prose); color: var(--dim); margin-top: var(--s3); text-transform: none; max-width: 78ch; }
+#verHelp b { color: var(--text); font-weight: 400; text-transform: none; letter-spacing: var(--tr-data); }
+
+/* ---------------------------------------------------------------- finding the way in */
+.tb { padding: var(--s1) var(--s3); }
+#howStart {
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dim);
+  border: 1px dashed var(--line-hot); padding: var(--s2); margin-bottom: var(--s3);
+}
+#howStart b { display: inline-block; width: 16px; height: 16px; line-height: 16px; text-align: center;
+  background: var(--cyan); color: var(--accent-ink); margin-right: var(--s1); }
+
+/* the engine note: its own row in the header, like the refusal, saying what to DO about it */
+#engineNote {
+  flex: 1 1 100%; order: 10; padding-top: var(--s1); border-top: 1px solid var(--line);
+  font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--warn); text-transform: uppercase;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none;
+}
+#engineNote:empty { display: none; }
+#top { overflow: visible; }
+/* with the legend gone the honesty strip has the stage floor to itself */
+#stageBottom { gap: 0; }
+
+#credit { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 0 1 auto; text-align: right; }
+#foot a { flex: 0 0 auto; }
+#help .foot a { color: var(--cyan-dim); }
+
+
+/* ================================================================================================
+   APPENDED BLOCK — second engineer: the reconnect control, the site nav and the demo badge.
+   (The landing page's own rules live in site.css, which loads after this file.)
+   Everything below is additive and uses only the tokens above; nothing here redefines a token.
+   ================================================================================================ */
+
+/* the ENGINE chip's menu: which rung of the detail ladder the brain draws on. Same plate chrome,
+   same chip type, no new colours — it is the chip opened out, not a new surface. The DRAW and MESH
+   menus are the same surface: three chips, one chrome. */
+#detailMenu, #perfMenu, #meshMenu {
+  position: fixed; z-index: 990; display: flex; flex-direction: column; min-width: 148px;
+  border: 1px solid var(--line); background: linear-gradient(170deg, #0b1e28fa, #050d12fa);
+  box-shadow: 0 18px 40px #01060980;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity var(--dur-panel) var(--ease), transform var(--dur-panel) var(--ease), visibility var(--dur-panel);
+}
+/* EVERY ONE of them needs the `.on` spelled out. Written as `#detailMenu, #perfMenu.on` this made
+   the ENGINE menu unconditionally visible - it sat open on the page from load, behind the panels. */
+#detailMenu.on, #perfMenu.on, #meshMenu.on { opacity: 1; visibility: visible; transform: none; }
+.dm {
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; text-align: left;
+  color: var(--dim); background: none; border: 0; border-bottom: 1px solid var(--line-2);
+  padding: var(--s1) var(--s2); height: auto; cursor: pointer;
+}
+.dm:last-child { border-bottom: 0; }
+.dm:hover { color: var(--cyan); background: #0d2c37aa; }
+.dm.on { color: var(--text); background: #0d2c37; }
+.dm.on:before { content: "\2022  "; color: var(--cyan); }
+.dm:not(.on):before { content: "\00a0\00a0\00a0"; }
+@media (prefers-reduced-motion: reduce) { #detailMenu, #perfMenu, #meshMenu { transition: none; } }
+
+/* ---------------------------------------------------------------- the ROOM chip as a control */
+.chip.ctl { cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+.chip.ctl:hover { color: var(--text); border-color: var(--line-hot); background: #0d2c37aa; }
+.chip.ctl:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.chip.ctl:after { content: " \25be"; color: var(--dim); }
+
+/* CHANGE PIN — only while the lens has been silent long enough that waiting is not advice */
+#pinFix {
+  display: none; height: auto; flex: 0 0 auto;
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase;
+  background: none; border: 1px solid #5a3324; color: var(--warn); padding: var(--chip-pad);
+}
+#pinFix.on { display: block; }
+#pinFix:hover { background: #2a1510; box-shadow: none; }
+
+/* the form itself: a plate, the panel chrome of DESIGN §4, fixed under the chip */
+#roomForm {
+  position: fixed; z-index: 980; padding: var(--s3);
+  border: 1px solid var(--line); background: linear-gradient(170deg, #0b1e28fa, #050d12fa);
+  box-shadow: 0 18px 40px #01060980;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .28s cubic-bezier(.16, 1, .3, 1), transform .28s cubic-bezier(.16, 1, .3, 1), visibility .28s;
+}
+#roomForm.on { opacity: 1; visibility: visible; transform: none; }
+#roomForm:before, #roomForm:after { content: ""; position: absolute; width: 13px; height: 13px; border: 1px solid var(--line-hot); }
+#roomForm:before { left: -1px; top: -1px; border-right: 0; border-bottom: 0; }
+#roomForm:after { right: -1px; bottom: -1px; border-left: 0; border-top: 0; }
+#roomForm .cap { margin-bottom: var(--s3); }
+#roomForm .rf { display: grid; gap: var(--s2); margin-bottom: var(--s3); }
+#roomForm label {
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dim);
+  display: flex; flex-direction: column; gap: 2px;
+}
+#roomForm label span { font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dimmer); text-transform: none; }
+#roomForm input {
+  background: #030a0e; border: 1px solid var(--line); color: var(--text);
+  font: var(--t-data); letter-spacing: var(--tr-data); padding: var(--s1) var(--s2);
+}
+#roomForm input:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+#roomForm #rfPin { color: var(--fly0); font: var(--t-pin); font-size: 18px; letter-spacing: var(--tr-pin); width: 6em; text-align: center; }
+#roomForm .acts button { height: auto; font: var(--t-label); letter-spacing: var(--tr-label); padding: var(--s2) var(--s3); }
+#roomForm #rfNote { font: var(--t-label-sm); letter-spacing: var(--tr-label); text-transform: uppercase; color: var(--dimmer); flex: 1 1 100%; }
+#roomForm #rfNote.warn { color: var(--warn); }
+@media (prefers-reduced-motion: reduce) { #roomForm { transition: none; } }
+
+/* ---------------------------------------------------------------- the site's nav, inside the app */
+/* site.css owns the nav's own look; these two lines only fit it into the instrument's header. */
+#top .nav.compact { flex: 0 0 auto; }
+#top .nav.compact .navitem { padding: 2px var(--s2); }
+/* ?demo=1 — the room on screen is generated in this page, and the header never stops saying so */
+/* the demo chip is the one gold thing on the page: it says the room is not real */
+#demoChip {
+  flex: 0 8 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis;
+  font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase;
+  color: var(--accent-ink); background: var(--gold); padding: var(--chip-pad); white-space: nowrap;
+}
+#demoChip i { font-style: normal; color: #02090cb0; }
+#demoChip u { text-decoration: none; }
+
+/* the draw-vs-brain and room-mesh menus: a label and what it costs, one line each */
+#perfMenu button, #meshMenu button { display: block; text-align: left; }
+#perfMenu button span, #meshMenu button span { display: block; opacity: .62; font-size: .82em; }
+
+/* ================================================================================================
+   THE LEGEND — what an instrument on this page actually measures.
+
+   The NEURAL rows have explained themselves since day one (hover isolates the population in the
+   brain and the SIGNAL PATH panel says what it is). Every other number on the page — the body's
+   state, the link counters, the memory, the five eye channels — had no explanation anywhere, which
+   is the whole complaint: you can read the number and still not know what instrument it is.
+
+   It lives at the END OF THE BODY on purpose. #top and every .plate carry `.enter`, whose popin
+   animation fills forwards and leaves an identity transform behind, and an ancestor transform both
+   re-bases `position: fixed` and creates a stacking context. That is exactly what put the DRAW menu
+   under the eye panel (20.09). Out here nothing can trap it.
+   ================================================================================================ */
+#legend {
+  position: fixed; z-index: 995; max-width: 290px; pointer-events: none;
+  border: 1px solid var(--line-hot); background: linear-gradient(170deg, #0b1e28fa, #050d12fa);
+  box-shadow: 0 18px 40px #01060980; padding: var(--s2) var(--s2) calc(var(--s2) + 1px);
+  opacity: 0; visibility: hidden; transform: translateY(-4px);
+  transition: opacity .16s var(--ease), transform .16s var(--ease), visibility .16s;
+}
+#legend.on { opacity: 1; visibility: visible; transform: none; }
+#legend b {
+  display: block; font: var(--t-label); letter-spacing: var(--tr-label); text-transform: uppercase;
+  color: var(--cyan); margin-bottom: 3px;
+}
+#legend span { display: block; font: var(--t-label-sm); letter-spacing: .02em; color: var(--text); line-height: 1.5; }
+/* the instruments that have one: a quiet hint that there is something to read */
+.st[data-legend], .dbar[data-legend] { cursor: help; }
+.st[data-legend]:hover .k, .dbar[data-legend]:hover .n { color: var(--cyan); }
+.st[data-legend]:focus-visible, .dbar[data-legend]:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { #legend { transition: none; } }
+
+/* ================================================================================================
+   21.09 — THE HEADER FOR A STRANGER, THE LAB BEHIND A DOOR (Pavlo's review of the raw page).
+   ================================================================================================ */
+
+/* the tab strip is a hidden experiment tool: only ?tab=training (or a live session) brings it out */
+#app:not(.lab) #tabs { display: none; }
+/* the tuning knobs live behind ADVANCED; `!important` because app.js also writes an inline display
+   on the MESH chip (shown once there is a mesh), and hidden must still win while the fold is shut */
+#app:not(.adv) #top .adv { display: none !important; }
+#app.adv #chipAdv { color: var(--text); border-color: var(--line-hot); background: #0d2c37aa; }
+/* the BRAIN chip is the heartbeat: a dot that beats on every step */
+#chipLive em {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: var(--s1);
+  background: var(--dim); vertical-align: 1px; transition: background .25s, box-shadow .25s;
+}
+#chipLive.on em { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+#chipLive.on.beat em { background: #fff; box-shadow: 0 0 10px var(--accent), 0 0 3px #fff; transition: none; }
+#chipLive.bad em { background: var(--warn); }
+/* the demo in a narrow window: one soft line, its own row, the note's chrome but not its colour */
+#sizeNote {
+  flex: 1 1 100%; order: 11; padding-top: var(--s1); border-top: 1px solid var(--line);
+  font: var(--t-label-sm); letter-spacing: var(--tr-label); color: var(--dim); text-transform: uppercase;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none;
+}
+#sizeNote:empty { display: none; }
+/* an empty verdict is no verdict: the plate appears when Gemini has read a session, not before */
+#pVerdict.none { display: none; }
+/* no backend, no SAVED BRAINS panel — and never a build command in front of a visitor */
+#pVersions.off { display: none; }
+/* the gate's way out for someone without glasses */
+#gate .nogl { font: var(--t-prose); color: var(--dim); margin-top: var(--s3); }
+#gate .nogl a { color: var(--cyan); }
+#gate .nogl a:hover { color: var(--text); }
+/* the "?" card opens with one paragraph a curious person can read before the list */
+#help .intro { font: var(--t-prose); color: var(--text); max-width: 74ch; margin: 0 0 var(--s4); }
+
+
+/* ================================================================================================
+   THE PHONE (21.09, Pavlo: "is our web page adapted for a phone?").
+   Under 700 px the instrument is one column that scrolls: the brain first, full width and 55 % of
+   the screen, then what the fly is doing, the firing rates, the room and the words; the eyes, the
+   memory and the link follow. The header keeps three things — the title, the heartbeat and one
+   toggle (a glyph here, the word ADVANCED on a laptop) that opens everything else. Every control is
+   at least 44 px tall. Only what changes is written here; the tokens and the type roles are the
+   desktop's. Two surfaces switch with `display` on this one screen (the TRAINING tab and the session
+   strip): in a flex column they would keep their height while invisible, which the grid never let
+   them do — a phone that is not running a session must not scroll past an empty strip. */
+@media (max-width: 700px) {
+  html, body { height: auto; }
+  body { overflow-x: hidden; overflow-y: auto; min-height: 100%; }
+  #app {
+    display: flex; flex-direction: column; gap: var(--gap);
+    height: auto; min-height: 100vh; min-height: 100svh; padding: var(--s2);
+    transition: none;
+  }
+  /* the two columns dissolve: their plates are the page's own children now, in the phone's order
+     (#app #left, because the 1180 rule above hides the numbers column with that same weight) */
+  #app #left, #app #right { display: contents; }
+  #left > .more, #right > .more { display: none; }
+  #top { order: 0; }
+  #stage { order: 1; }
+  #pBody { order: 2; }
+  #pNeural { order: 3; }
+  #pRoom { order: 4; }
+  #pGem { order: 5; }
+  #pEyes { order: 6; }
+  #pMem { order: 7; }
+  #pLearn { order: 8; }
+  #trainTab { order: 9; }
+  #train { order: 10; }
+  #foot { order: 11; }
+  .plate, .plate.grow { flex: 0 0 auto; min-height: 0; }
+  #pNeural { min-height: 0; }
+  #app.tab-brain #trainTab, #app.tab-training #stage { display: none; }
+  #app:not(.training) #train { display: none; }
+  #app.training #train { display: block; }
+
+  /* ---- the header: title + toggle on the first row, the heartbeat and the badges on the next */
+  #top { gap: var(--s1) var(--s2); padding: var(--s1) var(--s2); align-items: center; }
+  #title { order: 0; flex: 1 1 calc(100% - 60px); max-width: none; }
+  #chipAdv { order: 1; }
+  #demoChip { order: 2; }
+  #chipLive { order: 3; }
+  #chipRoom, #chipLens { order: 4; }
+  #pinFix { order: 5; }
+  #top .adv { order: 6; }
+  #top > .seg { order: 7; }
+  #top > .nav { order: 8; }
+  #top > .chip, #demoChip { flex: 0 0 auto; max-width: none; }
+  #app:not(.adv) #top > .nav { display: none; }
+  /* inline-flex drops the space before a chip's value, so the gap is the token instead */
+  #top .chip.ctl, #pinFix.on, #top .nav.compact .navitem {
+    min-height: 44px; display: inline-flex; align-items: center; gap: var(--s1); padding: 0 var(--s3);
+  }
+  #chipAdv { min-width: 44px; justify-content: center; padding: 0; }
+  #chipAdv .ph { display: inline; font: 400 18px/1 var(--mono); letter-spacing: 0; }
+  #chipAdv .wd { display: none; }
+  #chipAdv:after { content: none; }
+  /* a refusal, an engine note, the size line: on a phone they wrap rather than lose their end */
+  #fault, #engineNote, #sizeNote { white-space: normal; }
+
+  /* ---- the stage: the brain, full width, 55 % of the screen; a horizontal drag turns it and a
+     vertical one still scrolls the page */
+  #stage { height: 55vh; height: 55svh; min-height: 280px; }
+  #brainCanvas, #roomCanvas { touch-action: none; } /* 21.09 Pavlo: a drag on a 3D canvas turns it, never scrolls the page; scroll beside it */
+  #stageTop, #stageBottom { left: var(--s2); right: var(--s2); }
+  #stageCap { flex: 1 1 100%; }
+  #stageTools { flex-wrap: wrap; gap: var(--s2); }
+  .vw { min-height: 44px; display: inline-flex; align-items: center; padding: 0 var(--s3); }
+  #stageHint { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  #stageHint .wd { display: none; }
+  #chainPanel { left: var(--s2); right: var(--s2); width: auto; top: auto; bottom: 40px; max-height: 55%; overflow: auto; }
+  #stageBottom { bottom: var(--s2); }
+  #stageFoot { justify-content: flex-start; }
+  #stageFoot > div { white-space: normal; }
+
+  /* ---- rows a finger can find: the text lane sits a little lower, the bar keeps the floor */
+  .row { height: 26px; }
+  .rows { gap: var(--s1); }
+  .row .lbl, .row .val { top: 3px; }
+  .row .sw { top: 7px; }
+  #roomWrap { flex: 0 0 auto; height: min(64vw, 320px); min-height: 0; }
+  #inv { max-height: none; }
+
+  /* ---- the foot wraps; the links are real targets */
+  #foot { flex-wrap: wrap; height: auto; padding: var(--s1) 0 var(--s2); gap: 0 var(--s3); }
+  #foot .sp { display: none; }
+  #logline { flex: 1 1 100%; max-width: none; }
+  #credit { flex: 1 1 100%; white-space: normal; text-align: left; }
+  #foot a { min-height: 44px; display: inline-flex; align-items: center; }
+
+  /* ---- the chip menus */
+  #detailMenu, #perfMenu, #meshMenu { min-width: 200px; max-width: calc(100vw - 16px); }
+  .dm { min-height: 44px; display: flex; align-items: center; }
+
+  /* ---- the PIN gate and the help card: full width, and they scroll rather than clip */
+  #gate { align-items: flex-start; overflow-y: auto; padding: var(--s3); }
+  #gate .card { width: 100%; max-width: none; padding: var(--s5) var(--s4) var(--s4); }
+  #help { align-items: flex-start; padding: var(--s2); }
+  #help .card {
+    width: 100%; max-height: calc(100vh - 16px); max-height: calc(100svh - 16px);
+    padding: var(--s4) var(--s3) var(--s3);
+  }
+  #help h2 { padding-right: 52px; }
+  #helpClose { width: 44px; height: 44px; }
+  #help dl { grid-template-columns: minmax(0, 1fr); gap: var(--s0) 0; }
+  #help dt { margin-top: var(--s2); }
+  #helpKey { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+
+  /* ---- the small-screen notice (the glasses path) */
+  #tooSmall { align-items: flex-start; overflow-y: auto; }
+  #tooSmall .btn { min-height: 44px; display: inline-flex; align-items: center; }
+
+  /* ---- the lab tab, should a phone ever open it */
+  .tgrid, #trainGrid, .fields { grid-template-columns: minmax(0, 1fr); }
+  #trainGrid { gap: var(--s3); }
+}
+
+/* A PHONE ON ITS SIDE (under 500 px tall, under 1180 wide) keeps the laptop's two columns — the
+   brain and the room — at the dense pitch, with the chrome trimmed a token so the stage keeps the
+   height. The stage footnote wraps instead of losing its first digits to the left edge. */
+@media (max-width: 1180px) and (max-height: 500px) {
+  #app { padding: var(--s1); gap: var(--s1); }
+  #app { grid-template-columns: minmax(0, 1fr) 272px; }
+  #top { padding: var(--s0) var(--s2); }
+  #eyeCanvas { height: 92px; }
+  /* the room is a grow plate, and in a 390 px column flexbox shrank it to its caption: a fixed
+     height keeps the room a room, and the column scrolls (it already says MORE BELOW) */
+  #pRoom { flex: 0 0 auto; }
+  #roomWrap { flex: 0 0 auto; height: 200px; }
+  #stageFoot { justify-content: flex-start; }
+  #stageFoot > div { white-space: normal; }
+  #brainCanvas, #roomCanvas { touch-action: none; } /* 21.09 Pavlo: a drag on a 3D canvas turns it, never scrolls the page; scroll beside it */
+}
+
+/* 21.09: the FASTEST BRAIN chip — small on a desktop, a real button on a phone */
+.chip.fast { border-color: var(--line-hot); color: var(--text); }
+.chip.fast.on { color: var(--fly0); border-color: var(--fly0); }
+@media (max-width: 700px) {
+  .chip.fast { order: -1; flex: 1 1 100%; min-height: 48px; font-size: 15px; letter-spacing: .12em; justify-content: center; }
+}
+
+/* 21.09 Pavlo: on the phone the view buttons sat ON the brain, and the room's inset ate the room. The
+   stage is a column now -- title + view buttons in a row of their own, the canvas takes the rest,
+   the footnote under it -- and the FLY'S VIEW inset shrinks into the corner. */
+@media (max-width: 700px) {
+  #stage { display: flex; flex-direction: column; }
+  #stageTop { position: static; order: -1; flex: 0 0 auto; padding: var(--s2) var(--s2) 0; } /* the DOM has the canvas first; the bar goes ABOVE it */
+  #brainCanvas { position: relative; inset: auto; flex: 1 1 auto; height: auto; min-height: 0; width: 100%; }
+  #stageBottom { position: static; flex: 0 0 auto; padding: 0 var(--s2) var(--s1); }
+  #minimapFrame, #minimapCap { transform: scale(.55); transform-origin: bottom right; }
+}
+.chip.fast::after { content: none !important; display: none !important; } /* a toggle, not a menu: no caret */
+@media (max-width: 700px) { #regionLabels { display: none; } } /* 21.09: the region labels landed on the view bar on a phone; the ? card names the regions */
+
+/* 21.09 Pavlo: BOOST BRAIN. While it is on nothing is drawn -- the three canvases and their labels are
+   hidden and every panel says PREVIEW PAUSED -- so the graphics card does nothing but think for the fly.
+   app.js syncFast() sets body.boost. */
+.paused { position: absolute; inset: 0; z-index: 4; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 7px; text-align: center; pointer-events: none; background: var(--plate-2); }
+.paused b { font-size: 16px; letter-spacing: .22em; color: var(--fly0); }
+.paused span { font-size: 11px; letter-spacing: .12em; color: var(--dim); }
+#stage .paused { z-index: 2; } /* under the stage's own title row and tools */
+body.boost .paused { display: flex; }
+body.boost #brainCanvas, body.boost #eyeCanvas, body.boost #eyeBars, body.boost #roomCanvas, body.boost #regionLabels,
+body.boost #roomLabels, body.boost #minimapFrame, body.boost #minimapCap, body.boost #trailNote, body.boost #brainExp, body.boost #chainPanel { visibility: hidden; }
+#eyeWrap { position: relative; }

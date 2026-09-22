@@ -1,0 +1,84 @@
+- !<Material/a447438a-51c3-47f6-871e-933e27e6103a>
+  PackagePath: ""
+  PassesInfo:
+    - !<own> f60f4c83-4a2e-47f0-8867-2b97e2fb4663
+- !<PassInfo/f60f4c83-4a2e-47f0-8867-2b97e2fb4663>
+  CachedProperties:
+    - Port_Depth_N001:
+        typeIdx: 1
+        value: 1.000000
+    - Port_FinalColor1_N001:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor2_N001:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor3_N001:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor_N001:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_GSplatPointSize_N001:
+        typeIdx: 1
+        value: 0.000000
+    - Port_GSplatRotation_N001:
+        typeIdx: 5
+        value: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+    - Port_GSplatScale_N001:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_PrevWorldPosition_N001:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_RayDirection_N001:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_RayOrigin_N001:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldNormal_N001:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_WorldPosition_N001:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldTangent_N001:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 1.000000}
+    - Port_alpha_N000:
+        typeIdx: 1
+        value: 1.000000
+    - Port_gain_N000:
+        typeIdx: 1
+        value: 1.000000
+    - Tweak_N2:
+        typeIdx: 1
+        value: 1.000000
+    - Tweak_N3:
+        typeIdx: 1
+        value: 1.000000
+    - alpha:
+        typeIdx: 1
+        value: 1.000000
+    - gain:
+        typeIdx: 1
+        value: 1.000000
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: false
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    []
+  BlendMode: Disabled
+  Properties:
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+  Pass: !<reference> 62a0becd-d39c-4f1c-a411-c41ef3824c16

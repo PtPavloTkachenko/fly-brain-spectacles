@@ -1,0 +1,1572 @@
+{
+ "space": {
+  "desc": "BrainCloudData.ts unit space: MaleCNS voxel (8 nm) v -> u = scale*v + offset (y scale negative = flipped up); x right, y up, z = MaleCNS z (brain -> VNC)",
+  "scale_per_voxel": [
+   1.607652425737329e-05,
+   -1.6076524254620804e-05,
+   1.607652425650874e-05
+  ],
+  "offset": [
+   -0.7727663679989423,
+   0.5928539849102981,
+   -1.1632410273713247
+  ],
+  "fit_max_err": 2.988093816824744e-08,
+  "unit_um": 497.61999994065286
+ },
+ "shells": {
+  "brain_shell": {
+   "file": "shells/brain_shell.glb",
+   "tris": 7992,
+   "src_tris": 3079052,
+   "rois": [
+    "brain-shell"
+   ],
+   "bbox": [
+    [
+     -0.74091,
+     -0.29077,
+     -1.00655
+    ],
+    [
+     0.73609,
+     0.52426,
+     -0.32629
+    ]
+   ],
+   "watertight": true
+  },
+  "vnc_shell": {
+   "file": "shells/vnc_shell.glb",
+   "tris": 7726,
+   "src_tris": 2143540,
+   "rois": [
+    "vnc-shell"
+   ],
+   "bbox": [
+    [
+     -0.29475,
+     -0.56389,
+     -0.32571
+    ],
+    [
+     0.33417,
+     -0.02928,
+     1.00035
+    ]
+   ],
+   "watertight": false
+  }
+ },
+ "neuropils": {
+  "OL_L": {
+   "file": "neuropils/OL_L.glb",
+   "tris": 3000,
+   "src_tris": 658630,
+   "rois": [
+    "OL(L)"
+   ],
+   "bbox": [
+    [
+     0.24338,
+     -0.20899,
+     -0.8096
+    ],
+    [
+     0.68344,
+     0.37789,
+     -0.49743
+    ]
+   ],
+   "watertight": true
+  },
+  "OL_R": {
+   "file": "neuropils/OL_R.glb",
+   "tris": 3000,
+   "src_tris": 658706,
+   "rois": [
+    "OL(R)"
+   ],
+   "bbox": [
+    [
+     -0.68224,
+     -0.2475,
+     -0.789
+    ],
+    [
+     -0.21514,
+     0.3584,
+     -0.47612
+    ]
+   ],
+   "watertight": true
+  },
+  "MB_L": {
+   "file": "neuropils/MB_L.glb",
+   "tris": 2960,
+   "src_tris": 260492,
+   "rois": [
+    "CA(L)",
+    "PED(L)",
+    "aL(L)",
+    "a'L(L)",
+    "bL(L)",
+    "b'L(L)",
+    "gL(L)"
+   ],
+   "bbox": [
+    [
+     0.0065,
+     0.05299,
+     -1.00037
+    ],
+    [
+     0.24243,
+     0.47498,
+     -0.59735
+    ]
+   ],
+   "watertight": true
+  },
+  "MB_R": {
+   "file": "neuropils/MB_R.glb",
+   "tris": 2944,
+   "src_tris": 281142,
+   "rois": [
+    "CA(R)",
+    "PED(R)",
+    "aL(R)",
+    "a'L(R)",
+    "bL(R)",
+    "b'L(R)",
+    "gL(R)"
+   ],
+   "bbox": [
+    [
+     -0.2378,
+     0.01739,
+     -0.97982
+    ],
+    [
+     0.00239,
+     0.47124,
+     -0.576
+    ]
+   ],
+   "watertight": true
+  },
+  "CX": {
+   "file": "neuropils/CX.glb",
+   "tris": 2872,
+   "src_tris": 164716,
+   "rois": [
+    "EB",
+    "FB",
+    "PB",
+    "NO",
+    "AB(L)",
+    "AB(R)"
+   ],
+   "bbox": [
+    [
+     -0.10623,
+     0.16968,
+     -0.88413
+    ],
+    [
+     0.12591,
+     0.37483,
+     -0.60001
+    ]
+   ],
+   "watertight": true
+  },
+  "AL_L": {
+   "file": "neuropils/AL_L.glb",
+   "tris": 2972,
+   "src_tris": 79934,
+   "rois": [
+    "AL(L)"
+   ],
+   "bbox": [
+    [
+     0.01122,
+     0.0529,
+     -1.00181
+    ],
+    [
+     0.23223,
+     0.27098,
+     -0.82711
+    ]
+   ],
+   "watertight": true
+  },
+  "AL_R": {
+   "file": "neuropils/AL_R.glb",
+   "tris": 2982,
+   "src_tris": 80926,
+   "rois": [
+    "AL(R)"
+   ],
+   "bbox": [
+    [
+     -0.22085,
+     0.01739,
+     -0.97985
+    ],
+    [
+     0.00039,
+     0.23689,
+     -0.82233
+    ]
+   ],
+   "watertight": true
+  },
+  "LH_L": {
+   "file": "neuropils/LH_L.glb",
+   "tris": 2974,
+   "src_tris": 79986,
+   "rois": [
+    "LH(L)"
+   ],
+   "bbox": [
+    [
+     0.25128,
+     0.27469,
+     -0.76641
+    ],
+    [
+     0.40938,
+     0.46161,
+     -0.6333
+    ]
+   ],
+   "watertight": true
+  },
+  "LH_R": {
+   "file": "neuropils/LH_R.glb",
+   "tris": 2980,
+   "src_tris": 77988,
+   "rois": [
+    "LH(R)"
+   ],
+   "bbox": [
+    [
+     -0.39632,
+     0.25249,
+     -0.75429
+    ],
+    [
+     -0.2446,
+     0.43839,
+     -0.61549
+    ]
+   ],
+   "watertight": true
+  },
+  "SEZ": {
+   "file": "neuropils/SEZ.glb",
+   "tris": 2904,
+   "src_tris": 999354,
+   "rois": [
+    "GNG",
+    "PRW",
+    "SAD",
+    "FLA(L)",
+    "FLA(R)",
+    "CAN(L)",
+    "CAN(R)"
+   ],
+   "bbox": [
+    [
+     -0.23834,
+     -0.16752,
+     -0.92033
+    ],
+    [
+     0.2613,
+     0.1331,
+     -0.49594
+    ]
+   ],
+   "watertight": true
+  },
+  "VNC_LegNp_T1": {
+   "file": "neuropils/VNC_LegNp_T1.glb",
+   "tris": 2940,
+   "src_tris": 575478,
+   "rois": [
+    "LegNp(T1)(L)",
+    "LegNp(T1)(R)"
+   ],
+   "bbox": [
+    [
+     -0.232,
+     -0.49141,
+     -0.10483
+    ],
+    [
+     0.29161,
+     -0.19394,
+     0.18333
+    ]
+   ],
+   "watertight": true
+  },
+  "VNC_LegNp_T2": {
+   "file": "neuropils/VNC_LegNp_T2.glb",
+   "tris": 2976,
+   "src_tris": 474438,
+   "rois": [
+    "LegNp(T2)(L)",
+    "LegNp(T2)(R)"
+   ],
+   "bbox": [
+    [
+     -0.18202,
+     -0.52035,
+     0.23711
+    ],
+    [
+     0.24456,
+     -0.20279,
+     0.52456
+    ]
+   ],
+   "watertight": true
+  },
+  "VNC_LegNp_T3": {
+   "file": "neuropils/VNC_LegNp_T3.glb",
+   "tris": 2980,
+   "src_tris": 535852,
+   "rois": [
+    "LegNp(T3)(L)",
+    "LegNp(T3)(R)"
+   ],
+   "bbox": [
+    [
+     -0.1523,
+     -0.42704,
+     0.4961
+    ],
+    [
+     0.2413,
+     -0.13072,
+     0.88808
+    ]
+   ],
+   "watertight": true
+  },
+  "VNC_Tectulum": {
+   "file": "neuropils/VNC_Tectulum.glb",
+   "tris": 2912,
+   "src_tris": 1092928,
+   "rois": [
+    "IntTct",
+    "LTct",
+    "NTct(UTct-T1)(L)",
+    "NTct(UTct-T1)(R)",
+    "WTct(UTct-T2)(L)",
+    "WTct(UTct-T2)(R)",
+    "HTct(UTct-T3)(L)",
+    "HTct(UTct-T3)(R)"
+   ],
+   "bbox": [
+    [
+     -0.15694,
+     -0.37214,
+     -0.03411
+    ],
+    [
+     0.22301,
+     -0.08744,
+     0.58877
+    ]
+   ],
+   "watertight": true
+  },
+  "VNC_ANm": {
+   "file": "neuropils/VNC_ANm.glb",
+   "tris": 2942,
+   "src_tris": 344926,
+   "rois": [
+    "ANm"
+   ],
+   "bbox": [
+    [
+     -0.05491,
+     -0.33753,
+     0.46644
+    ],
+    [
+     0.14103,
+     -0.06011,
+     0.99258
+    ]
+   ],
+   "watertight": true
+  },
+  "VNC_Ov_mVAC": {
+   "file": "neuropils/VNC_Ov_mVAC.glb",
+   "tris": 2946,
+   "src_tris": 363770,
+   "rois": [
+    "Ov(L)",
+    "Ov(R)",
+    "mVAC(T1)(L)",
+    "mVAC(T1)(R)",
+    "mVAC(T2)(L)",
+    "mVAC(T2)(R)",
+    "mVAC(T3)(L)",
+    "mVAC(T3)(R)"
+   ],
+   "bbox": [
+    [
+     -0.16162,
+     -0.43681,
+     0.02393
+    ],
+    [
+     0.21956,
+     -0.23487,
+     0.68376
+    ]
+   ],
+   "watertight": true
+  }
+ },
+ "neurons": {
+  "DNp01_R_10001": {
+   "file": "neurons/DNp01_R_10001.glb",
+   "skeleton": "skeletons/DNp01_R_10001.json",
+   "bodyId": 10001,
+   "type": "DNp01",
+   "side": "R",
+   "soma": [
+    -0.17594,
+    0.23502,
+    -0.58008
+   ],
+   "tris": 1800,
+   "src_tris": 1862731,
+   "skel_nodes": 2975,
+   "skel_points": 2925,
+   "skel_polylines": 990,
+   "bbox": [
+    [
+     -0.22954,
+     -0.29895,
+     -0.90752
+    ],
+    [
+     0.035,
+     0.26442,
+     0.3022
+    ]
+   ]
+  },
+  "DNp01_L_10010": {
+   "file": "neurons/DNp01_L_10010.glb",
+   "skeleton": "skeletons/DNp01_L_10010.json",
+   "bodyId": 10010,
+   "type": "DNp01",
+   "side": "L",
+   "soma": [
+    0.1635,
+    0.23541,
+    -0.58005
+   ],
+   "tris": 1801,
+   "src_tris": 1833038,
+   "skel_nodes": 3312,
+   "skel_points": 3303,
+   "skel_polylines": 1158,
+   "bbox": [
+    [
+     0.01568,
+     -0.29618,
+     -0.89977
+    ],
+    [
+     0.25408,
+     0.26369,
+     0.30183
+    ]
+   ]
+  },
+  "MN9_L_10331": {
+   "file": "neurons/MN9_L_10331.glb",
+   "skeleton": "skeletons/MN9_L_10331.json",
+   "bodyId": 10331,
+   "type": "MN9",
+   "side": "L",
+   "soma": [
+    0.11731,
+    0.00974,
+    -0.9078
+   ],
+   "tris": 1800,
+   "src_tris": 593138,
+   "skel_nodes": 5815,
+   "skel_points": 4338,
+   "skel_polylines": 1327,
+   "bbox": [
+    [
+     -0.1265,
+     -0.16638,
+     -0.91893
+    ],
+    [
+     0.16793,
+     0.02654,
+     -0.58698
+    ]
+   ]
+  },
+  "DNa02_R_10360": {
+   "file": "neurons/DNa02_R_10360.glb",
+   "skeleton": "skeletons/DNa02_R_10360.json",
+   "bodyId": 10360,
+   "type": "DNa02",
+   "side": "R",
+   "soma": [
+    -0.231,
+    0.28891,
+    -0.90991
+   ],
+   "tris": 1800,
+   "src_tris": 1350783,
+   "skel_nodes": 13170,
+   "skel_points": 9280,
+   "skel_polylines": 2629,
+   "bbox": [
+    [
+     -0.23511,
+     -0.35173,
+     -0.92164
+    ],
+    [
+     0.02026,
+     0.313,
+     0.8123
+    ]
+   ]
+  },
+  "DNa01_L_10442": {
+   "file": "neurons/DNa01_L_10442.glb",
+   "skeleton": "skeletons/DNa01_L_10442.json",
+   "bodyId": 10442,
+   "type": "DNa01",
+   "side": "L",
+   "soma": [
+    0.22171,
+    0.2924,
+    -0.90648
+   ],
+   "tris": 1800,
+   "src_tris": 967148,
+   "skel_nodes": 11295,
+   "skel_points": 7483,
+   "skel_polylines": 1951,
+   "bbox": [
+    [
+     0.02717,
+     -0.38526,
+     -0.91623
+    ],
+    [
+     0.23171,
+     0.30801,
+     0.70838
+    ]
+   ]
+  },
+  "DNb01_L_10654": {
+   "file": "neurons/DNb01_L_10654.glb",
+   "skeleton": "skeletons/DNb01_L_10654.json",
+   "bodyId": 10654,
+   "type": "DNb01",
+   "side": "L",
+   "soma": [
+    0.19263,
+    0.14982,
+    -0.86599
+   ],
+   "tris": 1997,
+   "src_tris": 679668,
+   "skel_nodes": 6813,
+   "skel_points": 4471,
+   "skel_polylines": 1086,
+   "bbox": [
+    [
+     -0.11342,
+     -0.31264,
+     -0.87558
+    ],
+    [
+     0.20426,
+     0.25501,
+     0.5489
+    ]
+   ]
+  },
+  "DNp03_L_10752": {
+   "file": "neurons/DNp03_L_10752.glb",
+   "skeleton": "skeletons/DNp03_L_10752.json",
+   "bodyId": 10752,
+   "type": "DNp03",
+   "side": "L",
+   "soma": [
+    0.09045,
+    0.32666,
+    -0.66545
+   ],
+   "tris": 1999,
+   "src_tris": 610968,
+   "skel_nodes": 5412,
+   "skel_points": 3867,
+   "skel_polylines": 1042,
+   "bbox": [
+    [
+     -0.09775,
+     -0.2577,
+     -0.72101
+    ],
+    [
+     0.26441,
+     0.33354,
+     0.47458
+    ]
+   ]
+  },
+  "DNb01_R_10759": {
+   "file": "neurons/DNb01_R_10759.glb",
+   "skeleton": "skeletons/DNb01_R_10759.json",
+   "bodyId": 10759,
+   "type": "DNb01",
+   "side": "R",
+   "soma": [
+    -0.1679,
+    0.11164,
+    -0.84716
+   ],
+   "tris": 1999,
+   "src_tris": 684182,
+   "skel_nodes": 6473,
+   "skel_points": 4182,
+   "skel_polylines": 980,
+   "bbox": [
+    [
+     -0.17826,
+     -0.33603,
+     -0.88026
+    ],
+    [
+     0.13425,
+     0.23065,
+     0.51598
+    ]
+   ]
+  },
+  "DNa01_R_10760": {
+   "file": "neurons/DNa01_R_10760.glb",
+   "skeleton": "skeletons/DNa01_R_10760.json",
+   "bodyId": 10760,
+   "type": "DNa01",
+   "side": "R",
+   "soma": [
+    -0.1951,
+    0.28692,
+    -0.9138
+   ],
+   "tris": 1800,
+   "src_tris": 959793,
+   "skel_nodes": 11047,
+   "skel_points": 7325,
+   "skel_polylines": 1898,
+   "bbox": [
+    [
+     -0.20357,
+     -0.34661,
+     -0.92134
+    ],
+    [
+     0.00698,
+     0.30988,
+     0.69709
+    ]
+   ]
+  },
+  "MDN_R_10763": {
+   "file": "neurons/MDN_R_10763.glb",
+   "skeleton": "skeletons/MDN_R_10763.json",
+   "bodyId": 10763,
+   "type": "MDN",
+   "side": "R",
+   "soma": [
+    -0.00111,
+    0.37886,
+    -0.73614
+   ],
+   "tris": 2000,
+   "src_tris": 554017,
+   "skel_nodes": 9045,
+   "skel_points": 4963,
+   "skel_polylines": 988,
+   "bbox": [
+    [
+     -0.17366,
+     -0.32447,
+     -0.88827
+    ],
+    [
+     0.17002,
+     0.38836,
+     0.77395
+    ]
+   ]
+  },
+  "DNp09_L_10783": {
+   "file": "neurons/DNp09_L_10783.glb",
+   "skeleton": "skeletons/DNp09_L_10783.json",
+   "bodyId": 10783,
+   "type": "DNp09",
+   "side": "L",
+   "soma": [
+    0.17186,
+    0.25157,
+    -0.55547
+   ],
+   "tris": 1800,
+   "src_tris": 779969,
+   "skel_nodes": 10956,
+   "skel_points": 6567,
+   "skel_polylines": 1505,
+   "bbox": [
+    [
+     0.0338,
+     -0.32925,
+     -0.88412
+    ],
+    [
+     0.28106,
+     0.31821,
+     0.66933
+    ]
+   ]
+  },
+  "DNa15_R_10837": {
+   "file": "neurons/DNa15_R_10837.glb",
+   "skeleton": "skeletons/DNa15_R_10837.json",
+   "bodyId": 10837,
+   "type": "DNa15",
+   "side": "R",
+   "soma": [
+    -0.21607,
+    0.28775,
+    -0.89563
+   ],
+   "tris": 1999,
+   "src_tris": 681622,
+   "skel_nodes": 4676,
+   "skel_points": 3607,
+   "skel_polylines": 1032,
+   "bbox": [
+    [
+     -0.22196,
+     -0.28069,
+     -0.90395
+    ],
+    [
+     0.01452,
+     0.29949,
+     0.45246
+    ]
+   ]
+  },
+  "DNa15_L_10884": {
+   "file": "neurons/DNa15_L_10884.glb",
+   "skeleton": "skeletons/DNa15_L_10884.json",
+   "bodyId": 10884,
+   "type": "DNa15",
+   "side": "L",
+   "soma": [
+    0.22525,
+    0.29762,
+    -0.89409
+   ],
+   "tris": 1999,
+   "src_tris": 691439,
+   "skel_nodes": 4335,
+   "skel_points": 3461,
+   "skel_polylines": 1008,
+   "bbox": [
+    [
+     0.01965,
+     -0.27986,
+     -0.90269
+    ],
+    [
+     0.2337,
+     0.32203,
+     0.50042
+    ]
+   ]
+  },
+  "DNp03_R_10989": {
+   "file": "neurons/DNp03_R_10989.glb",
+   "skeleton": "skeletons/DNp03_R_10989.json",
+   "bodyId": 10989,
+   "type": "DNp03",
+   "side": "R",
+   "soma": [
+    -0.04546,
+    0.30084,
+    -0.62296
+   ],
+   "tris": 1999,
+   "src_tris": 578288,
+   "skel_nodes": 4658,
+   "skel_points": 3286,
+   "skel_polylines": 848,
+   "bbox": [
+    [
+     -0.22632,
+     -0.26582,
+     -0.71884
+    ],
+    [
+     0.15588,
+     0.3115,
+     0.49312
+    ]
+   ]
+  },
+  "DNp09_R_11177": {
+   "file": "neurons/DNp09_R_11177.glb",
+   "skeleton": "skeletons/DNp09_R_11177.json",
+   "bodyId": 11177,
+   "type": "DNp09",
+   "side": "R",
+   "soma": [
+    -0.17522,
+    0.27893,
+    -0.55651
+   ],
+   "tris": 1999,
+   "src_tris": 719049,
+   "skel_nodes": 11459,
+   "skel_points": 6422,
+   "skel_polylines": 1321,
+   "bbox": [
+    [
+     -0.25687,
+     -0.32909,
+     -0.92007
+    ],
+    [
+     0.03398,
+     0.40229,
+     0.71264
+    ]
+   ]
+  },
+  "DNpe007_L_11201": {
+   "file": "neurons/DNpe007_L_11201.glb",
+   "skeleton": "skeletons/DNpe007_L_11201.json",
+   "bodyId": 11201,
+   "type": "DNpe007",
+   "side": "L",
+   "soma": [
+    0.18385,
+    0.27927,
+    -0.59703
+   ],
+   "tris": 1998,
+   "src_tris": 454111,
+   "skel_nodes": 9416,
+   "skel_points": 4712,
+   "skel_polylines": 812,
+   "bbox": [
+    [
+     -0.08033,
+     -0.44659,
+     -0.88945
+    ],
+    [
+     0.19231,
+     0.28545,
+     0.80009
+    ]
+   ]
+  },
+  "MDN_L_11288": {
+   "file": "neurons/MDN_L_11288.glb",
+   "skeleton": "skeletons/MDN_L_11288.json",
+   "bodyId": 11288,
+   "type": "MDN",
+   "side": "L",
+   "soma": [
+    0.00511,
+    0.41489,
+    -0.76863
+   ],
+   "tris": 1999,
+   "src_tris": 568558,
+   "skel_nodes": 9410,
+   "skel_points": 5131,
+   "skel_polylines": 1014,
+   "bbox": [
+    [
+     -0.13615,
+     -0.31733,
+     -0.88344
+    ],
+    [
+     0.18955,
+     0.42293,
+     0.76526
+    ]
+   ]
+  },
+  "PPL101_R_11327": {
+   "file": "neurons/PPL101_R_11327.glb",
+   "skeleton": "skeletons/PPL101_R_11327.json",
+   "bodyId": 11327,
+   "type": "PPL101",
+   "side": "R",
+   "soma": [
+    -0.23091,
+    0.3628,
+    -0.61807
+   ],
+   "tris": 1799,
+   "src_tris": 879248,
+   "skel_nodes": 12599,
+   "skel_points": 8615,
+   "skel_polylines": 2665,
+   "bbox": [
+    [
+     -0.25652,
+     0.2454,
+     -0.95894
+    ],
+    [
+     0.23153,
+     0.4572,
+     -0.6152
+    ]
+   ]
+  },
+  "MDN_R_11332": {
+   "file": "neurons/MDN_R_11332.glb",
+   "skeleton": "skeletons/MDN_R_11332.json",
+   "bodyId": 11332,
+   "type": "MDN",
+   "side": "R",
+   "soma": [
+    0.01006,
+    0.39116,
+    -0.73635
+   ],
+   "tris": 1999,
+   "src_tris": 568722,
+   "skel_nodes": 9104,
+   "skel_points": 5027,
+   "skel_polylines": 988,
+   "bbox": [
+    [
+     -0.16931,
+     -0.34173,
+     -0.89706
+    ],
+    [
+     0.18229,
+     0.40162,
+     0.77723
+    ]
+   ]
+  },
+  "PPL101_L_11900": {
+   "file": "neurons/PPL101_L_11900.glb",
+   "skeleton": "skeletons/PPL101_L_11900.json",
+   "bodyId": 11900,
+   "type": "PPL101",
+   "side": "L",
+   "soma": [
+    0.23067,
+    0.34225,
+    -0.62331
+   ],
+   "tris": 1799,
+   "src_tris": 938604,
+   "skel_nodes": 14191,
+   "skel_points": 9739,
+   "skel_polylines": 3013,
+   "bbox": [
+    [
+     -0.2296,
+     0.24076,
+     -0.9581
+    ],
+    [
+     0.23449,
+     0.46131,
+     -0.61686
+    ]
+   ]
+  },
+  "MDN_L_12348": {
+   "file": "neurons/MDN_L_12348.glb",
+   "skeleton": "skeletons/MDN_L_12348.json",
+   "bodyId": 12348,
+   "type": "MDN",
+   "side": "L",
+   "soma": [
+    0.01243,
+    0.39524,
+    -0.75069
+   ],
+   "tris": 1999,
+   "src_tris": 550208,
+   "skel_nodes": 8937,
+   "skel_points": 4821,
+   "skel_polylines": 910,
+   "bbox": [
+    [
+     -0.17173,
+     -0.32077,
+     -0.88797
+    ],
+    [
+     0.19095,
+     0.40319,
+     0.72661
+    ]
+   ]
+  },
+  "MN9_R_16949": {
+   "file": "neurons/MN9_R_16949.glb",
+   "skeleton": "skeletons/MN9_R_16949.json",
+   "bodyId": 16949,
+   "type": "MN9",
+   "side": "R",
+   "soma": [
+    -0.10485,
+    -0.03051,
+    -0.91491
+   ],
+   "tris": 2000,
+   "src_tris": 261310,
+   "skel_nodes": 1578,
+   "skel_points": 1023,
+   "skel_polylines": 229,
+   "bbox": [
+    [
+     -0.1574,
+     -0.17061,
+     -0.92739
+    ],
+    [
+     0.05041,
+     0.00681,
+     -0.56385
+    ]
+   ]
+  },
+  "PAM11_R_114661": {
+   "file": "neurons/PAM11_R_114661.glb",
+   "skeleton": "skeletons/PAM11_R_114661.json",
+   "bodyId": 114661,
+   "type": "PAM11",
+   "side": "R",
+   "soma": [
+    -0.16755,
+    0.36269,
+    -0.92684
+   ],
+   "tris": 1999,
+   "src_tris": 542858,
+   "skel_nodes": 2714,
+   "skel_points": 1298,
+   "skel_polylines": 229,
+   "bbox": [
+    [
+     -0.33222,
+     0.26175,
+     -0.93202
+    ],
+    [
+     0.18912,
+     0.44145,
+     -0.70214
+    ]
+   ]
+  },
+  "PAM11_L_119763": {
+   "file": "neurons/PAM11_L_119763.glb",
+   "skeleton": "skeletons/PAM11_L_119763.json",
+   "bodyId": 119763,
+   "type": "PAM11",
+   "side": "L",
+   "soma": [
+    0.07578,
+    0.32897,
+    -0.98045
+   ],
+   "tris": 1999,
+   "src_tris": 537856,
+   "skel_nodes": 2844,
+   "skel_points": 1363,
+   "skel_polylines": 230,
+   "bbox": [
+    [
+     -0.18866,
+     0.26306,
+     -0.98425
+    ],
+    [
+     0.34743,
+     0.45437,
+     -0.70847
+    ]
+   ]
+  },
+  "PAM11_R_137539": {
+   "file": "neurons/PAM11_R_137539.glb",
+   "skeleton": "skeletons/PAM11_R_137539.json",
+   "bodyId": 137539,
+   "type": "PAM11",
+   "side": "R",
+   "soma": [
+    -0.11482,
+    0.37206,
+    -0.94746
+   ],
+   "tris": 2000,
+   "src_tris": 436406,
+   "skel_nodes": 1949,
+   "skel_points": 955,
+   "skel_polylines": 172,
+   "bbox": [
+    [
+     -0.33381,
+     0.2722,
+     -0.95137
+    ],
+    [
+     0.18287,
+     0.4399,
+     -0.70524
+    ]
+   ]
+  },
+  "PAM11_L_138822": {
+   "file": "neurons/PAM11_L_138822.glb",
+   "skeleton": "skeletons/PAM11_L_138822.json",
+   "bodyId": 138822,
+   "type": "PAM11",
+   "side": "L",
+   "soma": [
+    0.1089,
+    0.36791,
+    -0.95926
+   ],
+   "tris": 2000,
+   "src_tris": 386598,
+   "skel_nodes": 1860,
+   "skel_points": 839,
+   "skel_polylines": 119,
+   "bbox": [
+    [
+     -0.18942,
+     0.26888,
+     -0.96367
+    ],
+    [
+     0.33507,
+     0.46365,
+     -0.70565
+    ]
+   ]
+  },
+  "PAM11_R_139706": {
+   "file": "neurons/PAM11_R_139706.glb",
+   "skeleton": "skeletons/PAM11_R_139706.json",
+   "bodyId": 139706,
+   "type": "PAM11",
+   "side": "R",
+   "soma": [
+    -0.1435,
+    0.35214,
+    -0.9402
+   ],
+   "tris": 1999,
+   "src_tris": 315566,
+   "skel_nodes": 1432,
+   "skel_points": 658,
+   "skel_polylines": 101,
+   "bbox": [
+    [
+     -0.32836,
+     0.27733,
+     -0.94417
+    ],
+    [
+     0.19495,
+     0.44481,
+     -0.70758
+    ]
+   ]
+  },
+  "PAM11_L_145749": {
+   "file": "neurons/PAM11_L_145749.glb",
+   "skeleton": "skeletons/PAM11_L_145749.json",
+   "bodyId": 145749,
+   "type": "PAM11",
+   "side": "L",
+   "soma": [
+    0.14122,
+    0.36762,
+    -0.94163
+   ],
+   "tris": 1998,
+   "src_tris": 543580,
+   "skel_nodes": 2852,
+   "skel_points": 1405,
+   "skel_polylines": 263,
+   "bbox": [
+    [
+     -0.18855,
+     0.26265,
+     -0.94685
+    ],
+    [
+     0.34676,
+     0.45546,
+     -0.70224
+    ]
+   ]
+  },
+  "PAM11_L_147857": {
+   "file": "neurons/PAM11_L_147857.glb",
+   "skeleton": "skeletons/PAM11_L_147857.json",
+   "bodyId": 147857,
+   "type": "PAM11",
+   "side": "L",
+   "soma": [
+    0.14459,
+    0.38061,
+    -0.92586
+   ],
+   "tris": 1998,
+   "src_tris": 404426,
+   "skel_nodes": 1896,
+   "skel_points": 903,
+   "skel_polylines": 148,
+   "bbox": [
+    [
+     -0.17488,
+     0.26306,
+     -0.93116
+    ],
+    [
+     0.32143,
+     0.45246,
+     -0.70909
+    ]
+   ]
+  },
+  "PAM11_L_157016": {
+   "file": "neurons/PAM11_L_157016.glb",
+   "skeleton": "skeletons/PAM11_L_157016.json",
+   "bodyId": 157016,
+   "type": "PAM11",
+   "side": "L",
+   "soma": [
+    0.13868,
+    0.37265,
+    -0.93574
+   ],
+   "tris": 2000,
+   "src_tris": 327746,
+   "skel_nodes": 1564,
+   "skel_points": 707,
+   "skel_polylines": 103,
+   "bbox": [
+    [
+     -0.17582,
+     0.27426,
+     -0.93992
+    ],
+    [
+     0.34379,
+     0.45162,
+     -0.70457
+    ]
+   ]
+  },
+  "PAM11_L_204930": {
+   "file": "neurons/PAM11_L_204930.glb",
+   "skeleton": "skeletons/PAM11_L_204930.json",
+   "bodyId": 204930,
+   "type": "PAM11",
+   "side": "L",
+   "soma": [
+    0.09855,
+    0.32865,
+    -0.97738
+   ],
+   "tris": 2000,
+   "src_tris": 546102,
+   "skel_nodes": 2604,
+   "skel_points": 1267,
+   "skel_polylines": 238,
+   "bbox": [
+    [
+     -0.18596,
+     0.26305,
+     -0.98252
+    ],
+    [
+     0.35384,
+     0.45138,
+     -0.70965
+    ]
+   ]
+  },
+  "PAM11_R_215931": {
+   "file": "neurons/PAM11_R_215931.glb",
+   "skeleton": "skeletons/PAM11_R_215931.json",
+   "bodyId": 215931,
+   "type": "PAM11",
+   "side": "R",
+   "soma": [
+    -0.1593,
+    0.39794,
+    -0.91047
+   ],
+   "tris": 1998,
+   "src_tris": 529984,
+   "skel_nodes": 2962,
+   "skel_points": 1394,
+   "skel_polylines": 232,
+   "bbox": [
+    [
+     -0.31766,
+     0.26028,
+     -0.91681
+    ],
+    [
+     0.19943,
+     0.45135,
+     -0.70224
+    ]
+   ]
+  },
+  "PAM11_R_224500": {
+   "file": "neurons/PAM11_R_224500.glb",
+   "skeleton": "skeletons/PAM11_R_224500.json",
+   "bodyId": 224500,
+   "type": "PAM11",
+   "side": "R",
+   "soma": [
+    -0.1425,
+    0.37074,
+    -0.93171
+   ],
+   "tris": 2000,
+   "src_tris": 472262,
+   "skel_nodes": 2188,
+   "skel_points": 1094,
+   "skel_polylines": 217,
+   "bbox": [
+    [
+     -0.33684,
+     0.27872,
+     -0.93816
+    ],
+    [
+     0.19274,
+     0.43643,
+     -0.70602
+    ]
+   ]
+  },
+  "PAM11_R_238644": {
+   "file": "neurons/PAM11_R_238644.glb",
+   "skeleton": "skeletons/PAM11_R_238644.json",
+   "bodyId": 238644,
+   "type": "PAM11",
+   "side": "R",
+   "soma": [
+    -0.1672,
+    0.34253,
+    -0.94052
+   ],
+   "tris": 1999,
+   "src_tris": 359010,
+   "skel_nodes": 1642,
+   "skel_points": 730,
+   "skel_polylines": 93,
+   "bbox": [
+    [
+     -0.34006,
+     0.26941,
+     -0.94556
+    ],
+    [
+     0.19492,
+     0.43624,
+     -0.70969
+    ]
+   ]
+  },
+  "PAM11_L_273182": {
+   "file": "neurons/PAM11_L_273182.glb",
+   "skeleton": "skeletons/PAM11_L_273182.json",
+   "bodyId": 273182,
+   "type": "PAM11",
+   "side": "L",
+   "soma": [
+    0.08045,
+    0.32393,
+    -0.98077
+   ],
+   "tris": 2000,
+   "src_tris": 344540,
+   "skel_nodes": 1645,
+   "skel_points": 798,
+   "skel_polylines": 139,
+   "bbox": [
+    [
+     -0.18099,
+     0.27831,
+     -0.98412
+    ],
+    [
+     0.33232,
+     0.45003,
+     -0.70797
+    ]
+   ]
+  },
+  "PAM11_R_319321": {
+   "file": "neurons/PAM11_R_319321.glb",
+   "skeleton": "skeletons/PAM11_R_319321.json",
+   "bodyId": 319321,
+   "type": "PAM11",
+   "side": "R",
+   "soma": [
+    -0.10712,
+    0.36746,
+    -0.95352
+   ],
+   "tris": 1998,
+   "src_tris": 537718,
+   "skel_nodes": 2718,
+   "skel_points": 1300,
+   "skel_polylines": 224,
+   "bbox": [
+    [
+     -0.34575,
+     0.26326,
+     -0.96022
+    ],
+    [
+     0.19408,
+     0.44763,
+     -0.70448
+    ]
+   ]
+  },
+  "DNpe007_R_518309": {
+   "file": "neurons/DNpe007_R_518309.glb",
+   "skeleton": "skeletons/DNpe007_R_518309.json",
+   "bodyId": 518309,
+   "type": "DNpe007",
+   "side": "R",
+   "soma": [
+    -0.1554,
+    0.24583,
+    -0.58183
+   ],
+   "tris": 2000,
+   "src_tris": 451716,
+   "skel_nodes": 8974,
+   "skel_points": 4441,
+   "skel_polylines": 733,
+   "bbox": [
+    [
+     -0.16914,
+     -0.46261,
+     -0.86789
+    ],
+    [
+     0.10161,
+     0.25432,
+     0.81378
+    ]
+   ]
+  },
+  "PAM11_L_520616": {
+   "file": "neurons/PAM11_L_520616.glb",
+   "skeleton": "skeletons/PAM11_L_520616.json",
+   "bodyId": 520616,
+   "type": "PAM11",
+   "side": "L",
+   "soma": [
+    0.13282,
+    0.37761,
+    -0.93889
+   ],
+   "tris": 2000,
+   "src_tris": 491754,
+   "skel_nodes": 3320,
+   "skel_points": 1589,
+   "skel_polylines": 284,
+   "bbox": [
+    [
+     -0.18789,
+     0.25656,
+     -0.94405
+    ],
+    [
+     0.31742,
+     0.45358,
+     -0.705
+    ]
+   ]
+  },
+  "DNa02_L_523769": {
+   "file": "neurons/DNa02_L_523769.glb",
+   "skeleton": "skeletons/DNa02_L_523769.json",
+   "bodyId": 523769,
+   "type": "DNa02",
+   "side": "L",
+   "soma": [
+    0.22171,
+    0.28939,
+    -0.93733
+   ],
+   "tris": 1800,
+   "src_tris": 1373484,
+   "skel_nodes": 12835,
+   "skel_points": 9016,
+   "skel_polylines": 2512,
+   "bbox": [
+    [
+     0.05527,
+     -0.35681,
+     -0.95974
+    ],
+    [
+     0.26509,
+     0.32287,
+     0.80241
+    ]
+   ]
+  }
+ }
+}

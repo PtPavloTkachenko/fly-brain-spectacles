@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets and machine-local agent config (Lens Studio writes .mcp.json into the project folder)
+.env
+*.pem
+*.key
+**/.mcp.json
+.claude/
+
+# Lens Studio machine-local / regenerable
+Spectacles*/Cache/
+Spectacles*/Workspaces/
+Spectacles*/Support/
+Spectacles*/PluginsUserPreferences/
+Spectacles*/*.lock
+Spectacles*/BackUp/
+Spectacles*/Plugins/
+
+# Regenerable build previews (fly_model/build_glb.py writes them)
+fly_model/out/*_preview_*.png
+tools/treats/out/
+
+# Runtime never lives in the repo: $CYBERFLY_RUNTIME (default ~/cyberfly_runtime) holds
+# fly-wirehead + its 1.6 GB data, native kernel builds, logs and the tools' raw downloads
+fly-wirehead/
+engine_build/
+logs/
+*.dylib
+*.partial
+*.hdf5
+*.feather
+tools/anatomy/raw/
+tools/anim/flybody-data/
+tools/anim/flygym-data/
+
+# core build products and exported brains (hundreds of MB, regenerable; the brain file is on the release)
+core/**/build/
+core/**/out/
+
+# The page: the built site and the big files hosted on the GitHub release
+web/site/
+web/*.flyb.z
+web/assets/skel_l0.bin
+web/assets/edges.bin
+
+# The demo video is a GitHub release asset, not a git file
+docs/media/*.mp4
+
+# Perf sweep scratch (traces and logs)
+perf/traces_*/
+perf/sweep_run*.log
+perf/sweep_chain.log
+perf/sweep_*/FlyConfig.backup.ts
+
+# OS / logs / screen recordings
+.DS_Store
+*.log
+*.MOV
+
+# Shader .mat.meta / .ss_graph.meta / .graphShader.meta ARE tracked: Scene.scene and every .mat
+# reference the asset ids inside them, so a clone without them opens with unbound materials.
+brain/results/*_prev.npz
+
+# Verification renders (fly_model/build_glb.py -- lod0 --poses, tools/anim/convert.py --render)
+fly_model/out/poses/
+fly_model/out/pose_sheet*.png
+tools/anim/out/*.png
+
+# SnapOS Package exports (Lens Studio writes them next to the project)
+Spectacles*/.export/

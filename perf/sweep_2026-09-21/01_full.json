@@ -1,0 +1,55 @@
+{
+ "n": 23,
+ "from": "21:00:17",
+ "to": "21:01:01",
+ "fps_mean": 19.8,
+ "fps_min": 19,
+ "frame_ms_mean": 50.5,
+ "worst_median_ms": 137,
+ "worst_max_ms": 174,
+ "script_mean_ms": 3.64,
+ "per": {
+  "ours": {
+   "mean_ms": 1.951,
+   "worst_ms": 6.79
+  },
+  "board": {
+   "mean_ms": 0.86,
+   "worst_ms": 3.39
+  },
+  "eye": {
+   "mean_ms": 0.309,
+   "worst_ms": 2.45
+  },
+  "bodies": {
+   "mean_ms": 0.173,
+   "worst_ms": 0.93
+  },
+  "vision": {
+   "mean_ms": 0.134,
+   "worst_ms": 3.28
+  },
+  "webscene": {
+   "mean_ms": 0.093,
+   "worst_ms": 5.03
+  },
+  "fx": {
+   "mean_ms": 0.08,
+   "worst_ms": 1.26
+  },
+  "net": {
+   "mean_ms": 0.021,
+   "worst_ms": 0.45
+  },
+  "senses": {
+   "mean_ms": 0.013,
+   "worst_ms": 0.69
+  },
+  "sound": {
+   "mean_ms": 0.007,
+   "worst_ms": 1.1
+  }
+ },
+ "label": "01_full",
+ "log": "LensStudioLog-2026-09-21-12-20-59-474-da0fd.txt"
+}

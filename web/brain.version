@@ -1,0 +1,6 @@
+# The brain file's version: the first 12 hex digits of brain_c0.flyb.z's SHA-256. app.js appends it
+# to the download URL (brain_c0.flyb.z?v=...), so a browser that kept the old file (Cache API + a
+# year-long HTTP cache) fetches the new one, and one that has this one downloads nothing.
+# release.sh regenerates this file from the brain it ships; after a brain export by hand, run:
+#   shasum -a 256 web/brain_c0.flyb.z | cut -c1-12
+835780dba8c8
